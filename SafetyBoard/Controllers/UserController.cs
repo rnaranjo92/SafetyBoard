@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SafetyBoard.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private ApplicationDbContext _context;

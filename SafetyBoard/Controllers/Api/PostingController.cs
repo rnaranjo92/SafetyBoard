@@ -59,6 +59,7 @@ namespace SafetyBoard.Controllers.Api
 
         //UPDATE POST
         [HttpPut]
+        [Authorize]
         public IHttpActionResult UpdatePost(int id, PostingDto postingDto)
         {
             if (!ModelState.IsValid)
@@ -78,6 +79,7 @@ namespace SafetyBoard.Controllers.Api
             return Ok();
         }
         [HttpDelete]
+        [Authorize]
         //Delete POST
         public IHttpActionResult DeletePost(int id)
         {

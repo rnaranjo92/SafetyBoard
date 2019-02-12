@@ -11,6 +11,7 @@ using System.Web.Http;
 
 namespace SafetyBoard.Controllers.Api
 {
+    [Authorize]
     public class UserController : ApiController
     {
         private ApplicationDbContext _context;
