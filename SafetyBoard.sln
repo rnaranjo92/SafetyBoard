@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafetyBoard", "SafetyBoard\SafetyBoard.csproj", "{2292DE91-68B8-48EE-A137-D01C32C433AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2292DE91-68B8-48EE-A137-D01C32C433AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2292DE91-68B8-48EE-A137-D01C32C433AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2292DE91-68B8-48EE-A137-D01C32C433AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2292DE91-68B8-48EE-A137-D01C32C433AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D3B7522-5BD9-41F2-8ED6-05F1EF8BC7CD}
+	EndGlobalSection
+EndGlobal

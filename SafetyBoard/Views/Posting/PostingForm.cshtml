@@ -1,0 +1,38 @@
+﻿@model SafetyBoard.Models.ViewModel.PostingFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>@Model.PageTitle</h2>
+
+@using (Html.BeginForm("Post", "Posting"))
+{
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Posting.Title)
+        @Html.TextBoxFor(m => m.Posting.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Posting.Title)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Posting.PostingTypeId)
+        @Html.DropDownListFor(m => m.Posting.PostingTypeId, new SelectList(Model.PostingTypes, "Id", "SafetyCategory"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Posting.PostingTypeId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Posting.Description)
+        @Html.TextAreaFor(m => m.Posting.Description, new { @class = "form-control", @cols = "100", @rows = "12", @style = "width:100%;" })
+        @Html.ValidationMessageFor(m => m.Posting.Description)
+    </div>
+    @Html.HiddenFor(m => m.Posting.Id)
+    @Html.HiddenFor(m => m.Posting.TimePosted)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

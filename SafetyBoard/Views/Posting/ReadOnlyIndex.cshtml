@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SafetyBoard.Models.Posting>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Add New Post","PostingForm","Posting", new { @class = "btn btn-primary" })
+<br />
+<br />
+<table id="postings" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Posting</th>
+            <th>Safety Category</th>
+            <th>Time Posted</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+@section scripts{
+    <script>
+        //Get data from the table
+        $(document).ready(function () {
+            var table = $("#postings").DataTable({
+                ajax: {
+                    url:"/api/posting",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "title",
+                    },
+                    {
+                        data: "postingType.safetyCategory"
+                    },
+                    {
+                        data: "timePosted",
+                    }
+                ]
+                   
+                    
+            });
+            
+        });
+
+
+    </script>
+
+    }

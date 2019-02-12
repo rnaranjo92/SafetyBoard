@@ -1,0 +1,82 @@
+﻿@model IEnumerable<SafetyBoard.Models.Posting>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Add New Post","PostingForm","Posting", new { @class = "btn btn-primary" })
+<br />
+<br />
+<table id="postings" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Posting</th>
+            <th>Safety Category</th>
+            <th>Time Posted</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+@section scripts{
+    <script>
+        //Get data from the table
+        $(document).ready(function () {
+            var table = $("#postings").DataTable({
+                ajax: {
+                    url:"/api/posting",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "title",
+                        render: function (data, type, posting) {
+                            return "<a href='/posting/edit/"+ posting.id+"'>"+posting.title+"</a>"
+                        }
+                    },
+                    {
+                        data: "postingType.safetyCategory"
+                    },
+                    {
+                        data: "timePosted",
+                        render: function (data) {
+                            var date = new Date(data);
+                            var month = date.getMonth() + 1;
+                            return (month.length > 1 ? month : "0" + month) + "/" + date.getDate() + "/" + date.getFullYear();
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-posting-id='"+data+"'>Delete</button>"
+                        }
+                    }
+                ]
+                   
+                    
+        });
+            //Delete
+            $("#postings").on("click",".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to delete this user?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/posting/" + button.attr("data-posting-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parent("tr")).remove().draw();
+                                table.ajax.reload();
+                            }
+                        });
+                    }
+                })
+            });
+        });
+
+
+    </script>
+
+    }
