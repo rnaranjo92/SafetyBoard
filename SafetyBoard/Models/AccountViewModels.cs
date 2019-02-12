@@ -12,6 +12,10 @@ namespace SafetyBoard.Models
         [Required]
         [Display(Name = "Driver's License #")]
         public string DriversLicense { get; set; }
+
+        [Required]
+        [Display(Name = "Phone")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -71,6 +75,10 @@ namespace SafetyBoard.Models
         [Required]
         [Display(Name ="Driver's License #")]
         public string DriversLicense { get; set; }
+
+        [Required]
+        [Display(Name = "Phone")]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [EmailAddress]
