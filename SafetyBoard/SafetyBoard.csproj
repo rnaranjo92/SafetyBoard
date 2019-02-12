@@ -540,7 +540,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Shared\_NavBarForUsers.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Posting\Index.cshtml" />
@@ -548,6 +548,7 @@
     <Content Include="Views\Posting\PostingForm.cshtml" />
     <Content Include="Views\User\UserForm.cshtml" />
     <Content Include="Views\Posting\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Shared\_NavBarForAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

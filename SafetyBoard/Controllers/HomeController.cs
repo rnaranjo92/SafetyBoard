@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SafetyBoard.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,10 @@ namespace SafetyBoard.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleName.CanManagePost))
+                return View("_NavBarForAdmin");
+
+            return View("_NavBarForUsers");
         }
 
         public ActionResult About()
