@@ -294,17 +294,32 @@
       <DependentUpon>201902120341529_AlterPHoneNumber.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Min18YearsOld.cs" />
     <Compile Include="Models\Posting.cs" />
     <Compile Include="Models\PostingType.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserType.cs" />
+    <Compile Include="Models\ViewModel\AddPhoneNumberViewModel.cs" />
+    <Compile Include="Models\ViewModel\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\ViewModel\ConfigureTwoFactorViewModel.cs" />
+    <Compile Include="Models\ViewModel\FactorViewModel.cs" />
+    <Compile Include="Models\ViewModel\ManageLoginsViewModel.cs" />
+    <Compile Include="Models\ViewModel\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="Models\ViewModel\ExternalLoginListViewModel.cs" />
+    <Compile Include="Models\ViewModel\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\ViewModel\ForgotViewModel.cs" />
+    <Compile Include="Models\ViewModel\IndexViewModel.cs" />
+    <Compile Include="Models\ViewModel\LoginViewModel.cs" />
     <Compile Include="Models\ViewModel\PostingFormViewModel.cs" />
+    <Compile Include="Models\ViewModel\RegisterViewModel.cs" />
+    <Compile Include="Models\ViewModel\ResetPasswordViewModel.cs" />
+    <Compile Include="Models\ViewModel\SendCodeViewModel.cs" />
+    <Compile Include="Models\ViewModel\SetPasswordViewModel.cs" />
     <Compile Include="Models\ViewModel\UserViewModel.cs" />
+    <Compile Include="Models\ViewModel\VerifyCodeViewModel.cs" />
+    <Compile Include="Models\ViewModel\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
