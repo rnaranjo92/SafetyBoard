@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace SafetyBoard.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = RoleName.CanManagePost)]
     public class UserController : Controller
     {
         private ApplicationDbContext _context;
@@ -37,6 +37,7 @@ namespace SafetyBoard.Controllers
 
             return View(user);
         }
+        [Authorize(Roles = RoleName.CanManagePost)]
         public ActionResult Edit(int id)
         {
             var user = _context.Users.Include(u => u.UserType).SingleOrDefault(u => u.Id == id);

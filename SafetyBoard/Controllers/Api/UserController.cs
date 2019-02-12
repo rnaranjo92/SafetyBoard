@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace SafetyBoard.Controllers.Api
 {
-    [Authorize]
+    [Authorize(Roles = RoleName.CanManagePost)]
     public class UserController : ApiController
     {
         private ApplicationDbContext _context;

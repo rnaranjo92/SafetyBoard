@@ -9,6 +9,7 @@ using SafetyBoard.Models.ViewModel;
 
 namespace SafetyBoard.Controllers
 {
+
     public class PostingController : Controller
     {
         private ApplicationDbContext _context;
@@ -78,6 +79,7 @@ namespace SafetyBoard.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Posting");
         }
+        [Authorize(Roles = RoleName.CanManagePost)]
         public ActionResult Edit(int id)
         {
             var posting = _context.Postings.SingleOrDefault(p => p.Id == id);

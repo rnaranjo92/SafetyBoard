@@ -5,8 +5,8 @@ using System.Web;
 
 namespace SafetyBoard.Models
 {
-    public class RoleName
+    public static class RoleName
     {
-        public static string CanManagePost = "CanManagePosts";
+        public const string CanManagePost = "CanManagePosts";
     }
 }
