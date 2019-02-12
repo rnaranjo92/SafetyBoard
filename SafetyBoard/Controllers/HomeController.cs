@@ -12,10 +12,7 @@ namespace SafetyBoard.Controllers
     {
         public ActionResult Index()
         {
-            if (User.IsInRole(RoleName.CanManagePost))
-                return View("_NavBarForAdmin");
-
-            return View("_NavBarForUsers");
+            return View();
         }
 
         public ActionResult About()

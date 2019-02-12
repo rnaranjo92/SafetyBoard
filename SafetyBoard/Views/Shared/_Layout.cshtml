@@ -9,7 +9,8 @@
 
 </head>
 <body>
-    @if (User.IsInRole("CanManagePost"))
+    
+    @if (User.IsInRole("CanManagePosts"))
     {
         @Html.Partial("_NavBarForAdmin")
     }
@@ -17,6 +18,9 @@
     {
         @Html.Partial("_NavBarForUsers")
     }
+    
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
