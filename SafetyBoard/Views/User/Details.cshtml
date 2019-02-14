@@ -1,0 +1,15 @@
+﻿@model SafetyBoard.Models.User
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+<ul>
+    <li>User Type: @Model.UserType.Title</li>
+    @if (Model.BirthDate.HasValue)
+    {
+    <li>Birth Date: @Model.BirthDate.Value.ToShortDateString()</li>
+    }
+</ul>
+
