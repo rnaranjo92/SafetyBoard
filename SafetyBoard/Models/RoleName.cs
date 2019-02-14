@@ -8,5 +8,6 @@ namespace SafetyBoard.Models
     public static class RoleName
     {
         public const string CanManagePost = "CanManagePosts";
+        public const string NormalUsers = "NormalUsers";
     }
 }

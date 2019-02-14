@@ -1,89 +1,45 @@
-﻿@model IEnumerable<SafetyBoard.Models.User>
+﻿@model IEnumerable<SafetyBoard.Models.ViewModel.UserViewModel>
 @{
-    ViewBag.Title = "UserView";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Users</h2>
+<h2>User List</h2>
 
-    <table id="users" class="table	table-bordered	table-hover">
-        <thead>
+<table id="users" class="table table-bordered table-hover">
+
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Drivers License #</th>
+            <th>Roles</th>
+            <th>Contact Number</th>
+        </tr>
+    </thead>
+        @foreach (var user in Model.ToList())
+        {
+
             <tr>
-                <th>Users</th>
-                <th>Organization</th>
-                <th>User Type</th>
-                <th>Date Registered</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-    </table>
-
+                <td>@user.Email</td>
+                <td>@user.DriversLicense</td>
+                @foreach (var role in user.Roles)
+                {
+                <td> @role </td>
+                }
+                <td>@user.PhoneNumber</td>
+        </tr>
+        }
+</table>
 @section scripts
-    
-    
     {
     <script>
         $(document).ready(function () {
-            var tables = $("#users").DataTable({
-                ajax: {
-                    url: "/api/user",
-                    dataSrc: ""
-                },
-                columns: [
-                    {
-                        data: "name",
-                        render: function (data, type, users) {
-                            return "<a href='user/edit/" + users.id + "'>" + users.name + "</a>"
-                        }
-                    },
-                    {
-                        data:"organization"
-                    },
-                    {
-                        data: "userType.title",
-
-                    },
-                    {
-                        data: "dateRegistered",
-                        render: function (data) {
-                            var date = new Date(data);
-                            var month = date.getMonth() + 1;
-                            return (month.length > 1 ? month : "0" + month) + "/" + date.getDate() + "/" + date.getFullYear();
-                        }
-                    },
-                    {
-                        data: "id",
-                        render: function (data) {
-                            return "<button class='btn-link js-delete' data-user-id='"+data+"'>Delete</button>"
-                        }
-                    }
-                ]
-
-            });
-
-            $("#users").on("click", ".js-delete", function () {
-                var button = $(this);
-
-                bootbox.confirm("Are you sure if wanted to delete this user?", function (result) {
-                    if (result) {
-                        $.ajax({
-                            url: "/api/user/" + button.attr("data-user-id"),
-                            method: "DELETE",
-                            success: function () {
-                                tables.row(button.parent("tr")).remove().draw();
-                                tables.ajax.reload();
-                            }
-                        });
-                    }
-                });
-            });
+            var table = $("#users").DataTable({
+                //will add more to it. 
+            })
         });
+
+
     </script>
     }
-
-
-
-
-
-
 

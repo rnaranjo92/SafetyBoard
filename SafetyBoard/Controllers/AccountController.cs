@@ -157,8 +157,11 @@ namespace SafetyBoard.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //temp code
-
+                    //To set everyone as Normal Users
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    await roleManager.CreateAsync(new IdentityRole(RoleName.NormalUsers));
+                    await UserManager.AddToRoleAsync(user.Id, RoleName.NormalUsers);
 
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
