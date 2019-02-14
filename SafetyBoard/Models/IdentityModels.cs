@@ -24,10 +24,8 @@ namespace SafetyBoard.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<Posting> Postings { get; set; }
         public DbSet<PostingType> PostingTypes { get; set; }
-        public DbSet<UserType> UserTypes { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

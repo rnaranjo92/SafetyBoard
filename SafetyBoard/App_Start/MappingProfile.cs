@@ -12,12 +12,9 @@ namespace SafetyBoard.App_Start
     {
         public MappingProfile()
         {
-            Mapper.CreateMap<User, UserDto>();
-            Mapper.CreateMap<UserDto, User>().ForMember(c => c.Id, opt => opt.Ignore());
             Mapper.CreateMap<PostingDto, Posting>().ForMember(c => c.Id, opt => opt.Ignore());
             Mapper.CreateMap<Posting, PostingDto>();
             Mapper.CreateMap<PostingType, PostingTypeDto>();
-            Mapper.CreateMap<UserType, UserTypeDto>();
 
         }
     }

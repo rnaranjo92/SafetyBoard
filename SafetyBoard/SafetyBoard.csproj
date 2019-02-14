@@ -204,11 +204,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\PostingController.cs" />
-    <Compile Include="Controllers\Api\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostingController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Dto\PostingDto.cs" />
     <Compile Include="Dto\PostingTypeDto.cs" />
     <Compile Include="Dto\UserDto.cs" />
@@ -309,14 +307,15 @@
     <Compile Include="Migrations\201902120341529_AlterPHoneNumber.Designer.cs">
       <DependentUpon>201902120341529_AlterPHoneNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902140442479_RemoveUserData.cs" />
+    <Compile Include="Migrations\201902140442479_RemoveUserData.Designer.cs">
+      <DependentUpon>201902140442479_RemoveUserData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Min18YearsOld.cs" />
     <Compile Include="Models\Posting.cs" />
     <Compile Include="Models\PostingType.cs" />
     <Compile Include="Models\RoleName.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserType.cs" />
     <Compile Include="Models\ViewModel\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ViewModel\ConfigureTwoFactorViewModel.cs" />
@@ -333,7 +332,6 @@
     <Compile Include="Models\ViewModel\ResetPasswordViewModel.cs" />
     <Compile Include="Models\ViewModel\SendCodeViewModel.cs" />
     <Compile Include="Models\ViewModel\SetPasswordViewModel.cs" />
-    <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Models\ViewModel\VerifyCodeViewModel.cs" />
     <Compile Include="Models\ViewModel\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -571,12 +569,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Posting\Index.cshtml" />
     <Content Include="Views\Posting\Details.cshtml" />
     <Content Include="Views\Posting\PostingForm.cshtml" />
-    <Content Include="Views\User\UserForm.cshtml" />
     <Content Include="Views\Posting\ReadOnlyIndex.cshtml" />
     <Content Include="Views\Shared\_NavBarForAdmin.cshtml" />
     <Content Include="Views\Shared\_NavBarForUsers.cshtml" />
@@ -666,6 +661,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902120341529_AlterPHoneNumber.resx">
       <DependentUpon>201902120341529_AlterPHoneNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902140442479_RemoveUserData.resx">
+      <DependentUpon>201902140442479_RemoveUserData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
