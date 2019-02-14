@@ -204,15 +204,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\PostingController.cs" />
-    <Compile Include="Controllers\Api\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostingController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Dto\PostingDto.cs" />
     <Compile Include="Dto\PostingTypeDto.cs" />
-    <Compile Include="Dto\UserDto.cs" />
-    <Compile Include="Dto\UserTypeDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -315,8 +311,6 @@
     <Compile Include="Models\Posting.cs" />
     <Compile Include="Models\PostingType.cs" />
     <Compile Include="Models\RoleName.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserType.cs" />
     <Compile Include="Models\ViewModel\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ViewModel\ConfigureTwoFactorViewModel.cs" />
@@ -333,7 +327,6 @@
     <Compile Include="Models\ViewModel\ResetPasswordViewModel.cs" />
     <Compile Include="Models\ViewModel\SendCodeViewModel.cs" />
     <Compile Include="Models\ViewModel\SetPasswordViewModel.cs" />
-    <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Models\ViewModel\VerifyCodeViewModel.cs" />
     <Compile Include="Models\ViewModel\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
