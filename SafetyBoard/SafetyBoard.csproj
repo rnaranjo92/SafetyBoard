@@ -305,6 +305,10 @@
     <Compile Include="Migrations\201902120341529_AlterPHoneNumber.Designer.cs">
       <DependentUpon>201902120341529_AlterPHoneNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902140455567_RemoveUserData.cs" />
+    <Compile Include="Migrations\201902140455567_RemoveUserData.Designer.cs">
+      <DependentUpon>201902140455567_RemoveUserData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Min18YearsOld.cs" />
@@ -659,6 +663,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902120341529_AlterPHoneNumber.resx">
       <DependentUpon>201902120341529_AlterPHoneNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902140455567_RemoveUserData.resx">
+      <DependentUpon>201902140455567_RemoveUserData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
