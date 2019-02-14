@@ -19,7 +19,7 @@ namespace SafetyBoard.Controllers.Api
 
         public IHttpActionResult GetUsers()
         {
-
+            return Ok();
         }
     }
 }

@@ -311,6 +311,10 @@
     <Compile Include="Migrations\201902141809459_NewProfileForUsers.Designer.cs">
       <DependentUpon>201902141809459_NewProfileForUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902141839597_RemoveOrganization.cs" />
+    <Compile Include="Migrations\201902141839597_RemoveOrganization.Designer.cs">
+      <DependentUpon>201902141839597_RemoveOrganization.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Min18YearsOld.cs" />
@@ -667,6 +671,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902141809459_NewProfileForUsers.resx">
       <DependentUpon>201902141809459_NewProfileForUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902141839597_RemoveOrganization.resx">
+      <DependentUpon>201902141839597_RemoveOrganization.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
