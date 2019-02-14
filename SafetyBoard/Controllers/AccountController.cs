@@ -379,7 +379,9 @@ namespace SafetyBoard.Controllers
                 var user = new ApplicationUser
                 { UserName = model.Email,
                     Email = model.Email,
-                    DriversLicense = model.DriversLicense
+                    DriversLicense = model.DriversLicense,
+                    Organization = model.Organization,
+                    AllowAccess = false
                 };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)

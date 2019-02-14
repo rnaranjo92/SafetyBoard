@@ -8,6 +8,10 @@ namespace SafetyBoard.Models.ViewModel
 {
     public class RegisterViewModel
     {
+
+        [Required]
+        public string Organization { get; set; }
+
         [Required]
         [Display(Name = "Driver's License #")]
         public string DriversLicense { get; set; }

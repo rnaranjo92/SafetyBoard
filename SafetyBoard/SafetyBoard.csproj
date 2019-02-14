@@ -204,6 +204,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\PostingController.cs" />
+    <Compile Include="Controllers\Api\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostingController.cs" />
@@ -305,6 +306,10 @@
     <Compile Include="Migrations\201902120341529_AlterPHoneNumber.cs" />
     <Compile Include="Migrations\201902120341529_AlterPHoneNumber.Designer.cs">
       <DependentUpon>201902120341529_AlterPHoneNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902141809459_NewProfileForUsers.cs" />
+    <Compile Include="Migrations\201902141809459_NewProfileForUsers.Designer.cs">
+      <DependentUpon>201902141809459_NewProfileForUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -659,6 +664,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902120341529_AlterPHoneNumber.resx">
       <DependentUpon>201902120341529_AlterPHoneNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902141809459_NewProfileForUsers.resx">
+      <DependentUpon>201902141809459_NewProfileForUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

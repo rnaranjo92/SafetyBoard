@@ -19,5 +19,9 @@ namespace SafetyBoard.Models.ViewModel
         [Required]
         [Display(Name = "Phone")]
         public string PhoneNumber { get; set; }
+
+        [Required]
+        public string Organization { get; set; }
+
     }
 }
