@@ -36,27 +36,23 @@
     {
     <script>
         $(document).ready(function () {
-            var table = $("#users").DataTable({
+            var table = $("#users").DataTable();
 
+            $("#users").on("click", ".js-delete", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to delete this user?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/user/" + button.attr("data-user-id"),
+                            method: "DELETE",
+                            success: function () {
+                                location.reload();
+                            }
+                        });
+                    }
+                })
             });
         });
-        
-
-        $("#users").on("click", ".js-delete", function () {
-            var button = $(this);
-            bootbox.confirm("Are you sure you want to delete this user?", function (result) {
-                if (result) {
-                    $.ajax({
-                        url: "/api/user/" + button.attr("data-user-id"),
-                        method: "DELETE",
-                        success: function () {
-                            ajax.reload();
-                        }
-                    });
-                }
-            })
-        });
-
     </script>
     }
 
