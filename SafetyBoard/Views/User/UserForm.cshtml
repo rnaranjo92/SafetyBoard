@@ -1,0 +1,13 @@
+﻿@model IEnumerable<SafetyBoard.Dto.UserDto>
+@{
+    ViewBag.Title = "UserForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UserForm</h2>
+
+@using (Html.BeginForm("CreateUser","User"))
+{
+    <div class="form-group">
+    </div>
+}

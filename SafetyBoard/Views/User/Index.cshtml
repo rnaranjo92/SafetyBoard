@@ -10,35 +10,52 @@
 
     <thead>
         <tr>
-            <th>Email</th>
-            <th>Drivers License #</th>
-            <th>Roles</th>
-            <th>Contact Number</th>
+            <td>Id</td>
+            <td>Email</td>
+            <td>PhoneNumber</td>
+            <td>Organization</td>
+            <td>Allow Post</td>
+            <td>Delete</td>
         </tr>
     </thead>
-        @foreach (var user in Model.ToList())
-        {
-
-            <tr>
-                <td>@user.Email</td>
-                <td>@user.DriversLicense</td>
-                @foreach (var role in user.Roles)
-                {
-                <td> @role </td>
-                }
-                <td>@user.PhoneNumber</td>
-        </tr>
-        }
+    @foreach (var user in Model)
+    {
+    <tr>
+        <td>@user.Id</td>
+        <td>@user.Email</td>
+        <td>@user.PhoneNumber</td>
+        <td>@user.Organization</td>
+        <td>@user.AllowAccess</td>
+        <td>
+            <button class="btn-link js-delete" data-user-id="@user.Id">Delete</button>
+        </td>
+    </tr>
+    }
 </table>
 @section scripts
     {
     <script>
         $(document).ready(function () {
             var table = $("#users").DataTable({
-                //will add more to it. 
+
+            });
+        });
+        
+
+        $("#users").on("click", ".js-delete", function () {
+            var button = $(this);
+            bootbox.confirm("Are you sure you want to delete this user?", function (result) {
+                if (result) {
+                    $.ajax({
+                        url: "/api/user/" + button.attr("data-user-id"),
+                        method: "DELETE",
+                        success: function () {
+                            ajax.reload();
+                        }
+                    });
+                }
             })
         });
-
 
     </script>
     }

@@ -209,8 +209,10 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Dto\OrganizationDto.cs" />
     <Compile Include="Dto\PostingDto.cs" />
     <Compile Include="Dto\PostingTypeDto.cs" />
+    <Compile Include="Dto\UserDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -315,9 +317,26 @@
     <Compile Include="Migrations\201902141839597_RemoveOrganization.Designer.cs">
       <DependentUpon>201902141839597_RemoveOrganization.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902141848261_AddOrganizationTable.cs" />
+    <Compile Include="Migrations\201902141848261_AddOrganizationTable.Designer.cs">
+      <DependentUpon>201902141848261_AddOrganizationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902141918429_AddOrganizationInUser.cs" />
+    <Compile Include="Migrations\201902141918429_AddOrganizationInUser.Designer.cs">
+      <DependentUpon>201902141918429_AddOrganizationInUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902141927444_PopulateOrganizationTbl.cs" />
+    <Compile Include="Migrations\201902141927444_PopulateOrganizationTbl.Designer.cs">
+      <DependentUpon>201902141927444_PopulateOrganizationTbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902150128417_SeedUsers2.cs" />
+    <Compile Include="Migrations\201902150128417_SeedUsers2.Designer.cs">
+      <DependentUpon>201902150128417_SeedUsers2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Min18YearsOld.cs" />
+    <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Posting.cs" />
     <Compile Include="Models\PostingType.cs" />
     <Compile Include="Models\RoleName.cs" />
@@ -582,6 +601,7 @@
     <Content Include="Views\Shared\_NavBarForAdmin.cshtml" />
     <Content Include="Views\Shared\_NavBarForUsers.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\UserForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -674,6 +694,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902141839597_RemoveOrganization.resx">
       <DependentUpon>201902141839597_RemoveOrganization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902141848261_AddOrganizationTable.resx">
+      <DependentUpon>201902141848261_AddOrganizationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902141918429_AddOrganizationInUser.resx">
+      <DependentUpon>201902141918429_AddOrganizationInUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902141927444_PopulateOrganizationTbl.resx">
+      <DependentUpon>201902141927444_PopulateOrganizationTbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902150128417_SeedUsers2.resx">
+      <DependentUpon>201902150128417_SeedUsers2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

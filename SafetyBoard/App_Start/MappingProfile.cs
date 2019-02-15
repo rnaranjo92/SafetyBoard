@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 
 namespace SafetyBoard.App_Start
 {
@@ -15,7 +16,9 @@ namespace SafetyBoard.App_Start
             Mapper.CreateMap<PostingDto, Posting>().ForMember(c => c.Id, opt => opt.Ignore());
             Mapper.CreateMap<Posting, PostingDto>();
             Mapper.CreateMap<PostingType, PostingTypeDto>();
-
+            Mapper.CreateMap<ApplicationUser, UserDto>();
+            Mapper.CreateMap<UserDto, ApplicationUser>().ForMember(c => c.Id, opt => opt.Ignore()); 
+            Mapper.CreateMap<Organization, OrganizationDto>();
         }
     }
 }

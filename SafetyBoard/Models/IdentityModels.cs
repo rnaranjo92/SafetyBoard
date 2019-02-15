@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -14,12 +15,14 @@ namespace SafetyBoard.Models
         [StringLength(255)]
         public string DriversLicense { get; set; }
 
-        [Required]
-        [StringLength(255)]
-        public string Organization { get; set; }
 
         [Required]
         public bool AllowAccess { get; set; }
+
+        public Organization Organization { get; set; }
+
+        [Required]
+        public int OrganizationId { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -34,6 +37,7 @@ namespace SafetyBoard.Models
     {
         public DbSet<Posting> Postings { get; set; }
         public DbSet<PostingType> PostingTypes { get; set; }
+        public DbSet<Organization> Organizations { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

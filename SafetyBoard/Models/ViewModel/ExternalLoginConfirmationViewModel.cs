@@ -21,7 +21,7 @@ namespace SafetyBoard.Models.ViewModel
         public string PhoneNumber { get; set; }
 
         [Required]
-        public string Organization { get; set; }
+        public Organization Organization { get; set; }
 
     }
 }

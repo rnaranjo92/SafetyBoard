@@ -10,7 +10,8 @@ namespace SafetyBoard.Models.ViewModel
     {
 
         [Required]
-        public string Organization { get; set; }
+        [Display(Name = "Organization ID")]
+        public int Organization { get; set; }
 
         [Required]
         [Display(Name = "Driver's License #")]

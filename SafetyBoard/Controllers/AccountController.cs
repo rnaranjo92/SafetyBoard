@@ -17,11 +17,13 @@ namespace SafetyBoard.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext _context;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public AccountController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -153,7 +155,7 @@ namespace SafetyBoard.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DriversLicense = model.DriversLicense, PhoneNumber = model.PhoneNumber };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DriversLicense = model.DriversLicense, PhoneNumber = model.PhoneNumber, OrganizationId = model.Organization };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -380,8 +382,8 @@ namespace SafetyBoard.Controllers
                 { UserName = model.Email,
                     Email = model.Email,
                     DriversLicense = model.DriversLicense,
-                    Organization = model.Organization,
-                    AllowAccess = false
+                    AllowAccess = false,
+                    Organization = _context.Organizations.First(c => c.Id == model.Organization.Id)
                 };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)

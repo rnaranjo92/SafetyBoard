@@ -8,10 +8,11 @@ namespace SafetyBoard.Models.ViewModel
 {
     public class UserViewModel
     {
+        public string Id { get; set; }
         public string Email { get; set; }
-        public string DriversLicense { get; set; }
+        public string Role { get; set; }
         public string PhoneNumber { get; set; }
-        public int MyProperty { get; set; }
-        public IEnumerable<string> Roles { get; set; }
+        public string Organization { get; set; }
+        public bool AllowAccess { get; set; }
     }
 }

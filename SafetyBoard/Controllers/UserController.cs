@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace SafetyBoard.Controllers
 {
+    [Authorize(Roles = RoleName.CanManagePost)]
     public class UserController : Controller
     {
         private ApplicationDbContext _context;
@@ -22,27 +23,29 @@ namespace SafetyBoard.Controllers
         // GET: User
         public ActionResult Index()
         {
-            var userRoles = new List<UserViewModel>();
-            var userStore = new UserStore<ApplicationUser>(_context);
-            var userManager = new UserManager<ApplicationUser>(userStore);
+            var usersWithRoles = (from user in _context.Users.Include(c=>c.Organization)
+                                  select new
+                                  {
+                                      user.Id,
+                                      user.Email,
+                                      user.PhoneNumber,
+                                      user.Organization,
+                                      user.AllowAccess
 
-            foreach (var user in userStore.Users)
-            {
-                var r = new UserViewModel
-                {
-                    Email = user.Email,
-                    DriversLicense = user.DriversLicense,
-                    PhoneNumber = user.PhoneNumber
-                };
-                userRoles.Add(r);
-            }
-            //Get all the Roles for our users
-            foreach (var user in userRoles)
-            {
-                user.Roles = userManager.GetRoles(userStore.Users.First(s => s.Email == user.Email).Id);
-            }
+                                  }).ToList().Select(p => new UserViewModel()
 
-            return View(userRoles);
+                                  {
+                                      Id = p.Id,
+                                      Email = p.Email,
+                                      PhoneNumber = p.PhoneNumber,
+                                      Organization = p.Organization.Name,
+                                      AllowAccess = p.AllowAccess
+                                  });
+
+
+            return View(usersWithRoles);
+
         }
+        
     }
 }
