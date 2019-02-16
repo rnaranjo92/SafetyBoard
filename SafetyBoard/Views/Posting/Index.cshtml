@@ -11,6 +11,8 @@
 <table id="postings" class="table table-bordered table-hover">
     <thead>
         <tr>
+            <th>User Name</th>
+            <th>Organization</th>
             <th>Posting</th>
             <th>Safety Category</th>
             <th>Time Posted</th>
@@ -30,6 +32,12 @@
                     dataSrc: ""
                 },
                 columns: [
+                    {
+                        data:"user.email"
+                    },
+                    {
+                        data: "user.organization.name"
+                    },
                     {
                         data: "title",
                         render: function (data, type, posting) {
@@ -52,7 +60,7 @@
                         render: function (data) {
                             return "<button class='btn-link js-delete' data-posting-id='"+data+"'>Delete</button>"
                         }
-                    }
+                    },
                 ]
                    
                     

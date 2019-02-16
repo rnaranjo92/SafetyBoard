@@ -24,6 +24,11 @@ namespace SafetyBoard.Models
         [StringLength(3000)]
         public string Description { get; set; }
 
+        public ApplicationUser User { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
+
         public DateTime? TimePosted { get; set; }
     }
 }

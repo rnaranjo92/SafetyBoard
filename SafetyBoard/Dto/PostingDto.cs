@@ -25,5 +25,11 @@ namespace SafetyBoard.Dto
 
         [Required]
         public DateTime TimePosted { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
+
+        public UserDto User { get; set; }
+
     }
 }

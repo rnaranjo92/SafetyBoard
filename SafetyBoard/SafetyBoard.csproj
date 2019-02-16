@@ -333,6 +333,10 @@
     <Compile Include="Migrations\201902150128417_SeedUsers2.Designer.cs">
       <DependentUpon>201902150128417_SeedUsers2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902160424420_AddCurrentUserToEveryPost.cs" />
+    <Compile Include="Migrations\201902160424420_AddCurrentUserToEveryPost.Designer.cs">
+      <DependentUpon>201902160424420_AddCurrentUserToEveryPost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Min18YearsOld.cs" />
@@ -706,6 +710,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902150128417_SeedUsers2.resx">
       <DependentUpon>201902150128417_SeedUsers2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902160424420_AddCurrentUserToEveryPost.resx">
+      <DependentUpon>201902160424420_AddCurrentUserToEveryPost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

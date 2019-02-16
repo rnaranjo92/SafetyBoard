@@ -6,6 +6,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Web.Mvc;
 using SafetyBoard.Models.ViewModel;
+using Microsoft.AspNet.Identity;
 
 namespace SafetyBoard.Controllers
 {
@@ -43,9 +44,10 @@ namespace SafetyBoard.Controllers
             var postingTypes = _context.PostingTypes.ToList();
             var viewModel = new PostingFormViewModel()
             {
-                Posting = new Posting(),
+                Posting = new Posting() { UserId = User.Identity.GetUserId()},
                 PostingTypes = postingTypes,
-                PageTitle = "New"
+                PageTitle = "New",
+
             };
             return View(viewModel);
         }
@@ -65,6 +67,7 @@ namespace SafetyBoard.Controllers
             }
             if (posting.Id == 0)
             {
+                posting.UserId = User.Identity.GetUserId();
                 posting.TimePosted = DateTime.Now;
                 _context.Postings.Add(posting);
             }
@@ -75,6 +78,7 @@ namespace SafetyBoard.Controllers
                 postingInDb.PostingTypeId = posting.PostingTypeId;
                 postingInDb.TimePosted = posting.TimePosted;
                 postingInDb.Description = posting.Description;
+                postingInDb.UserId = posting.UserId;
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Posting");

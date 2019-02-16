@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNet.Identity;
 using SafetyBoard.Dto;
 using SafetyBoard.Models;
 using System;
@@ -24,7 +25,7 @@ namespace SafetyBoard.Controllers.Api
 
         public IHttpActionResult GetPosts()
         {
-            var posting = _context.Postings.Include(p=>p.PostingType).ToList().Select(Mapper.Map<Posting, PostingDto>);
+            var posting = _context.Postings.Include(p=>p.PostingType).Include(p=>p.User).Include(p=>p.User.Organization).ToList().Select(Mapper.Map<Posting, PostingDto>);
 
             return Ok(posting);
         }
@@ -48,7 +49,7 @@ namespace SafetyBoard.Controllers.Api
                 return BadRequest();
 
             var posting = Mapper.Map<PostingDto, Posting>(postingDto);
-
+            
             _context.Postings.Add(posting);
             _context.SaveChanges();
 
