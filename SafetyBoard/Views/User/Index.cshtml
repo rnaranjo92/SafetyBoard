@@ -11,6 +11,7 @@
     <thead>
         <tr>
             <td>Id</td>
+            <td>Name</td>
             <td>Email</td>
             <td>PhoneNumber</td>
             <td>Organization</td>
@@ -18,8 +19,8 @@
             <td>Delete</td>
         </tr>
     </thead>
+   
     
-    }
 </table>
 @section scripts
     {
@@ -34,6 +35,12 @@
                     [
                         {
                             data:"id"
+                        },
+                        {
+                            data: "firstName",
+                            render: function (data, type, user) {
+                                return data +" "+user.lastName
+                            }
                         },
                         {
                             data:"email"

@@ -25,5 +25,9 @@ namespace SafetyBoard.Dto
         public int PhoneNumber { get; set; }
 
         public bool AllowAccess { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
     }
 }

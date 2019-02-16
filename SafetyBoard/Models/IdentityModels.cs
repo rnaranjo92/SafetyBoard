@@ -24,6 +24,14 @@ namespace SafetyBoard.Models
         [Required]
         public int OrganizationId { get; set; }
 
+        [Required]
+        [StringLength(15)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(15)]
+        public string LastName { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

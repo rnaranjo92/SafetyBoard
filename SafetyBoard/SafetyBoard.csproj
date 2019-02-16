@@ -337,6 +337,10 @@
     <Compile Include="Migrations\201902160424420_AddCurrentUserToEveryPost.Designer.cs">
       <DependentUpon>201902160424420_AddCurrentUserToEveryPost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902162125340_add-migration AddFirstNameAndLastName.cs" />
+    <Compile Include="Migrations\201902162125340_add-migration AddFirstNameAndLastName.Designer.cs">
+      <DependentUpon>201902162125340_add-migration AddFirstNameAndLastName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Min18YearsOld.cs" />
@@ -360,6 +364,7 @@
     <Compile Include="Models\ViewModel\ResetPasswordViewModel.cs" />
     <Compile Include="Models\ViewModel\SendCodeViewModel.cs" />
     <Compile Include="Models\ViewModel\SetPasswordViewModel.cs" />
+    <Compile Include="Models\ViewModel\UserDetailsViewModel.cs" />
     <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Models\ViewModel\VerifyCodeViewModel.cs" />
     <Compile Include="Models\ViewModel\VerifyPhoneNumberViewModel.cs" />
@@ -606,7 +611,6 @@
     <Content Include="Views\Shared\_NavBarForUsers.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\UserForm.cshtml" />
-    <Content Include="Views\User\UserDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -714,6 +718,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902160424420_AddCurrentUserToEveryPost.resx">
       <DependentUpon>201902160424420_AddCurrentUserToEveryPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902162125340_add-migration AddFirstNameAndLastName.resx">
+      <DependentUpon>201902162125340_add-migration AddFirstNameAndLastName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

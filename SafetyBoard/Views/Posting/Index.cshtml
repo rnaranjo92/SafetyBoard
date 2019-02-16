@@ -12,8 +12,10 @@
     <thead>
         <tr>
             <th>User Name</th>
+            <th>Name</th>
+            <th>Contact Number</th>
             <th>Organization</th>
-            <th>Posting</th>
+            <th>Title</th>
             <th>Safety Category</th>
             <th>Time Posted</th>
             <th>Delete</th>
@@ -34,6 +36,15 @@
                 columns: [
                     {
                         data:"user.email"
+                    },
+                    {
+                        data: "user",
+                        render: function (data) {
+                            return data.firstName + " " + data.lastName
+                        }
+                    },
+                    {
+                        data:"user.phoneNumber"
                     },
                     {
                         data: "user.organization.name"
