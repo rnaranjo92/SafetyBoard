@@ -1819,6 +1819,7 @@ pre {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto
+
 }
 
 @media (min-width:768px) {
@@ -4532,7 +4533,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 
 .navbar-fixed-top {
     top: 0;
-    border-width: 0 0 1px
+    border-width: 0 0 1px;
 }
 
 .navbar-fixed-bottom {
@@ -4916,12 +4917,13 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     }
 
 .navbar-inverse {
-    background-color: #ffffff;
+    background-color: #F6B724;
     border-color: #e6e6e6
 }
 
     .navbar-inverse .navbar-brand {
-        color: #999999
+        color: #010101;
+        font-weight:bold
     }
 
         .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
@@ -4934,7 +4936,8 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     }
 
     .navbar-inverse .navbar-nav > li > a {
-        color: #999999
+        color: #010101;
+        font-weight: bold;
     }
 
         .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
