@@ -606,6 +606,7 @@
     <Content Include="Views\Shared\_NavBarForUsers.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\UserForm.cshtml" />
+    <Content Include="Views\User\UserDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

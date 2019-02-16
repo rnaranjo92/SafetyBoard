@@ -21,5 +21,9 @@ namespace SafetyBoard.Dto
 
         [Required]
         public string DriversLicense { get; set; }
+
+        public int PhoneNumber { get; set; }
+
+        public bool AllowAccess { get; set; }
     }
 }

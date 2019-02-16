@@ -18,25 +18,43 @@
             <td>Delete</td>
         </tr>
     </thead>
-    @foreach (var user in Model)
-    {
-    <tr>
-        <td>@user.Id</td>
-        <td>@user.Email</td>
-        <td>@user.PhoneNumber</td>
-        <td>@user.Organization</td>
-        <td>@user.AllowAccess</td>
-        <td>
-            <button class="btn-link js-delete" data-user-id="@user.Id">Delete</button>
-        </td>
-    </tr>
+    
     }
 </table>
 @section scripts
     {
     <script>
         $(document).ready(function () {
-            var table = $("#users").DataTable();
+            var table = $("#users").DataTable({
+                ajax: {
+                    url: "/api/user",
+                    dataSrc:""
+                },
+                columns:
+                    [
+                        {
+                            data:"id"
+                        },
+                        {
+                            data:"email"
+                        },
+                        {
+                            data:"phoneNumber"
+                        },
+                        {
+                            data:"organization.name"
+                        },
+                        {
+                            data:"allowAccess"
+                        },
+                        {
+                            data: "id",
+                            render: function (data) {
+                                return "<button class='btn-link js-delete' data-user-id='"+data+"'>Delete</button>"
+                            }
+                        }
+                    ]
+            });
 
             $("#users").on("click", ".js-delete", function () {
                 var button = $(this);
