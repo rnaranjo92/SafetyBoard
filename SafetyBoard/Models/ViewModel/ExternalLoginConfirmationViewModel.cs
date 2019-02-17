@@ -19,9 +19,16 @@ namespace SafetyBoard.Models.ViewModel
         [Required]
         [Display(Name = "Phone")]
         public string PhoneNumber { get; set; }
+        
+        [Required]
+        public int OrganizationId { get; set; }
 
         [Required]
-        public Organization Organization { get; set; }
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
 
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
     }
 }

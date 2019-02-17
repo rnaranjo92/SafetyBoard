@@ -11,7 +11,20 @@ namespace SafetyBoard.Models.ViewModel
 
         [Required]
         [Display(Name = "Organization ID")]
-        public int Organization { get; set; }
+        public int OrganizationId { get; set; }
+
+        public IEnumerable<Organization> Organizations { get; set; }
+
+        public ApplicationUser User { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+        
+        [Required]
+        [Display(Name ="Last Name")]
+        public string LastName { get; set; }
+
 
         [Required]
         [Display(Name = "Driver's License #")]

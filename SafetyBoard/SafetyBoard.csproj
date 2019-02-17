@@ -203,10 +203,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\OrganizationController.cs" />
     <Compile Include="Controllers\Api\PostingController.cs" />
     <Compile Include="Controllers\Api\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Controllers\PostingController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Dto\OrganizationDto.cs" />
@@ -337,9 +339,17 @@
     <Compile Include="Migrations\201902160424420_AddCurrentUserToEveryPost.Designer.cs">
       <DependentUpon>201902160424420_AddCurrentUserToEveryPost.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902162125340_add-migration AddFirstNameAndLastName.cs" />
-    <Compile Include="Migrations\201902162125340_add-migration AddFirstNameAndLastName.Designer.cs">
-      <DependentUpon>201902162125340_add-migration AddFirstNameAndLastName.cs</DependentUpon>
+    <Compile Include="Migrations\201902162125340_AddFirstNameAndLastName.cs" />
+    <Compile Include="Migrations\201902162125340_AddFirstNameAndLastName.Designer.cs">
+      <DependentUpon>201902162125340_AddFirstNameAndLastName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902170053177_SeedOrganization.cs" />
+    <Compile Include="Migrations\201902170053177_SeedOrganization.Designer.cs">
+      <DependentUpon>201902170053177_SeedOrganization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902170057546_SeedUsers1.cs" />
+    <Compile Include="Migrations\201902170057546_SeedUsers1.Designer.cs">
+      <DependentUpon>201902170057546_SeedUsers1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -359,6 +369,7 @@
     <Compile Include="Models\ViewModel\ForgotViewModel.cs" />
     <Compile Include="Models\ViewModel\IndexViewModel.cs" />
     <Compile Include="Models\ViewModel\LoginViewModel.cs" />
+    <Compile Include="Models\ViewModel\OrganizationFormViewModel.cs" />
     <Compile Include="Models\ViewModel\PostingFormViewModel.cs" />
     <Compile Include="Models\ViewModel\RegisterViewModel.cs" />
     <Compile Include="Models\ViewModel\ResetPasswordViewModel.cs" />
@@ -611,6 +622,8 @@
     <Content Include="Views\Shared\_NavBarForUsers.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\UserForm.cshtml" />
+    <Content Include="Views\Organization\Index.cshtml" />
+    <Content Include="Views\Organization\OrganizationForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -719,8 +732,14 @@
     <EmbeddedResource Include="Migrations\201902160424420_AddCurrentUserToEveryPost.resx">
       <DependentUpon>201902160424420_AddCurrentUserToEveryPost.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902162125340_add-migration AddFirstNameAndLastName.resx">
-      <DependentUpon>201902162125340_add-migration AddFirstNameAndLastName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902162125340_AddFirstNameAndLastName.resx">
+      <DependentUpon>201902162125340_AddFirstNameAndLastName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902170053177_SeedOrganization.resx">
+      <DependentUpon>201902170053177_SeedOrganization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902170057546_SeedUsers1.resx">
+      <DependentUpon>201902170057546_SeedUsers1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

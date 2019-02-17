@@ -143,7 +143,12 @@ namespace SafetyBoard.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            var organization = _context.Organizations.ToList();
+            var viewModel = new RegisterViewModel
+            {
+                Organizations = organization
+            };
+            return View(viewModel);
         }
 
         //
@@ -155,7 +160,16 @@ namespace SafetyBoard.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DriversLicense = model.DriversLicense, PhoneNumber = model.PhoneNumber, OrganizationId = model.Organization };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    DriversLicense = model.DriversLicense,
+                    PhoneNumber = model.PhoneNumber,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    OrganizationId = model.OrganizationId
+            };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -383,11 +397,20 @@ namespace SafetyBoard.Controllers
                     Email = model.Email,
                     DriversLicense = model.DriversLicense,
                     AllowAccess = false,
-                    Organization = _context.Organizations.First(c => c.Id == model.Organization.Id)
+                    OrganizationId = model.OrganizationId,
+                    PhoneNumber = model.PhoneNumber,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName
                 };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    //To set everyone as Normal Users
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    await roleManager.CreateAsync(new IdentityRole(RoleName.NormalUsers));
+                    await UserManager.AddToRoleAsync(user.Id, RoleName.NormalUsers);
+
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {

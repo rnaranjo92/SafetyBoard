@@ -19,6 +19,7 @@ namespace SafetyBoard.App_Start
             Mapper.CreateMap<ApplicationUser, UserDto>();
             Mapper.CreateMap<UserDto, ApplicationUser>().ForMember(c => c.Id, opt => opt.Ignore()); 
             Mapper.CreateMap<Organization, OrganizationDto>();
+            Mapper.CreateMap<OrganizationDto, Organization>().ForMember(c => c.Id, opt => opt.Ignore());
         }
     }
 }
