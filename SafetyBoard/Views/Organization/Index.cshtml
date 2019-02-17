@@ -59,6 +59,7 @@
                             success: function () {
                                 table.row(button.parent("tr")).remove().draw();
                                 table.ajax.reload();
+                                toastr.success("Posting has been deleted successfully")
                             }
                         });
                     }

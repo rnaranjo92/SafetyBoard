@@ -14,7 +14,8 @@ namespace SafetyBoard
                          "~/scripts/datatables/jquery.datatables.js",
                         "~/scripts/datatables/datatables.bootstrap.js",
                         "~/Scripts/respond.js",
-                         "~/Scripts/bootbox.js"));
+                         "~/Scripts/bootbox.js",
+                         "~/scripts/toastr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -29,7 +30,8 @@ namespace SafetyBoard
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
                       "~/Content/site.css",
-                      "~/content/datatables/css/datatables.bootstrap.css"));
+                      "~/content/datatables/css/datatables.bootstrap.css",
+                      "~/content/toastr.css"));
         }
     }
 }

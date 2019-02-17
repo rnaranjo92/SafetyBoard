@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SafetyBoard.Controllers
 {
+    [Authorize(Roles = RoleName.CanManagePost)]
     public class OrganizationController : Controller
     {
         private ApplicationDbContext _context;
