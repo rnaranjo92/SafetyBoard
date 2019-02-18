@@ -20,9 +20,16 @@ namespace SafetyBoard.Controllers.Api
         }
 
         //GetOrganization
-        public IHttpActionResult GetOrganizations()
+        public IHttpActionResult GetOrganizations(string query = null)
         {
-            var organization = _context.Organizations.ToList().Select(Mapper.Map<Organization,OrganizationDto>);
+            IQueryable<Organization> organizationsQuery = _context.Organizations;
+
+            if (!String.IsNullOrWhiteSpace(query))
+                organizationsQuery = organizationsQuery.Where(c => c.Name.Contains(query));
+                
+            var organization = organizationsQuery   
+                .ToList()
+                .Select(Mapper.Map<Organization,OrganizationDto>);
 
             return Ok(organization);
         }

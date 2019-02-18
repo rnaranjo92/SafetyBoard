@@ -21,7 +21,7 @@
         @Html.DropDownListFor(m => m.Posting.PostingTypeId, new SelectList(Model.PostingTypes, "Id", "SafetyCategory"), "", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Posting.PostingTypeId)
     </div>
-    <div class="form-group">
+    <div>
         @Html.LabelFor(m => m.Posting.Description)
         @Html.TextAreaFor(m => m.Posting.Description, new { @class = "form-control", @cols = "100", @rows = "12", @style = "width:100%;" })
         @Html.ValidationMessageFor(m => m.Posting.Description)

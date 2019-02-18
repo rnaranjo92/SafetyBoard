@@ -351,6 +351,14 @@
     <Compile Include="Migrations\201902170057546_SeedUsers1.Designer.cs">
       <DependentUpon>201902170057546_SeedUsers1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902180214576_AddImageToPosting.cs" />
+    <Compile Include="Migrations\201902180214576_AddImageToPosting.Designer.cs">
+      <DependentUpon>201902180214576_AddImageToPosting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902180332481_RemovePhoto.cs" />
+    <Compile Include="Migrations\201902180332481_RemovePhoto.Designer.cs">
+      <DependentUpon>201902180332481_RemovePhoto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Min18YearsOld.cs" />
@@ -497,10 +505,13 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -586,6 +597,10 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -633,6 +648,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -746,6 +762,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902170057546_SeedUsers1.resx">
       <DependentUpon>201902170057546_SeedUsers1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902180214576_AddImageToPosting.resx">
+      <DependentUpon>201902180214576_AddImageToPosting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902180332481_RemovePhoto.resx">
+      <DependentUpon>201902180332481_RemovePhoto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
