@@ -31,12 +31,12 @@
         $(document).ready(function () {
             var table = $("#postings").DataTable({
                 ajax: {
-                    url:"/api/posting",
+                    url: "/api/posting",
                     dataSrc: ""
                 },
                 columns: [
                     {
-                        data:"user.email"
+                        data: "user.email"
                     },
                     {
                         data: "user",
@@ -45,7 +45,7 @@
                         }
                     },
                     {
-                        data:"user.phoneNumber"
+                        data: "user.phoneNumber"
                     },
                     {
                         data: "user.organization.name"
@@ -53,7 +53,7 @@
                     {
                         data: "title",
                         render: function (data, type, posting) {
-                            return "<a href='/posting/edit/"+ posting.id+"'>"+posting.title+"</a>"
+                            return "<a href='/posting/edit/" + posting.id + "'>" + posting.title + "</a>"
                         }
                     },
                     {
@@ -70,13 +70,13 @@
                     {
                         data: "id",
                         render: function (data) {
-                            return "<button class='btn-link js-delete' data-posting-id='"+data+"'>Delete</button>"
+                            return "<button class='btn-link js-delete' data-posting-id='" + data + "'>Delete</button>"
                         }
                     },
                     {
-                        data: "user"
-                        render: function (posting) {
-                            return: "<a href"
+                        data: "id",
+                        render: function (data) {
+                            return "<a href='/posting/details/" + data + "' > " + 'Details' + "</a>" 
                         }
                     }
                 ]

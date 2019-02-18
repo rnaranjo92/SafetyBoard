@@ -31,7 +31,7 @@ namespace SafetyBoard.Controllers
         }
         public ActionResult Details(int id)
         {
-            var posting = _context.Postings.Include(p => p.PostingType).SingleOrDefault(p => p.Id == id);
+            var posting = _context.Postings.Include(p => p.PostingType).Include(p=>p.User).Include(p=>p.User.Organization).SingleOrDefault(p => p.Id == id);
 
             if (posting == null)
                 return HttpNotFound();

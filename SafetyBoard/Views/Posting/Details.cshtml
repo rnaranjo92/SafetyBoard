@@ -4,11 +4,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Title</h2>
+<h1>Posted by: @Model.User.FirstName @Model.User.LastName</h1>
+<br />
 
-<ul>
+<ul class="list-details">
+    <li>Contact Number: @Model.User.PhoneNumber</li>
+    <li>Email: @Model.User.Email</li>
+    <li>Organization: @Model.User.Organization.Name</li>
     <li>Safety Category: @Model.PostingType.SafetyCategory</li>
-    <li>Time Posted: @Model.TimePosted.ToShortDateString()</li>
+    <li>Time Posted: @Model.TimePosted.Value.ToShortDateString()</li>
     <br />
     <li>Description: @Model.Description</li>
 </ul>

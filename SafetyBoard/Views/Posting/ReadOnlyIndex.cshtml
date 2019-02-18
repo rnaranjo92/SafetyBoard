@@ -16,6 +16,7 @@
             <th>Posting</th>
             <th>Safety Category</th>
             <th>Time Posted</th>
+            <th>Post Details</th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +46,12 @@
                     },
                     {
                         data: "timePosted",
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<a href='/posting/details/" + data + "' > " + 'Details' + "</a>"
+                        }
                     }
                 ]
                    
