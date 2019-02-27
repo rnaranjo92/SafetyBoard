@@ -7,23 +7,22 @@ namespace SafetyBoard.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        
         public ApplicationUser Inspector { get; set; }
-
+        [Required]
         public string InspectorId { get; set; }
 
-        [Required]
         public DateTime DateTime { get; set; }
 
-        [Required]
+        
         public Organization Organization { get; set; }
-
+        [Required]
         public int OrganizationId { get; set; }
 
-        [Required]
+        
         public PostingType InspectionType { get; set; }
-
-        public int InspectionTypeId { get; set; }
+        [Required]
+        public byte InspectionTypeId { get; set; }
 
         [Required]
         public string Description { get; set; }

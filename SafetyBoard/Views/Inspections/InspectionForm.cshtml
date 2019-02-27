@@ -1,0 +1,43 @@
+﻿@model SafetyBoard.Models.ViewModel.InspectionFormViewModel
+@{
+    ViewBag.Title = "Schedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Schedule</h2>
+@using (Html.BeginForm("Schedule", "Inspections"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Organization)
+        @Html.DropDownListFor(m => m.OrganizationId, new SelectList(Model.Organization, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.OrganizationId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.InspectionType)
+        @Html.DropDownListFor(m => m.InspectionTypeId, new SelectList(Model.InspectionType, "Id", "SafetyCategory"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.InspectionTypeId)
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Date)
+        @Html.TextBoxFor(m => m.Date, new { @class = "form-control", placeholder = "example: 1 Jan 2020"})
+        @Html.ValidationMessageFor(m => m.Date)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Time)
+        @Html.TextBoxFor(m => m.Time, new { @class = "form-control" , placeholder = "example: 21:00" })
+        @Html.ValidationMessageFor(m => m.Time)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description)
+        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @cols = "100", @rows = "12", @style = "width:100%;" })
+        @Html.ValidationMessageFor(m => m.Description)
+    </div>
+    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+}
+
+@section scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

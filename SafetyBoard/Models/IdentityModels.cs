@@ -46,6 +46,7 @@ namespace SafetyBoard.Models
         public DbSet<PostingType> PostingTypes { get; set; }
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Inspection> Inspections { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -68,7 +69,6 @@ namespace SafetyBoard.Models
                 .HasRequired(i => i.Organization)
                 .WithMany()
                 .WillCascadeOnDelete(false);
-
 
         }
     }

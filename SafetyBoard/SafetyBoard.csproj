@@ -360,17 +360,9 @@
     <Compile Include="Migrations\201902180332481_RemovePhoto.Designer.cs">
       <DependentUpon>201902180332481_RemovePhoto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902270301346_AddInspectionTable.cs" />
-    <Compile Include="Migrations\201902270301346_AddInspectionTable.Designer.cs">
-      <DependentUpon>201902270301346_AddInspectionTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902270311193_OverrideConventions.cs" />
-    <Compile Include="Migrations\201902270311193_OverrideConventions.Designer.cs">
-      <DependentUpon>201902270311193_OverrideConventions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902270319498_OverrideConventions1.cs" />
-    <Compile Include="Migrations\201902270319498_OverrideConventions1.Designer.cs">
-      <DependentUpon>201902270319498_OverrideConventions1.cs</DependentUpon>
+    <Compile Include="Migrations\201902270550040_addInspection.cs" />
+    <Compile Include="Migrations\201902270550040_addInspection.Designer.cs">
+      <DependentUpon>201902270550040_addInspection.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -384,6 +376,7 @@
     <Compile Include="Models\ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ViewModel\ConfigureTwoFactorViewModel.cs" />
     <Compile Include="Models\ViewModel\FactorViewModel.cs" />
+    <Compile Include="Models\ViewModel\InspectionFormViewModel.cs" />
     <Compile Include="Models\ViewModel\ManageLoginsViewModel.cs" />
     <Compile Include="Models\ViewModel\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\ViewModel\ExternalLoginListViewModel.cs" />
@@ -659,11 +652,11 @@
     <Content Include="Views\User\UserForm.cshtml" />
     <Content Include="Views\Organization\Index.cshtml" />
     <Content Include="Views\Organization\OrganizationForm.cshtml" />
+    <Content Include="Views\Inspections\InspectionForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
-    <Folder Include="Views\Inspections\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -784,14 +777,8 @@
     <EmbeddedResource Include="Migrations\201902180332481_RemovePhoto.resx">
       <DependentUpon>201902180332481_RemovePhoto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902270301346_AddInspectionTable.resx">
-      <DependentUpon>201902270301346_AddInspectionTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902270311193_OverrideConventions.resx">
-      <DependentUpon>201902270311193_OverrideConventions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902270319498_OverrideConventions1.resx">
-      <DependentUpon>201902270319498_OverrideConventions1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902270550040_addInspection.resx">
+      <DependentUpon>201902270550040_addInspection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
