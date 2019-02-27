@@ -25,7 +25,6 @@ namespace SafetyBoard.Controllers
             {
                 Organization = organizations,
                 InspectionType = postingTypes,
-                Title = "Schedule Inspection"
             };
             return View(viewModel);
         }
@@ -33,10 +32,16 @@ namespace SafetyBoard.Controllers
         [HttpPost]
         public ActionResult Schedule(InspectionFormViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                viewModel.Organization = _context.Organizations.ToList();
+                viewModel.InspectionType = _context.PostingTypes.ToList();
+                return View("InspectionForm",viewModel);
+            }
             var inspection = new Inspection
             {
                 InspectorId = User.Identity.GetUserId(),
-                DateTime = viewModel.DateTime,
+                DateTime = viewModel.GetDateTime(),
                 InspectionTypeId = viewModel.InspectionTypeId,
                 OrganizationId = viewModel.OrganizationId,
                 Description = viewModel.Description,

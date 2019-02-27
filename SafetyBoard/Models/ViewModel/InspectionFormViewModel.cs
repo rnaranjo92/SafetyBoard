@@ -8,7 +8,6 @@ namespace SafetyBoard.Models.ViewModel
     {
         public ApplicationUser Inspector { get; set; }
 
-        [Required]
         public string InspectorId { get; set; }
 
         [Required]
@@ -30,11 +29,9 @@ namespace SafetyBoard.Models.ViewModel
         [Required]
         public string Description { get; set; }
 
-        public string Title { get; set; }
-
-        public DateTime DateTime
+        public DateTime GetDateTime() 
         {
-            get { return DateTime.Parse(string.Format("{0} {1}", Date, Time)); }
+            return DateTime.Parse(string.Format("{0} {1}", Date, Time));
         }
     }
 

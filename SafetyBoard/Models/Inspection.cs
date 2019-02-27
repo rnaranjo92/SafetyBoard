@@ -9,6 +9,7 @@ namespace SafetyBoard.Models
 
         
         public ApplicationUser Inspector { get; set; }
+
         [Required]
         public string InspectorId { get; set; }
 
@@ -16,11 +17,13 @@ namespace SafetyBoard.Models
 
         
         public Organization Organization { get; set; }
+
         [Required]
         public int OrganizationId { get; set; }
 
         
         public PostingType InspectionType { get; set; }
+
         [Required]
         public byte InspectionTypeId { get; set; }
 
