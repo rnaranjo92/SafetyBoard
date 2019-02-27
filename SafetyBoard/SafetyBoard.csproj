@@ -207,6 +207,7 @@
     <Compile Include="Controllers\Api\PostingController.cs" />
     <Compile Include="Controllers\Api\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InspectionsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Controllers\PostingController.cs" />
@@ -359,8 +360,21 @@
     <Compile Include="Migrations\201902180332481_RemovePhoto.Designer.cs">
       <DependentUpon>201902180332481_RemovePhoto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902270301346_AddInspectionTable.cs" />
+    <Compile Include="Migrations\201902270301346_AddInspectionTable.Designer.cs">
+      <DependentUpon>201902270301346_AddInspectionTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902270311193_OverrideConventions.cs" />
+    <Compile Include="Migrations\201902270311193_OverrideConventions.Designer.cs">
+      <DependentUpon>201902270311193_OverrideConventions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902270319498_OverrideConventions1.cs" />
+    <Compile Include="Migrations\201902270319498_OverrideConventions1.Designer.cs">
+      <DependentUpon>201902270319498_OverrideConventions1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Inspection.cs" />
     <Compile Include="Models\Min18YearsOld.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Posting.cs" />
@@ -649,6 +663,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
+    <Folder Include="Views\Inspections\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -768,6 +783,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902180332481_RemovePhoto.resx">
       <DependentUpon>201902180332481_RemovePhoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270301346_AddInspectionTable.resx">
+      <DependentUpon>201902270301346_AddInspectionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270311193_OverrideConventions.resx">
+      <DependentUpon>201902270311193_OverrideConventions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270319498_OverrideConventions1.resx">
+      <DependentUpon>201902270319498_OverrideConventions1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

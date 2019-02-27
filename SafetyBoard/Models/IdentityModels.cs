@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SafetyBoard.Models
 {
@@ -46,6 +45,7 @@ namespace SafetyBoard.Models
         public DbSet<Posting> Postings { get; set; }
         public DbSet<PostingType> PostingTypes { get; set; }
         public DbSet<Organization> Organizations { get; set; }
+        public DbSet<Inspection> Inspections { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -54,6 +54,22 @@ namespace SafetyBoard.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Inspection>()
+                .HasRequired(i => i.InspectionType)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Inspection>()
+                .HasRequired(i => i.Organization)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+
         }
     }
 }
