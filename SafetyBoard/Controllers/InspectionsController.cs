@@ -30,6 +30,7 @@ namespace SafetyBoard.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Schedule(InspectionFormViewModel viewModel)
         {
             if (!ModelState.IsValid)
