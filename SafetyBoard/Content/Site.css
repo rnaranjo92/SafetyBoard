@@ -106,3 +106,52 @@ textarea.form-control {
     color: #333333;
     background-color: #d69807;
 }
+.alert-info {
+    color: #ffffff;
+    background-color: #27aee2;
+    border-color: #40b5e3;
+}
+/*Page Specific: Date box @ index(Home Page)*/
+.inspections > li {
+    position: relative;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    list-style-type: none;
+    padding-right: 20px;
+    padding:10px 0px 70px 30px;
+    box-shadow: 1px 2px 5px grey;
+    width:300px;
+    height:70px
+}
+.inspections > li .details{
+    position: absolute;
+    top:10px;
+    left:105px;
+}
+.inspections > li .date{
+    color:white;
+    background-color:#e65353;
+    text-align:center;
+    width:60px;
+    border-radius: 8px;
+}
+.inspections > li .date .day{
+    padding : 6px 12px;
+    color:#212529;
+    background-color:#e7e7e7;
+    text-align:center;
+    width:60px;
+}
+.inspections > li .date .month{
+    text-transform:uppercase;
+    font-weight:bold;
+    text-align:center;
+    width:60px;
+    padding: 2px 6px
+}
+.inspections > li .details .inspector{
+    display:block;
+}
+.inspections > li .details .organization{
+    display:block;
+}
