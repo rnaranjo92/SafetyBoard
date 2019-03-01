@@ -4,16 +4,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Posted by: @Model.User.FirstName @Model.User.LastName</h1>
-<br />
+<div class="information">
+    <div class="userDetails">
+        <img class="image" src="~/Image/Avatar.jpg" />
+        <div class="name">Name: @Model.User.FirstName @Model.User.LastName </div>
+        <div class="contactNumber">Contact Number: @Model.User.PhoneNumber</div>
+        <div class="email">Email: @Model.User.Email</div>
+        <div class="org">Organization: @Model.User.Organization.Name</div>
+    </div>
+</div>
+<div class="postInformation">
+    <div class="postDetails">
+        <div class="safetyCategory">Safety Category: @Model.PostingType.SafetyCategory</div>
+        <div class="timeposted">@Model.TimePosted.Value.ToString("MMM dd yyyy hh:mm")</div>
+        <hr class="separator"/>
+        <div class="description">Description: @Model.Description</div>
+    </div>
+</div>
+    
 
-<ul class="list-details">
-    <li>Contact Number: @Model.User.PhoneNumber</li>
-    <li>Email: @Model.User.Email</li>
-    <li>Organization: @Model.User.Organization.Name</li>
-    <li>Safety Category: @Model.PostingType.SafetyCategory</li>
-    <li>Time Posted: @Model.TimePosted.Value.ToShortDateString()</li>
-    <br />
-    <li>Description: @Model.Description</li>
-</ul>
+
 

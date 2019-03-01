@@ -111,7 +111,7 @@ textarea.form-control {
     background-color: #27aee2;
     border-color: #40b5e3;
 }
-/*Page Specific: Date box @ index(Home Page)*/
+/*Page Specific*/
 .inspections > li {
     position: relative;
     margin-bottom: 30px;
@@ -155,3 +155,51 @@ textarea.form-control {
 .inspections > li .details .organization{
     display:block;
 }
+.information {
+    position: relative;
+    list-style-type: none;
+    margin-bottom:50px;
+    margin-top:30px;
+    margin-right:130px;
+}
+.information .userDetails {
+    position:absolute;
+    top:10px;
+    left:10px;
+    padding-left:30px;
+}
+.information .userDetails{
+    padding-top: 25px;
+    padding-bottom:40px;
+    padding-left:10px;
+    font-size:15px;
+    width:255px;
+    height:300px;
+    box-shadow: 1px 2px 5px grey;
+}
+.information .image{
+    width:130px;
+    margin-left:50px;
+    padding-bottom:20px;
+    padding-left:0px;
+}
+.postInformation {
+    position: relative;
+    margin-left: 300px;
+    padding-bottom: 400px;
+    box-shadow: 1px 2px 5px grey;
+    overflow: hidden;
+}
+.postInformation .postDetails{
+    padding:20px 0px 0px 10px;
+}
+.separator{
+    margin-right:10px;
+    border:1px solid
+}
+.description {
+    word-wrap: break-word;
+    padding-left:10px;
+    padding-right:10px;
+}
+
