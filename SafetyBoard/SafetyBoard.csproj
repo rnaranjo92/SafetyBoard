@@ -208,6 +208,7 @@
     <Compile Include="Migrations\201903020645282_AddCommentToPosting.Designer.cs">
       <DependentUpon>201903020645282_AddCommentToPosting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\MyProfileViewModel.cs" />
     <Compile Include="Models\ViewModel\PostingDetailsViewModel.cs" />
     <Compile Include="Dto\CommentDto.cs" />
     <Compile Include="Controllers\Api\OrganizationController.cs" />
@@ -674,6 +675,7 @@
     <Content Include="Views\Organization\Index.cshtml" />
     <Content Include="Views\Organization\OrganizationForm.cshtml" />
     <Content Include="Views\Inspections\InspectionForm.cshtml" />
+    <Content Include="Views\User\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

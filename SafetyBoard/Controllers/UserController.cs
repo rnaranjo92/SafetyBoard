@@ -1,17 +1,13 @@
 ﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using SafetyBoard.Models;
 using SafetyBoard.Models.ViewModel;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SafetyBoard.Controllers
 {
-    [Authorize(Roles = RoleName.CanManagePost)]
+    [Authorize]
     public class UserController : Controller
     {
         private ApplicationDbContext _context;
@@ -46,6 +42,23 @@ namespace SafetyBoard.Controllers
             return View(usersWithRoles);
 
         }
-        
+
+        public ActionResult MyProfile()
+        {
+            var currentUser = User.Identity.GetUserId();
+            var user = _context.Users.Include(u=>u.Organization).SingleOrDefault(u => u.Id == currentUser);
+
+            var vieModel = new MyProfileViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                EmailAddress = user.Email,
+                Organization = user.Organization,
+                PhoneNumber = user.PhoneNumber
+            };
+
+            return View(vieModel);
+        }
+
     }
 }
