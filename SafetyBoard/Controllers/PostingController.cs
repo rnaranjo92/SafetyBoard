@@ -1,12 +1,10 @@
-﻿using SafetyBoard.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
-using System.Web.Mvc;
+﻿using Microsoft.AspNet.Identity;
+using SafetyBoard.Models;
 using SafetyBoard.Models.ViewModel;
-using Microsoft.AspNet.Identity;
+using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace SafetyBoard.Controllers
 {
@@ -33,10 +31,31 @@ namespace SafetyBoard.Controllers
         {
             var posting = _context.Postings.Include(p => p.PostingType).Include(p=>p.User).Include(p=>p.User.Organization).SingleOrDefault(p => p.Id == id);
 
+            var currentUser = User.Identity.GetUserId();
+
+            var user = _context.Users.Single(u => u.Id == currentUser);
+
+            var commentor = _context.Comments.Where(c => c.PostingId == posting.Id).ToList();
+
+            var viewModel = new PostingDetailsViewModel
+            {
+                FirstName = posting.User.FirstName,
+                LastName = posting.User.LastName,
+                Email = posting.User.Email,
+                PhoneNumber = posting.User.PhoneNumber,
+                Description = posting.Description,
+                Organization = posting.User.Organization.Name,
+                SafetyCategory = posting.PostingType.SafetyCategory,
+                TimePosted = posting.TimePosted,
+                Comment = commentor,
+                PostId = posting.Id,
+                CurrentUser = user
+            };
+
             if (posting == null)
                 return HttpNotFound();
 
-            return View(posting);
+            return View(viewModel);
 
         }
         public ActionResult PostingForm()
@@ -47,7 +66,6 @@ namespace SafetyBoard.Controllers
                 Posting = new Posting() { UserId = User.Identity.GetUserId()},
                 PostingTypes = postingTypes,
                 PageTitle = "New",
-
             };
             return View(viewModel);
         }
@@ -67,8 +85,11 @@ namespace SafetyBoard.Controllers
             }
             if (posting.Id == 0)
             {
-                posting.UserId = User.Identity.GetUserId();
+                var currentUser = User.Identity.GetUserId();
+                var user = _context.Users.Single(u => u.Id == currentUser);
+                posting.UserId = currentUser;
                 posting.TimePosted = DateTime.Now;
+                posting.OrganizationId = user.OrganizationId;
                 _context.Postings.Add(posting);
             }
             else

@@ -3,11 +3,8 @@ using Microsoft.AspNet.Identity;
 using SafetyBoard.Dto;
 using SafetyBoard.Models;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace SafetyBoard.Controllers.Api
@@ -25,7 +22,16 @@ namespace SafetyBoard.Controllers.Api
 
         public IHttpActionResult GetPosts()
         {
-            var posting = _context.Postings.Include(p=>p.PostingType).Include(p=>p.User).Include(p=>p.User.Organization).ToList().Select(Mapper.Map<Posting, PostingDto>);
+            var currentUser = User.Identity.GetUserId();
+
+            var user = _context.Users.Single(c => c.Id == currentUser);
+
+            var posting = _context.Postings.Include(p=>p.PostingType)
+                .Include(p=>p.User)
+                .Include(p=>p.User.Organization)
+                .Where(p=>p.OrganizationId == user.OrganizationId)
+                .ToList()
+                .Select(Mapper.Map<Posting, PostingDto>);
 
             return Ok(posting);
         }
@@ -34,6 +40,14 @@ namespace SafetyBoard.Controllers.Api
         public IHttpActionResult GetPost(int id)
         {
             var posting = _context.Postings.SingleOrDefault(p => p.Id == id);
+
+            var currentUser = User.Identity.GetUserId();
+
+            var user = _context.Users.Single(c => c.Id == currentUser);
+
+
+            if (posting.User.Organization != user.Organization)
+                return BadRequest();
 
             if (posting == null)
                 return NotFound();

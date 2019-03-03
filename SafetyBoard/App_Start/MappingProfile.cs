@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
+using SafetyBoard.Controllers.Api;
 using SafetyBoard.Dto;
 using SafetyBoard.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
 
 namespace SafetyBoard.App_Start
 {
@@ -20,6 +16,8 @@ namespace SafetyBoard.App_Start
             Mapper.CreateMap<UserDto, ApplicationUser>().ForMember(c => c.Id, opt => opt.Ignore()); 
             Mapper.CreateMap<Organization, OrganizationDto>();
             Mapper.CreateMap<OrganizationDto, Organization>().ForMember(c => c.Id, opt => opt.Ignore());
+            Mapper.CreateMap<CommentDto, Comment>().ForMember(c => c.Id, opt => opt.Ignore());
+
         }
     }
 }

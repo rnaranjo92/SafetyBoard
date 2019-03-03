@@ -203,6 +203,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CommentController.cs" />
+    <Compile Include="Migrations\201903020645282_AddCommentToPosting.cs" />
+    <Compile Include="Migrations\201903020645282_AddCommentToPosting.Designer.cs">
+      <DependentUpon>201903020645282_AddCommentToPosting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModel\PostingDetailsViewModel.cs" />
+    <Compile Include="Dto\CommentDto.cs" />
     <Compile Include="Controllers\Api\OrganizationController.cs" />
     <Compile Include="Controllers\Api\PostingController.cs" />
     <Compile Include="Controllers\Api\UserController.cs" />
@@ -364,7 +371,20 @@
     <Compile Include="Migrations\201902270550040_addInspection.Designer.cs">
       <DependentUpon>201902270550040_addInspection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903010613577_AddComments.cs" />
+    <Compile Include="Migrations\201903010613577_AddComments.Designer.cs">
+      <DependentUpon>201903010613577_AddComments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903010702047_Check.cs" />
+    <Compile Include="Migrations\201903010702047_Check.Designer.cs">
+      <DependentUpon>201903010702047_Check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903020422297_Check2.cs" />
+    <Compile Include="Migrations\201903020422297_Check2.Designer.cs">
+      <DependentUpon>201903020422297_Check2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Inspection.cs" />
     <Compile Include="Models\Min18YearsOld.cs" />
@@ -779,6 +799,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902270550040_addInspection.resx">
       <DependentUpon>201902270550040_addInspection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903010613577_AddComments.resx">
+      <DependentUpon>201903010613577_AddComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903010702047_Check.resx">
+      <DependentUpon>201903010702047_Check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903020422297_Check2.resx">
+      <DependentUpon>201903020422297_Check2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903020645282_AddCommentToPosting.resx">
+      <DependentUpon>201903020645282_AddCommentToPosting.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

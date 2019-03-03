@@ -189,6 +189,7 @@ textarea.form-control {
     padding-bottom: 400px;
     box-shadow: 1px 2px 5px grey;
     overflow: hidden;
+    margin-top: -10px;
 }
 .postInformation .postDetails{
     padding:20px 0px 0px 10px;
@@ -201,5 +202,78 @@ textarea.form-control {
     word-wrap: break-word;
     padding-left:10px;
     padding-right:10px;
+
 }
+.comments {
+    position: relative;
+    margin-left: 300px;
+    padding-top: 10px;
+    padding-left: 0px;
+    padding-bottom: 100px;
+    margin-bottom: 50px;
+    display: inline-block;
+    word-wrap: break-word;
+}
+.commentBody {
+}
+.eachComment {
+    box-shadow: 1px 2px 5px grey;
+    height: 100px;
+    width: 800px;
+    word-wrap: break-word;
+    overflow: hidden;
+    padding-bottom:30px;
+}
+*{
+    margin: 0 
+}
+.container body-content {
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+footer{
+    height:100px;
+    padding-left:100px;
+}
+.commentSection{
+    position:relative;
+    height:130px;
+    padding-left:100px;
+}
+.commentBox {
+    position: absolute;
+    min-width:300px;
+    left:520px;
+    width:200px;
+    height:50px;
+}
+.submitComment{
+    margin-left:155px;
+}
+textarea.form-control {
+    position: relative;
+    height: 300px;
+    background-color:rgba(255, 179, 0, 0.21);
+    font-size:12px;
+}
+.posterName {
+    position: absolute;
+    padding-top:20px;
+    padding-left:20px;
+}
+.posterComment {
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 240px;
+    word-wrap: break-word;
+    height:90px;
+    overflow:auto;
+    width:100%;
+}
+
+
+
+
+
 

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace SafetyBoard.Models
 {
@@ -30,5 +27,9 @@ namespace SafetyBoard.Models
         public string UserId { get; set; }
 
         public DateTime? TimePosted { get; set; }
+
+        public Organization Organization { get; set; }
+
+        public int OrganizationId { get; set; }
     }
 }

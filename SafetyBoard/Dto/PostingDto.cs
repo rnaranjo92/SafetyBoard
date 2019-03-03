@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace SafetyBoard.Dto
 {
@@ -31,5 +28,11 @@ namespace SafetyBoard.Dto
 
         public UserDto User { get; set; }
 
+        public string Comment { get; set; }
+
+        public OrganizationDto Organization { get; set; }
+
+        public int OrganizationId { get; set; }
     }
+
 }

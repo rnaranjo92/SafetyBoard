@@ -1,4 +1,4 @@
-﻿@model SafetyBoard.Models.Posting
+﻿@model SafetyBoard.Models.ViewModel.PostingDetailsViewModel
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,20 +7,61 @@
 <div class="information">
     <div class="userDetails">
         <img class="image" src="~/Image/Avatar.jpg" />
-        <div class="name">Name: @Model.User.FirstName @Model.User.LastName </div>
-        <div class="contactNumber">Contact Number: @Model.User.PhoneNumber</div>
-        <div class="email">Email: @Model.User.Email</div>
-        <div class="org">Organization: @Model.User.Organization.Name</div>
+        <div class="name">Name: @Model.FirstName @Model.LastName </div>
+        <div class="contactNumber">Contact Number: @Model.PhoneNumber</div>
+        <div class="email">Email: @Model.Email</div>
+        <div class="org">Organization: @Model.Organization</div>
     </div>
 </div>
 <div class="postInformation">
     <div class="postDetails">
-        <div class="safetyCategory">Safety Category: @Model.PostingType.SafetyCategory</div>
+        <div class="safetyCategory">Safety Category: @Model.SafetyCategory</div>
         <div class="timeposted">@Model.TimePosted.Value.ToString("MMM dd yyyy hh:mm")</div>
         <hr class="separator"/>
         <div class="description">Description: @Model.Description</div>
     </div>
 </div>
+<div class="comments">
+    <div class="commentBody">
+        @foreach (var comment in Model.Comment)
+        {
+        <div class="eachComment">
+            <div class="posterName"><span class="glyphicon glyphicon-user"></span> @comment.User.FirstName @comment.User.LastName<br /> <span class="glyphicon glyphicon-envelope"></span> @comment.User.Email <br /><span class="glyphicon glyphicon-phone-alt"></span>  @comment.User.PhoneNumber</div>
+
+            <div class="posterComment"><strong>Comment:</strong> @comment.comment</div>
+        </div>
+        }
+        <div class="commentSection">
+            <br />
+            <div class="commentBox">
+                <textarea class="form-control" id="textArea" style="width: 300px; height: 100px;" name="message" rows="3" cols="40"  ></textarea>
+                <br />
+                <button class="btn btn-primary postComment" >Submit Comment</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".commentBox").on("click",".postComment",function () {
+                $.ajax({
+                    data: { id: @Model.PostId, comment: $("#textArea").val(), user:"GetInfo('@Model.CurrentUser')"},
+                    url: "/api/comment/",
+                    dataType:"json",
+                    type: "post",
+                    success: function () {
+                        console.log("success")
+                        location.reload();
+                    },
+                })
+            });
+        });
+
+
+    </script>
+    }
     
 
 

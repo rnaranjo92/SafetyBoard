@@ -23,13 +23,16 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Safety Board</p>
-        </footer>
     </div>
+    <div class="push"></div>
+    <hr />
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Safety Board</p>
+    </footer>
 
     @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
 </body>
+
 </html>
