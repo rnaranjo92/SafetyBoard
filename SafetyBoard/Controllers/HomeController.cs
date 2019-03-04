@@ -1,4 +1,5 @@
-﻿using SafetyBoard.Models;
+﻿using Microsoft.AspNet.Identity;
+using SafetyBoard.Models;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web.Mvc;
 
 namespace SafetyBoard.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class HomeController : Controller
     {
         private ApplicationDbContext _context;
@@ -17,11 +18,13 @@ namespace SafetyBoard.Controllers
         }
         public ActionResult Index()
         {
+            var currentUser = User.Identity.GetUserId();
+            var user = _context.Users.SingleOrDefault(u => u.Id == currentUser);
             var upcomingInspections = _context.Inspections
                 .Include(i => i.Inspector)
                 .Include(i=>i.InspectionType)
                 .Include(i=>i.Organization)
-                .Where(i => i.DateTime > DateTime.Now);
+                .Where(i => i.DateTime > DateTime.Now && i.OrganizationId == user.OrganizationId);
 
             return View(upcomingInspections);
         }

@@ -8,28 +8,43 @@
 
 @using (Html.BeginForm("PostProfile", "User"))
 {
+    @Html.AntiForgeryToken();
     <div class="form-group">
         @Html.LabelFor(m => m.FirstName)
         @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.FirstName)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.LastName)
-        @Html.TextBoxFor(m => m.LastName, new {  @class = "form-control" })
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Organization)
-        @Html.TextBoxFor(m => m.Organization.Name, new {  @class = "form-control" })
+        @Html.LabelFor(m => m.OrganizationId)
+        @Html.DropDownListFor(m => m.OrganizationId, new SelectList(Model.OrganizationId, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.OrganizationId)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new {  @class = "form-control" })
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.PhoneNumber)
-        @Html.TextBoxFor(m => m.PhoneNumber, new {  @class = "form-control" })
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PhoneNumber)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DriversLicense)
+        @Html.TextBoxFor(m => m.DriversLicense, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.DriversLicense)
     </div>
     <div class="btnSubmit">
         <button class="btn btn-primary">Submit</button>
     </div>
+}
+@section scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
 }
