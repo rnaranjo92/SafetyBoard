@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SafetyBoard.Dto
 {
@@ -22,12 +18,17 @@ namespace SafetyBoard.Dto
         [Required]
         public string DriversLicense { get; set; }
 
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         public bool AllowAccess { get; set; }
 
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public UserDto()
+        {
+
+        }
     }
 }

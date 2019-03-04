@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using SafetyBoard.Models;
 using SafetyBoard.Models.ViewModel;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -19,27 +20,7 @@ namespace SafetyBoard.Controllers
         // GET: User
         public ActionResult Index()
         {
-            var usersWithRoles = (from user in _context.Users.Include(c=>c.Organization)
-                                  select new
-                                  {
-                                      user.Id,
-                                      user.Email,
-                                      user.PhoneNumber,
-                                      user.Organization,
-                                      user.AllowAccess
-
-                                  }).ToList().Select(p => new UserViewModel()
-
-                                  {
-                                      Id = p.Id,
-                                      Email = p.Email,
-                                      PhoneNumber = p.PhoneNumber,
-                                      Organization = p.Organization.Name,
-                                      AllowAccess = p.AllowAccess
-                                  });
-
-
-            return View(usersWithRoles);
+            return View();
 
         }
 
@@ -48,17 +29,52 @@ namespace SafetyBoard.Controllers
             var currentUser = User.Identity.GetUserId();
             var user = _context.Users.Include(u=>u.Organization).SingleOrDefault(u => u.Id == currentUser);
 
-            var vieModel = new MyProfileViewModel
+            var viewModel = new MyProfileViewModel
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                EmailAddress = user.Email,
+                Email = user.Email,
                 Organization = user.Organization,
                 PhoneNumber = user.PhoneNumber
             };
 
-            return View(vieModel);
+            return View(viewModel);
         }
 
+        public ActionResult EditProfile()
+        {
+            var currentUser = User.Identity.GetUserId();
+            var user = _context.Users.Include(u => u.Organization).SingleOrDefault(u => u.Id == currentUser);
+
+            if(user == null)
+            {
+                throw new ArgumentNullException();
+            }
+                
+            var viewModel = new MyProfileViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Organization = user.Organization,
+                PhoneNumber = user.PhoneNumber,
+            };
+            return View(viewModel);
+        }
+
+        public ActionResult PostProfile(ApplicationUser appUser)
+         {
+            var currentUser = User.Identity.GetUserId();
+
+            var userInDb = _context.Users.SingleOrDefault(u => u.Id == currentUser);
+            userInDb.FirstName = appUser.FirstName;
+            userInDb.LastName = appUser.LastName;
+            userInDb.Email = appUser.Email;
+            userInDb.Organization = appUser.Organization;
+            userInDb.PhoneNumber = appUser.PhoneNumber;
+
+            _context.SaveChanges();
+            return RedirectToAction("MyProfile");
+        }
     }
 }

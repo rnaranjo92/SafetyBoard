@@ -4,8 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>My Profile</h2>
-@using (Html.BeginForm("MyProfile", "User"))
+<div class="btnEdit">
+    <h2>My Profile</h2>@Html.ActionLink("Edit", "EditProfile", "User", new { @class = "btn btn-primary" })
+</div>
+@using (Html.BeginForm("EditProfile", "User"))
 {
     <div class="form-group">
         @Html.LabelFor(m => m.FirstName)
@@ -21,11 +23,13 @@
         @Html.TextBoxFor(m => m.Organization.Name, new { @readonly = "readonly", @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.EmailAddress)
-        @Html.TextBoxFor(m => m.EmailAddress, new { @readonly = "readonly", @class = "form-control" })
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @readonly = "readonly", @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.PhoneNumber)
         @Html.TextBoxFor(m => m.PhoneNumber, new { @readonly = "readonly", @class = "form-control" })
     </div>
+
+
 }

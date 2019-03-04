@@ -2,11 +2,8 @@
 using SafetyBoard.Dto;
 using SafetyBoard.Models;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace SafetyBoard.Controllers.Api
@@ -26,7 +23,7 @@ namespace SafetyBoard.Controllers.Api
 
             return Ok(users);
         }
-        public IHttpActionResult GetUsers(string id)
+        public IHttpActionResult GetUser(string id)
         {
             var user = _context.Users.SingleOrDefault(c => c.Id == id);
 

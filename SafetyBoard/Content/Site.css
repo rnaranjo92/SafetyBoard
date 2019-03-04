@@ -271,7 +271,13 @@ textarea.form-control {
     overflow:auto;
     width:100%;
 }
-
+.btnEdit {
+    padding-left:0px;
+    word-break:normal;
+}
+.btnSubmit{
+    padding-left:210px;
+}
 
 
 

@@ -16,6 +16,6 @@ namespace SafetyBoard.Models.ViewModel
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Email Address")]
-        public string EmailAddress { get; set; }
+        public string Email { get; set; }
     }
 }
