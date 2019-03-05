@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Schedule an Inspection</h2>
+<h2>@Model.PageTitle</h2>
 @using (Html.BeginForm("Schedule", "Inspections"))
 {
     <p class="alert alert-info">All fields are <strong>required</strong></p>

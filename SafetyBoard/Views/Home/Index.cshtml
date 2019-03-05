@@ -16,18 +16,27 @@
             </div>
         </div>
         <div class="details">
+            @if (inspection.Inspector.Email == User.Identity.Name)
+            {
+                <span class="view">
+                    <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a>
+                </span>
+            }
+            <span class="edit">
+                <a href="@Url.Action("View","Inspections", new { id = inspection.Id})">View</a>
+            </span>
             <span class="inspector">
-               <strong> @inspection.Inspector.FirstName @inspection.Inspector.LastName</strong>
+                <strong> @inspection.Inspector.FirstName @inspection.Inspector.LastName</strong>
             </span>
             <span class="inspectionType">
                 @inspection.InspectionType.SafetyCategory
             </span>
+
             <span class="organization">
                 @inspection.Organization.Name
             </span>
         </div>
     </li>
-        
         
     }
 

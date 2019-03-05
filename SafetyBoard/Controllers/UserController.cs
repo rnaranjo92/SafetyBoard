@@ -34,7 +34,7 @@ namespace SafetyBoard.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                OrganizationId = _context.Organizations.ToList().Where(o=>o.Id == user.OrganizationId),
+                OrganizationId = user.OrganizationId,
                 PhoneNumber = user.PhoneNumber,
                 DriversLicense = user.DriversLicense
             };
@@ -57,7 +57,8 @@ namespace SafetyBoard.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                OrganizationId = _context.Organizations.ToList(),
+                Organization = _context.Organizations.ToList(),
+                OrganizationId = user.OrganizationId,
                 PhoneNumber = user.PhoneNumber,
                 DriversLicense = user.DriversLicense
             };
@@ -79,7 +80,7 @@ namespace SafetyBoard.Controllers
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     Email = user.Email,
-                    OrganizationId = _context.Organizations.ToList().Where(o => o.Id == user.OrganizationId),
+                    OrganizationId = user.OrganizationId,
                     PhoneNumber = user.PhoneNumber,
                     DriversLicense = user.DriversLicense
                 };

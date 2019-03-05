@@ -1,0 +1,25 @@
+﻿@model SafetyBoard.Models.ViewModel.InspectionFormViewModel
+@{
+    ViewBag.Title = "Schedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Inspection Details</h2>
+
+<div class="inspectionView">
+    <div class="inspectionInfo">
+        Name : @Model.Inspector.FirstName @Model.Inspector.LastName<br />
+        Date and Time Posted: @Model.GetDateTime()<br />
+        Inspection Type: @Model.SafetyCategory
+    </div>
+    <hr />
+    <div class="inspectionDetails">
+        Description: @Model.Description
+    </div>
+</div="inspection">
+
+@section scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

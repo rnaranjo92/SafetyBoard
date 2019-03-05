@@ -26,6 +26,8 @@ namespace SafetyBoard.Models.ViewModel
         [Required]
         public byte InspectionTypeId { get; set; }
 
+        public string SafetyCategory { get; set; }
+
         [Required]
         public string Description { get; set; }
 
@@ -33,6 +35,7 @@ namespace SafetyBoard.Models.ViewModel
         {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
         }
+        public string PageTitle { get; set; }
     }
 
     

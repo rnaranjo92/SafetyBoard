@@ -15,7 +15,9 @@ namespace SafetyBoard.Models.ViewModel
 
         [Required]
         [Display(Name ="Organization")]
-        public IEnumerable<Organization> OrganizationId { get; set; }
+        public IEnumerable<Organization> Organization { get; set; }
+
+        public int OrganizationId { get; set; }
 
         [Required]
         [Display(Name = "Contact Number")]
