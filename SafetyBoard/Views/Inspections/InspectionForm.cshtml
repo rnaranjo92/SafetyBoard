@@ -1,18 +1,18 @@
 ﻿@model SafetyBoard.Models.ViewModel.InspectionFormViewModel
 @{
-    ViewBag.Title = "Schedule";
+    ViewBag.Title = Model.Action;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@Model.PageTitle</h2>
-@using (Html.BeginForm("Schedule", "Inspections"))
+@using (Html.BeginForm(Model.Action, "Inspections"))
 {
     <p class="alert alert-info">All fields are <strong>required</strong></p>
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary();
+    @Html.HiddenFor(m => m.InspectorId)
     <div class="form-group">
         @Html.LabelFor(m => m.Organization)
-        @Html.DropDownListFor(m => m.OrganizationId, new SelectList(Model.Organization, "Id", "Name"), "", new { @class = "form-control" ,autofocus = "autofocus"})
+        @Html.DropDownListFor(m => m.OrganizationId, new SelectList(Model.Organization, "Id", "Name"), "", new { @class = "form-control", autofocus = "autofocus" })
         @Html.ValidationMessageFor(m => m.OrganizationId)
     </div>
     <div class="form-group">
@@ -36,8 +36,7 @@
         @Html.TextAreaFor(m => m.Description, new { @class = "form-control .textarea .col-xs-4" })
         @Html.ValidationMessageFor(m => m.Description)
     </div>
-    @Html.HiddenFor(m => m.InspectorId)
-    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+    <button type="submit" value="Save" class="btn btn-primary">Submit</button>
 }
 
 @section scripts

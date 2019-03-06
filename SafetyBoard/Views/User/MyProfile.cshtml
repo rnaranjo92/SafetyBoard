@@ -19,8 +19,8 @@
         @Html.TextBoxFor(m => m.LastName, new { @readonly = "readonly", @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.OrganizationId)
-        @Html.DropDownListFor(m => m.OrganizationId, new SelectList(Model.Organization, "Id", "Name"), new { @class = "form-control", @readonly = "readonly" })
+        @Html.LabelFor(m => m.Organization)
+        @Html.TextBoxFor(c=>c.OrganizationName, new { @readonly = "readonly", @class = "form-control" })
 
     </div>
     <div class="form-group">
@@ -35,6 +35,5 @@
         @Html.LabelFor(m => m.DriversLicense)
         @Html.TextBoxFor(m => m.DriversLicense, new { @readonly = "readonly", @class = "form-control" })
     </div>
-
 
 }

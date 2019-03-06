@@ -24,17 +24,17 @@ namespace SafetyBoard.Controllers
 
         }
 
-        public ActionResult MyProfile()
+        public ActionResult MyProfile(string id)
         {
-            var currentUser = User.Identity.GetUserId();
-            var user = _context.Users.Include(u=>u.Organization).SingleOrDefault(u => u.Id == currentUser);
+            var user = _context.Users.Include(u=>u.Organization).SingleOrDefault(u => u.Id == id);
 
             var viewModel = new MyProfileViewModel
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                OrganizationId = user.OrganizationId,
+                Organization = _context.Organizations.ToList(),
+                OrganizationName = user.Organization.Name,
                 PhoneNumber = user.PhoneNumber,
                 DriversLicense = user.DriversLicense
             };
@@ -66,40 +66,27 @@ namespace SafetyBoard.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PostProfile(ApplicationUser appUser)
+        public ActionResult PostProfile(MyProfileViewModel viewModel)
          {
-            var currentUser = User.Identity.GetUserId();
 
             if (!ModelState.IsValid)
             {
-                var currentUser1 = User.Identity.GetUserId();
-                var user = _context.Users.Include(u => u.Organization).SingleOrDefault(u => u.Id == currentUser);
-
-                var viewModel = new MyProfileViewModel
-                {
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    OrganizationId = user.OrganizationId,
-                    PhoneNumber = user.PhoneNumber,
-                    DriversLicense = user.DriversLicense
-                };
-
-                return View("Edit Profile",viewModel);
+                viewModel.Organization = _context.Organizations.ToList();
+                return View("EditProfile",viewModel);
             }
 
-
+            var currentUser = User.Identity.GetUserId();
             var userInDb = _context.Users.SingleOrDefault(u => u.Id == currentUser);
-            userInDb.FirstName = appUser.FirstName;
-            userInDb.LastName = appUser.LastName;
-            userInDb.Email = appUser.Email;
-            userInDb.OrganizationId = appUser.OrganizationId;
-            userInDb.PhoneNumber = appUser.PhoneNumber;
-            userInDb.DriversLicense = appUser.DriversLicense;
-
+            userInDb.FirstName = viewModel.FirstName;
+            userInDb.LastName = viewModel.LastName;
+            userInDb.Email = viewModel.Email;
+            userInDb.OrganizationId = viewModel.OrganizationId;
+            userInDb.PhoneNumber = viewModel.PhoneNumber;
+            userInDb.DriversLicense = viewModel.DriversLicense;
 
             _context.SaveChanges();
-            return RedirectToAction("MyProfile");
+
+            return RedirectToAction("MyProfile","User",new { id = User.Identity.GetUserId()});
         }
     }
 }

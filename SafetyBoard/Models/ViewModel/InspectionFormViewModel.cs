@@ -6,6 +6,8 @@ namespace SafetyBoard.Models.ViewModel
 {
     public class InspectionFormViewModel
     {
+        public int Id { get; set; }
+
         public ApplicationUser Inspector { get; set; }
 
         public string InspectorId { get; set; }
@@ -30,6 +32,15 @@ namespace SafetyBoard.Models.ViewModel
 
         [Required]
         public string Description { get; set; }
+
+        public String Action
+        {
+
+            get
+            {
+                return (Id != 0) ? "Update" : "Schedule";
+            }
+        }
 
         public DateTime GetDateTime() 
         {

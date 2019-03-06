@@ -13,10 +13,10 @@ namespace SafetyBoard.Models.ViewModel
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required]
         [Display(Name ="Organization")]
         public IEnumerable<Organization> Organization { get; set; }
 
+        [Required]
         public int OrganizationId { get; set; }
 
         [Required]
@@ -30,5 +30,7 @@ namespace SafetyBoard.Models.ViewModel
         [Required]
         [Display(Name ="License #")]
         public string DriversLicense { get; set; }
+
+        public string OrganizationName { get; set; }
     }
 }

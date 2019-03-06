@@ -6,8 +6,9 @@
 
 <h2>Edit Profile</h2>
 
-@using (Html.BeginForm("PostProfile", "User"))
+@using (Html.BeginForm("UpdateProfile", "User"))
 {
+    @Html.ValidationSummary();
     @Html.AntiForgeryToken();
     <div class="form-group">
         @Html.LabelFor(m => m.FirstName)

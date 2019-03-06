@@ -25,7 +25,7 @@ namespace SafetyBoard.Controllers
             {
                 Organization = organizations,
                 InspectionType = postingTypes,
-                PageTitle = "Schedule an Inspection"
+                PageTitle = "Schedule an Inspection",
             };
             return View(viewModel);
         }
@@ -48,27 +48,56 @@ namespace SafetyBoard.Controllers
             };
             return View("View",viewModel);
         }
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var organizations = _context.Organizations.ToList();
             var postingTypes = _context.PostingTypes.ToList();
-            var inspections = _context.Inspections.Include(c => c.Inspector).Include(c => c.InspectionType).Single(i => i.Id == id);
+            var user = User.Identity.GetUserId();
+            var inspections = _context.Inspections.Include(i => i.Inspector).Include(i => i.InspectionType).Single(i => i.Id == id && i.InspectorId == user);
+
 
             var viewModel = new InspectionFormViewModel
             {
-                Organization = organizations,
                 InspectionType = postingTypes,
+                SafetyCategory = inspections.InspectionType.SafetyCategory,
+                Organization = organizations,
+
+                Id = inspections.Id,
                 Date = inspections.DateTime.ToString("d MMM yyyy"),
                 Time = inspections.DateTime.ToString("HH:mm"),
                 Description = inspections.Description,
                 InspectionTypeId = inspections.InspectionTypeId,
-                SafetyCategory = inspections.InspectionType.SafetyCategory,
-                Inspector = inspections.Inspector,
+                InspectorId = inspections.InspectorId,
                 OrganizationId = inspections.OrganizationId,
+                PageTitle = "Edit"
             };
-            return View("InspectionForm",viewModel);
+            return View("InspectionForm", viewModel);
         }
 
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(InspectionFormViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                viewModel.Organization = _context.Organizations.ToList();
+                viewModel.InspectionType = _context.PostingTypes.ToList();
+                return View("InspectionForm", viewModel);
+            }
+            var userId = User.Identity.GetUserId();
+            var inspection = _context.Inspections.Single(i => i.Id == viewModel.Id && i.Inspector.Id == userId);
+            inspection.OrganizationId = viewModel.OrganizationId;
+            inspection.InspectionType.Id = viewModel.InspectionTypeId;
+            inspection.DateTime = viewModel.GetDateTime();
+            inspection.Description = viewModel.Description;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Schedule(InspectionFormViewModel viewModel)
