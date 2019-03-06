@@ -10,6 +10,7 @@
     <p class="alert alert-info">All fields are <strong>required</strong></p>
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.InspectorId)
+    @Html.HiddenFor(m=>m.Id)
     <div class="form-group">
         @Html.LabelFor(m => m.Organization)
         @Html.DropDownListFor(m => m.OrganizationId, new SelectList(Model.Organization, "Id", "Name"), "", new { @class = "form-control", autofocus = "autofocus" })

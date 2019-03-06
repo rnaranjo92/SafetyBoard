@@ -89,7 +89,7 @@ namespace SafetyBoard.Controllers
             var userId = User.Identity.GetUserId();
             var inspection = _context.Inspections.Single(i => i.Id == viewModel.Id && i.Inspector.Id == userId);
             inspection.OrganizationId = viewModel.OrganizationId;
-            inspection.InspectionType.Id = viewModel.InspectionTypeId;
+            inspection.InspectionTypeId = viewModel.InspectionTypeId;
             inspection.DateTime = viewModel.GetDateTime();
             inspection.Description = viewModel.Description;
 
