@@ -16,24 +16,24 @@
             </div>
         </div>
         <div class="details">
+            <span class="inspector">
+                <strong> @inspection.Inspector.FirstName @inspection.Inspector.LastName</strong>
+            </span>
+            <span class="inspectionType">
+                @inspection.InspectionType.SafetyCategory Inspection
+            </span>
+            <br />
             @if (inspection.Inspector.Email == User.Identity.Name)
             {
                 <span class="view">
-                    <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a>
+                    <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a> | 
                 </span>
             }
             <span class="edit">
                 <a href="@Url.Action("View","Inspections", new { id = inspection.Id})">View</a>
             </span>
-            <span class="inspector">
-                <strong> @inspection.Inspector.FirstName @inspection.Inspector.LastName</strong>
-            </span>
-            <span class="inspectionType">
-                @inspection.InspectionType.SafetyCategory
-            </span>
-
-            <span class="organization">
-                @inspection.Organization.Name
+            <span class="delete">
+                | <a href="#" class="js-cancel-inspection" data-inspection-id="@inspection.Id">Cancel</a>
             </span>
         </div>
     </li>
@@ -41,6 +41,49 @@
     }
 
 </ul>
+@section scripts
+    {
+        <script>
+            $(document).ready(function () {
+                $(".js-cancel-inspection").click(function (e) {
+                    var cancelLink = $(e.target);
+
+                    bootbox.dialog({
+                        title: 'Confirm',
+                        message: "Are you sure you want to cancel this inspection?",
+                        buttons: {
+                            no: {
+                                label: "No",
+                                className: 'btn-default',
+                                callback: function () {
+                                    bootbox.hideAll();
+                                }
+                            },
+                            yes: {
+                                label: "Yes",
+                                className: 'btn-danger',
+                                callback: function () {
+                                    $.ajax({
+                                        url: "/api/inspections/" + cancelLink.attr("data-inspection-id"),
+                                        method: "DELETE"
+                                    })
+                                        .done(function () {
+                                            cancelLink.parents("li").fadeOut(function () {
+                                                $(this).remove();
+                                            });
+                                            toastr.success("Inspection has been successfully cancelled")
+                                        })
+                                        .fail(function () {
+                                            toastr.fail("An error has occured.");
+                                        });
+                                }
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+    }
 
 
 

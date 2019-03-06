@@ -24,7 +24,7 @@ namespace SafetyBoard.Controllers
                 .Include(i => i.Inspector)
                 .Include(i=>i.InspectionType)
                 .Include(i=>i.Organization)
-                .Where(i => i.DateTime > DateTime.Now && i.OrganizationId == user.OrganizationId);
+                .Where(i => i.DateTime > DateTime.Now && i.OrganizationId == user.OrganizationId  && i.IsCanceled == false);
 
             return View(upcomingInspections);
         }

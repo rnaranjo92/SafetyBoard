@@ -204,9 +204,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CommentController.cs" />
+    <Compile Include="Controllers\Api\InspectionsController.cs" />
     <Compile Include="Migrations\201903020645282_AddCommentToPosting.cs" />
     <Compile Include="Migrations\201903020645282_AddCommentToPosting.Designer.cs">
       <DependentUpon>201903020645282_AddCommentToPosting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903062219414_AddIsCanceled.cs" />
+    <Compile Include="Migrations\201903062219414_AddIsCanceled.Designer.cs">
+      <DependentUpon>201903062219414_AddIsCanceled.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModel\MyProfileViewModel.cs" />
     <Compile Include="Models\ViewModel\PostingDetailsViewModel.cs" />
@@ -815,6 +820,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903020645282_AddCommentToPosting.resx">
       <DependentUpon>201903020645282_AddCommentToPosting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903062219414_AddIsCanceled.resx">
+      <DependentUpon>201903062219414_AddIsCanceled.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

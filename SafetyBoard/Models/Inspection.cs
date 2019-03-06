@@ -29,5 +29,7 @@ namespace SafetyBoard.Models
 
         [Required]
         public string Description { get; set; }
+
+        public bool IsCanceled { get; set; }
     }
 }
