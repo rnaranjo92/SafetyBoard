@@ -213,6 +213,13 @@
     <Compile Include="Migrations\201903062219414_AddIsCanceled.Designer.cs">
       <DependentUpon>201903062219414_AddIsCanceled.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903070346092_AddNotification.cs" />
+    <Compile Include="Migrations\201903070346092_AddNotification.Designer.cs">
+      <DependentUpon>201903070346092_AddNotification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\NotificationType.cs" />
+    <Compile Include="Models\UserNotification.cs" />
     <Compile Include="Models\ViewModel\MyProfileViewModel.cs" />
     <Compile Include="Models\ViewModel\PostingDetailsViewModel.cs" />
     <Compile Include="Dto\CommentDto.cs" />
@@ -823,6 +830,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903062219414_AddIsCanceled.resx">
       <DependentUpon>201903062219414_AddIsCanceled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903070346092_AddNotification.resx">
+      <DependentUpon>201903070346092_AddNotification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

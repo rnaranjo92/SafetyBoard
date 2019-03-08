@@ -26,15 +26,16 @@
             @if (inspection.Inspector.Email == User.Identity.Name)
             {
                 <span class="view">
-                    <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a> | 
+                    <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a> |
+                </span>
+                <span class="delete">
+                    <a href="#" class="js-cancel-inspection" data-inspection-id="@inspection.Id">Cancel</a> |
                 </span>
             }
             <span class="edit">
                 <a href="@Url.Action("View","Inspections", new { id = inspection.Id})">View</a>
             </span>
-            <span class="delete">
-                | <a href="#" class="js-cancel-inspection" data-inspection-id="@inspection.Id">Cancel</a>
-            </span>
+
         </div>
     </li>
         

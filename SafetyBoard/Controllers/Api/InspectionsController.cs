@@ -14,12 +14,29 @@ namespace SafetyBoard.Controllers.Api
         {
             _context = new ApplicationDbContext();
         }
+
         [HttpDelete]
         public IHttpActionResult Cancel(int id)
         {
             var userId = User.Identity.GetUserId();
             var inspection = _context.Inspections.Single(i => i.Id == id && i.InspectorId == userId);
+
+            if (inspection.IsCanceled)
+                return NotFound();
+
             inspection.IsCanceled = true;
+
+            var notification = new Notification(inspection, NotificationType.InspectionCanceled);
+
+            var users = _context.Users.
+                Where(u => u.OrganizationId == inspection.OrganizationId)
+                .ToList();
+
+            foreach(var user in users)
+            {
+                user.Notify(notification);
+            }
+
             _context.SaveChanges();
 
             return Ok();

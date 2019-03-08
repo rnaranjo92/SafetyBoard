@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Security.Claims;
@@ -31,12 +33,27 @@ namespace SafetyBoard.Models
         [StringLength(15)]
         public string LastName { get; set; }
 
+        public ICollection<UserNotification> UserNotification { get; private set; }
+        public ICollection<Inspection> Inspection { get; private set; }
+
+
+        public ApplicationUser()
+        {
+            UserNotification = new Collection<UserNotification>();
+            Inspection = new Collection<Inspection>();
+        }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
+        }
+
+        public void Notify(Notification notification)
+        {
+            UserNotification.Add(new UserNotification(this, notification));
         }
     }
 
@@ -47,6 +64,8 @@ namespace SafetyBoard.Models
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Inspection> Inspections { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<UserNotification> UserNotifications { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -75,6 +94,17 @@ namespace SafetyBoard.Models
                 .HasRequired(p => p.Organization)
                 .WithMany()
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<UserNotification>()
+                .HasRequired(n => n.User)
+                .WithMany(u=>u.UserNotification)
+                .WillCascadeOnDelete(false);
+
+            
+
+                
+
+
         }
     }
 }
