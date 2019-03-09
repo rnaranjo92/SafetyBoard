@@ -43,7 +43,7 @@ namespace SafetyBoard.Controllers
                 Description = inspections.Description,
                 InspectionTypeId = inspections.InspectionTypeId,
                 SafetyCategory = inspections.InspectionType.SafetyCategory,
-                Inspector = inspections.User,
+                User = inspections.User,
                 OrganizationId = inspections.OrganizationId,
             };
             return View("View",viewModel);
@@ -68,7 +68,7 @@ namespace SafetyBoard.Controllers
                 Time = inspections.DateTime.ToString("HH:mm"),
                 Description = inspections.Description,
                 InspectionTypeId = inspections.InspectionTypeId,
-                InspectorId = inspections.UserId,
+                UserId = inspections.UserId,
                 OrganizationId = inspections.OrganizationId,
                 PageTitle = "Edit"
             };
@@ -93,7 +93,9 @@ namespace SafetyBoard.Controllers
             inspection.DateTime = viewModel.GetDateTime();
             inspection.Description = viewModel.Description;
 
-            var notification = new Notification(inspection, NotificationType.InspectionUpdated);
+            _context.SaveChanges();
+
+            var notification = Notification.InspectionUpdated(inspection);
 
             var users = _context.Users.Where(u => u.OrganizationId == inspection.OrganizationId).ToList();
 
@@ -102,7 +104,6 @@ namespace SafetyBoard.Controllers
                 user.Notify(notification);
             }
 
-            _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
         [Authorize]

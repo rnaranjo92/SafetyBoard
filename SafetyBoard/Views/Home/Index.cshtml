@@ -17,13 +17,13 @@
         </div>
         <div class="details">
             <span class="inspector">
-                <strong> @inspection.Inspector.FirstName @inspection.Inspector.LastName</strong>
+                <strong> @inspection.User.FirstName @inspection.User.LastName</strong>
             </span>
             <span class="inspectionType">
                 @inspection.InspectionType.SafetyCategory Inspection
             </span>
             <br />
-            @if (inspection.Inspector.Email == User.Identity.Name)
+            @if (inspection.User.Email == User.Identity.Name)
             {
                 <span class="view">
                     <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a> |

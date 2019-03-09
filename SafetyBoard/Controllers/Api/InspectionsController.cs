@@ -26,7 +26,7 @@ namespace SafetyBoard.Controllers.Api
 
             inspection.IsCanceled = true;
 
-            var notification = new Notification(inspection, NotificationType.InspectionCanceled);
+            var notification = Notification.InspectionCanceled(inspection);
 
             var users = _context.Users.
                 Where(u => u.OrganizationId == inspection.OrganizationId)

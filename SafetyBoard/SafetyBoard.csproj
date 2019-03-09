@@ -225,9 +225,9 @@
     <Compile Include="Migrations\201903090640587_ChangeInspectorToUser.Designer.cs">
       <DependentUpon>201903090640587_ChangeInspectorToUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903090643481_foo.cs" />
-    <Compile Include="Migrations\201903090643481_foo.Designer.cs">
-      <DependentUpon>201903090643481_foo.cs</DependentUpon>
+    <Compile Include="Migrations\201903090715279_RemoveOriginalDateTime.cs" />
+    <Compile Include="Migrations\201903090715279_RemoveOriginalDateTime.Designer.cs">
+      <DependentUpon>201903090715279_RemoveOriginalDateTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
@@ -852,8 +852,8 @@
     <EmbeddedResource Include="Migrations\201903090640587_ChangeInspectorToUser.resx">
       <DependentUpon>201903090640587_ChangeInspectorToUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903090643481_foo.resx">
-      <DependentUpon>201903090643481_foo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903090715279_RemoveOriginalDateTime.resx">
+      <DependentUpon>201903090715279_RemoveOriginalDateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

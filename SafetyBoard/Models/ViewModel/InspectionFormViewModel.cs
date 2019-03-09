@@ -8,9 +8,9 @@ namespace SafetyBoard.Models.ViewModel
     {
         public int Id { get; set; }
 
-        public ApplicationUser Inspector { get; set; }
+        public ApplicationUser User { get; set; }
 
-        public string InspectorId { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         public string Date { get; set; }
