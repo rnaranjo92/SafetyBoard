@@ -217,6 +217,18 @@
     <Compile Include="Migrations\201903070346092_AddNotification.Designer.cs">
       <DependentUpon>201903070346092_AddNotification.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903090617387_removeOriginalVenue.cs" />
+    <Compile Include="Migrations\201903090617387_removeOriginalVenue.Designer.cs">
+      <DependentUpon>201903090617387_removeOriginalVenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903090640587_ChangeInspectorToUser.cs" />
+    <Compile Include="Migrations\201903090640587_ChangeInspectorToUser.Designer.cs">
+      <DependentUpon>201903090640587_ChangeInspectorToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903090643481_foo.cs" />
+    <Compile Include="Migrations\201903090643481_foo.Designer.cs">
+      <DependentUpon>201903090643481_foo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
     <Compile Include="Models\UserNotification.cs" />
@@ -833,6 +845,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903070346092_AddNotification.resx">
       <DependentUpon>201903070346092_AddNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903090617387_removeOriginalVenue.resx">
+      <DependentUpon>201903090617387_removeOriginalVenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903090640587_ChangeInspectorToUser.resx">
+      <DependentUpon>201903090640587_ChangeInspectorToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903090643481_foo.resx">
+      <DependentUpon>201903090643481_foo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

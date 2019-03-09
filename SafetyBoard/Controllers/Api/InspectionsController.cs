@@ -19,7 +19,7 @@ namespace SafetyBoard.Controllers.Api
         public IHttpActionResult Cancel(int id)
         {
             var userId = User.Identity.GetUserId();
-            var inspection = _context.Inspections.Single(i => i.Id == id && i.InspectorId == userId);
+            var inspection = _context.Inspections.Single(i => i.Id == id && i.UserId == userId);
 
             if (inspection.IsCanceled)
                 return NotFound();

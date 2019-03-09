@@ -13,8 +13,6 @@ namespace SafetyBoard.Models
 
         public DateTime? OriginalDateTime { get; set; }
 
-        public string OriginalVenue { get; set; }
-
         [Required]
         public Inspection Inspection { get; private set; }
 

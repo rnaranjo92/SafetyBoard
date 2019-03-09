@@ -8,10 +8,10 @@ namespace SafetyBoard.Models
         public int Id { get; set; }
 
         
-        public ApplicationUser Inspector { get; set; }
+        public ApplicationUser User { get; set; }
 
         [Required]
-        public string InspectorId { get; set; }
+        public string UserId { get; set; }
 
         public DateTime DateTime { get; set; }
 
@@ -31,5 +31,6 @@ namespace SafetyBoard.Models
         public string Description { get; set; }
 
         public bool IsCanceled { get; set; }
+
     }
 }

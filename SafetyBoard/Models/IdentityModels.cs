@@ -101,10 +101,6 @@ namespace SafetyBoard.Models
                 .WillCascadeOnDelete(false);
 
             
-
-                
-
-
         }
     }
 }
