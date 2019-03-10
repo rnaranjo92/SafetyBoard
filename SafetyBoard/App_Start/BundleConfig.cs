@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace SafetyBoard
 {
@@ -16,7 +15,10 @@ namespace SafetyBoard
                         "~/Scripts/respond.js",
                          "~/Scripts/bootbox.js",
                          "~/Scripts/typeahead.bundle.js",
-                         "~/scripts/toastr.js"));
+                         "~/scripts/toastr.js",
+                         "~/scripts/underscore-min.js",
+                         "~/scripts/moment.js"
+                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -33,7 +35,9 @@ namespace SafetyBoard
                       "~/Content/site.css",
                       "~/content/datatables/css/datatables.bootstrap.css",
                       "~/content/toastr.css",
-                      "~/content/typeahead.css"));
+                      "~/content/typeahead.css",
+                      "~/content/animate.css"
+                      ));
         }
     }
 }

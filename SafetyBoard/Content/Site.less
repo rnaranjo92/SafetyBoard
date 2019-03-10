@@ -1,0 +1,418 @@
+﻿@color_1: red;
+@color_2: #555555;
+@color_3: #212529;
+@color_4: #16181b;
+@color_5: #333333;
+@color_6: #ffffff;
+@color_7: white;
+@background_color_1: #ffb300;
+@background_color_2: #ffffff;
+@background_color_3: transparent;
+@background_color_4: #6884a0;
+@background_color_5: #d69807;
+@background_color_6: #27aee2;
+@background_color_7: #e65353;
+@background_color_8: #e7e7e7;
+@background_color_9: rgba(255, 179, 0, 0.21);
+@border_color_1: #e6e6e6;
+@border_color_2: #40b5e3;
+
+/* Set padding to keep content from hitting the edges */
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+/* Set width on the form input elements since they're 100% wide by default */
+/*Bootstrap overrides*/
+/*Page Specific*/
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dl-horizontal {
+    dt {
+        white-space: normal;
+    }
+}
+
+input {
+    max-width: 280px;
+}
+
+select {
+    max-width: 280px;
+}
+
+textarea {
+    max-width: 280px;
+}
+
+.field-validation-error {
+    color: @color_1;
+}
+
+.input-validation-error {
+    border: 2px solid red;
+}
+
+.validation-summary-errors {
+    color: @color_1;
+}
+
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 30px;
+    font-style: Verdana;
+    line-height: 20px;
+}
+
+.navbar-inverse {
+    background-color: @background_color_1;
+    border-color: @border_color_1;
+
+    .navbar-nav {
+        > .open {
+            > a {
+                color: @color_5;
+                background-color: @background_color_5;
+
+                &:hover {
+                    color: @color_5;
+                    background-color: @background_color_5;
+                }
+
+                &:focus {
+                    color: @color_5;
+                    background-color: @background_color_5;
+                }
+            }
+        }
+    }
+
+    .notifications {
+        position: relative;
+        padding-top: 3px;
+
+        .badge {
+            position: absolute;
+            top: 6px;
+            right: -1px;
+        }
+    }
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 30px;
+}
+
+.h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 30px;
+}
+
+label {
+    font-weight: normal;
+    font-size: 17px;
+}
+
+.form-control {
+    font-size: 17px;
+}
+
+.textarea {
+    min-height: 200px;
+    height: 700px;
+    width: 900px;
+    padding: 7px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: @color_2;
+    background-color: @background_color_2;
+    background-image: none;
+    border: 1px solid #e7e7e7;
+    border-radius: 4px;
+    float: left;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+textarea.form-control {
+    position: relative;
+    height: 300px;
+    position: relative;
+    height: 300px;
+    background-color: @background_color_9;
+    font-size: 12px;
+}
+
+.dropdown-item {
+    display: block;
+    width: 195px;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: @color_3;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: @background_color_3;
+    border: 0;
+
+    &:focus {
+        color: @color_4;
+        text-decoration: none;
+        background-color: @background_color_4;
+    }
+
+    &:hover {
+        color: @color_4;
+        text-decoration: none;
+        background-color: @background_color_4;
+    }
+}
+
+.dropdown-divider {
+    height: 0;
+    margin: .5rem 0;
+    overflow: hidden;
+    border-top: 1px solid #e9ecef;
+}
+
+.alert-info {
+    color: @color_6;
+    background-color: @background_color_6;
+    border-color: @border_color_2;
+}
+
+.inspections {
+    > li {
+        position: relative;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        list-style-type: none;
+        padding-right: 20px;
+        padding: 10px 0px 70px 30px;
+        box-shadow: 1px 2px 5px grey;
+        width: 290px;
+        height: 40px;
+
+        .details {
+            position: absolute;
+            top: 10px;
+            left: 105px;
+
+            .inspector {
+                display: block;
+            }
+
+            .organization {
+                display: block;
+            }
+        }
+
+        .date {
+            color: @color_7;
+            background-color: @background_color_7;
+            text-align: center;
+            width: 60px;
+            border-radius: 8px;
+
+            .day {
+                padding: 6px 12px;
+                color: @color_3;
+                background-color: @background_color_8;
+                text-align: center;
+                width: 60px;
+            }
+
+            .month {
+                text-transform: uppercase;
+                font-weight: bold;
+                text-align: center;
+                width: 60px;
+                padding: 2px 6px;
+            }
+        }
+    }
+}
+
+.information {
+    position: relative;
+    list-style-type: none;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-right: 130px;
+
+    .userDetails {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding-left: 30px;
+        padding-top: 25px;
+        padding-bottom: 40px;
+        padding-left: 10px;
+        font-size: 15px;
+        width: 255px;
+        height: 300px;
+        box-shadow: 1px 2px 5px grey;
+    }
+
+    .image {
+        width: 130px;
+        margin-left: 50px;
+        padding-bottom: 20px;
+        padding-left: 0px;
+    }
+}
+
+.postInformation {
+    position: relative;
+    margin-left: 300px;
+    padding-bottom: 400px;
+    box-shadow: 1px 2px 5px grey;
+    overflow: hidden;
+    margin-top: -10px;
+
+    .postDetails {
+        padding: 20px 0px 0px 10px;
+    }
+}
+
+.separator {
+    margin-right: 10px;
+    border: 1px solid;
+}
+
+.description {
+    word-wrap: break-word;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.comments {
+    position: relative;
+    margin-left: 300px;
+    padding-top: 10px;
+    padding-left: 0px;
+    padding-bottom: 100px;
+    margin-bottom: 50px;
+    display: inline-block;
+    word-wrap: break-word;
+}
+
+.eachComment {
+    box-shadow: 1px 2px 5px grey;
+    height: 100px;
+    width: 800px;
+    word-wrap: break-word;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+
+* {
+    margin: 0;
+}
+
+.container {
+    body-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+footer {
+    height: 100px;
+    padding-left: 100px;
+}
+
+.commentSection {
+    position: relative;
+    height: 130px;
+    padding-left: 100px;
+}
+
+.commentBox {
+    position: absolute;
+    min-width: 300px;
+    left: 520px;
+    width: 200px;
+    height: 50px;
+}
+
+.submitComment {
+    margin-left: 155px;
+}
+
+.posterName {
+    position: absolute;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.posterComment {
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 240px;
+    word-wrap: break-word;
+    height: 90px;
+    overflow: auto;
+    width: 100%;
+}
+
+.btnEdit {
+    padding-left: 0px;
+    word-break: normal;
+}
+
+.btnSubmit {
+    padding-left: 210px;
+}
+
+.inspectionView {
+    position: relative;
+    word-wrap: break-word;
+    overflow: auto;
+    box-shadow: 1px 2px 5px grey;
+}
+
+.inspectionInfo {
+    padding: 20px;
+}
+
+.inspectionDetails {
+    padding: 20px 20px 50%;
+}
+
+ul.notifications {
+    list-style: none;
+    padding-left: 0;
+    height: 400px;
+    overflow: auto;
+
+    > li {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .highlight {
+        font-weight: bold;
+    }
+}

@@ -1,305 +1,327 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
+﻿/* Set padding to keep content from hitting the edges */
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
-.dl-horizontal dt {
-    white-space: normal;
-}
-
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
+/*Bootstrap overrides*/
+/*Page Specific*/
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.dl-horizontal dt {
+  white-space: normal;
+}
+input {
+  max-width: 280px;
+}
+select {
+  max-width: 280px;
+}
 textarea {
-    max-width: 280px;
+  max-width: 280px;
 }
-.field-validation-error{
-    color:red;
+.field-validation-error {
+  color: red;
 }
-.input-validation-error{
-    border: 2px solid red;
+.input-validation-error {
+  border: 2px solid red;
 }
-.validation-summary-errors{
-    color:red;
+.validation-summary-errors {
+  color: red;
 }
 .navbar-brand {
-    float: left;
-    height: 50px;
-    padding: 15px 15px;
-    font-size: 30px;
-    font-style: Verdana;
-    line-height: 20px;
+  float: left;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 30px;
+  font-style: Verdana;
+  line-height: 20px;
 }
-/*Bootstrap overrides*/
 .navbar-inverse {
-    background-color: #ffb300;
-    border-color: #e6e6e6;
+  background-color: #ffb300;
+  border-color: #e6e6e6;
+}
+.navbar-inverse .navbar-nav > .open > a {
+  color: #333333;
+  background-color: #d69807;
+}
+.navbar-inverse .navbar-nav > .open > a:hover {
+  color: #333333;
+  background-color: #d69807;
+}
+.navbar-inverse .navbar-nav > .open > a:focus {
+  color: #333333;
+  background-color: #d69807;
+}
+.navbar-inverse .notifications {
+  position: relative;
+  padding-top: 3px;
+}
+.navbar-inverse .notifications .badge {
+  position: absolute;
+  top: 6px;
+  right: -1px;
 }
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-h2, .h2 {
-    font-size: 30px;
-    font-weight: 500;
-    margin-top: 30px;
+h2 {
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 30px;
+}
+.h2 {
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 30px;
 }
 label {
-    font-weight: normal;
-    font-size: 17px;
+  font-weight: normal;
+  font-size: 17px;
 }
-.form-control{
-    font-size:17px;
+.form-control {
+  font-size: 17px;
 }
 .textarea {
-    min-height: 200px;
-    height:700px;
-    width: 900px;
-    padding: 7px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555555;
-    background-color: #ffffff;
-    background-image: none;
-    border: 1px solid #e7e7e7;
-    border-radius: 4px;
-    float:left;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  min-height: 200px;
+  height: 700px;
+  width: 900px;
+  padding: 7px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
+  float: left;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 textarea.form-control {
-    position:relative;
-    height: 300px;
+  position: relative;
+  height: 300px;
+  background-color: rgba(255, 179, 0, 0.21);
+  font-size: 12px;
 }
 .dropdown-item {
-    display: block;
-    width: 195px;
-    padding: .25rem 1.5rem;
-    clear: both;
-    font-weight: 400;
-    color: #212529;
-    text-align: inherit;
-    white-space: nowrap;
-    background-color: transparent;
-    border: 0;
+  display: block;
+  width: 195px;
+  padding: 0.25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.dropdown-item:focus {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #6884a0;
+}
+.dropdown-item:hover {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #6884a0;
 }
 .dropdown-divider {
-    height: 0;
-    margin: .5rem 0;
-    overflow: hidden;
-    border-top: 1px solid #e9ecef;
-}
-.dropdown-item:focus, .dropdown-item:hover {
-    color: #16181b;
-    text-decoration: none;
-    background-color: #6884a0;
-}
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    color: #333333;
-    background-color: #d69807;
+  height: 0;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  border-top: 1px solid #e9ecef;
 }
 .alert-info {
-    color: #ffffff;
-    background-color: #27aee2;
-    border-color: #40b5e3;
+  color: #ffffff;
+  background-color: #27aee2;
+  border-color: #40b5e3;
 }
-/*Page Specific*/
 .inspections > li {
-    position: relative;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    list-style-type: none;
-    padding-right: 20px;
-    padding:10px 0px 70px 30px;
-    box-shadow: 1px 2px 5px grey;
-    width:290px;
-    height:40px
+  position: relative;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  list-style-type: none;
+  padding-right: 20px;
+  padding: 10px 0px 70px 30px;
+  box-shadow: 1px 2px 5px grey;
+  width: 290px;
+  height: 40px;
 }
-.inspections > li .details{
-    position: absolute;
-    top:10px;
-    left:105px;
+.inspections > li .details {
+  position: absolute;
+  top: 10px;
+  left: 105px;
 }
-.inspections > li .date{
-    color:white;
-    background-color:#e65353;
-    text-align:center;
-    width:60px;
-    border-radius: 8px;
+.inspections > li .details .inspector {
+  display: block;
 }
-.inspections > li .date .day{
-    padding : 6px 12px;
-    color:#212529;
-    background-color:#e7e7e7;
-    text-align:center;
-    width:60px;
+.inspections > li .details .organization {
+  display: block;
 }
-.inspections > li .date .month{
-    text-transform:uppercase;
-    font-weight:bold;
-    text-align:center;
-    width:60px;
-    padding: 2px 6px
+.inspections > li .date {
+  color: white;
+  background-color: #e65353;
+  text-align: center;
+  width: 60px;
+  border-radius: 8px;
 }
-.inspections > li .details .inspector{
-    display:block;
+.inspections > li .date .day {
+  padding: 6px 12px;
+  color: #212529;
+  background-color: #e7e7e7;
+  text-align: center;
+  width: 60px;
 }
-.inspections > li .details .organization{
-    display:block;
+.inspections > li .date .month {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  width: 60px;
+  padding: 2px 6px;
 }
-.inspections > li .organization, .inspectionType, .inspector{
-}
-.inspections > li .details .view{
-}
-.inspections > li .details .edit{
-}
-
 .information {
-    position: relative;
-    list-style-type: none;
-    margin-bottom:50px;
-    margin-top:30px;
-    margin-right:130px;
+  position: relative;
+  list-style-type: none;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  margin-right: 130px;
 }
 .information .userDetails {
-    position:absolute;
-    top:10px;
-    left:10px;
-    padding-left:30px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding-left: 30px;
+  padding-top: 25px;
+  padding-bottom: 40px;
+  padding-left: 10px;
+  font-size: 15px;
+  width: 255px;
+  height: 300px;
+  box-shadow: 1px 2px 5px grey;
 }
-.information .userDetails{
-    padding-top: 25px;
-    padding-bottom:40px;
-    padding-left:10px;
-    font-size:15px;
-    width:255px;
-    height:300px;
-    box-shadow: 1px 2px 5px grey;
-}
-.information .image{
-    width:130px;
-    margin-left:50px;
-    padding-bottom:20px;
-    padding-left:0px;
+.information .image {
+  width: 130px;
+  margin-left: 50px;
+  padding-bottom: 20px;
+  padding-left: 0px;
 }
 .postInformation {
-    position: relative;
-    margin-left: 300px;
-    padding-bottom: 400px;
-    box-shadow: 1px 2px 5px grey;
-    overflow: hidden;
-    margin-top: -10px;
+  position: relative;
+  margin-left: 300px;
+  padding-bottom: 400px;
+  box-shadow: 1px 2px 5px grey;
+  overflow: hidden;
+  margin-top: -10px;
 }
-.postInformation .postDetails{
-    padding:20px 0px 0px 10px;
+.postInformation .postDetails {
+  padding: 20px 0px 0px 10px;
 }
-.separator{
-    margin-right:10px;
-    border:1px solid
+.separator {
+  margin-right: 10px;
+  border: 1px solid;
 }
 .description {
-    word-wrap: break-word;
-    padding-left:10px;
-    padding-right:10px;
-
+  word-wrap: break-word;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .comments {
-    position: relative;
-    margin-left: 300px;
-    padding-top: 10px;
-    padding-left: 0px;
-    padding-bottom: 100px;
-    margin-bottom: 50px;
-    display: inline-block;
-    word-wrap: break-word;
-}
-.commentBody {
+  position: relative;
+  margin-left: 300px;
+  padding-top: 10px;
+  padding-left: 0px;
+  padding-bottom: 100px;
+  margin-bottom: 50px;
+  display: inline-block;
+  word-wrap: break-word;
 }
 .eachComment {
-    box-shadow: 1px 2px 5px grey;
-    height: 100px;
-    width: 800px;
-    word-wrap: break-word;
-    overflow: hidden;
-    padding-bottom:30px;
+  box-shadow: 1px 2px 5px grey;
+  height: 100px;
+  width: 800px;
+  word-wrap: break-word;
+  overflow: hidden;
+  padding-bottom: 30px;
 }
-*{
-    margin: 0 
+* {
+  margin: 0;
 }
 .container body-content {
-    height:100%;
-    display:flex;
-    flex-direction:column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-footer{
-    height:100px;
-    padding-left:100px;
+footer {
+  height: 100px;
+  padding-left: 100px;
 }
-.commentSection{
-    position:relative;
-    height:130px;
-    padding-left:100px;
+.commentSection {
+  position: relative;
+  height: 130px;
+  padding-left: 100px;
 }
 .commentBox {
-    position: absolute;
-    min-width:300px;
-    left:520px;
-    width:200px;
-    height:50px;
+  position: absolute;
+  min-width: 300px;
+  left: 520px;
+  width: 200px;
+  height: 50px;
 }
-.submitComment{
-    margin-left:155px;
-}
-textarea.form-control {
-    position: relative;
-    height: 300px;
-    background-color:rgba(255, 179, 0, 0.21);
-    font-size:12px;
+.submitComment {
+  margin-left: 155px;
 }
 .posterName {
-    position: absolute;
-    padding-top:20px;
-    padding-left:20px;
+  position: absolute;
+  padding-top: 20px;
+  padding-left: 20px;
 }
 .posterComment {
-    position: absolute;
-    padding-top: 10px;
-    padding-left: 240px;
-    word-wrap: break-word;
-    height:90px;
-    overflow:auto;
-    width:100%;
+  position: absolute;
+  padding-top: 10px;
+  padding-left: 240px;
+  word-wrap: break-word;
+  height: 90px;
+  overflow: auto;
+  width: 100%;
 }
 .btnEdit {
-    padding-left:0px;
-    word-break:normal;
+  padding-left: 0px;
+  word-break: normal;
 }
-.btnSubmit{
-    padding-left:210px;
+.btnSubmit {
+  padding-left: 210px;
 }
 .inspectionView {
-    position: relative;
-    word-wrap: break-word;
-    overflow: auto;
-    box-shadow: 1px 2px 5px grey;
+  position: relative;
+  word-wrap: break-word;
+  overflow: auto;
+  box-shadow: 1px 2px 5px grey;
 }
-.inspectionInfo{
-    padding:20px
+.inspectionInfo {
+  padding: 20px;
 }
 .inspectionDetails {
-    padding: 20px 20px 50%;
-    
+  padding: 20px 20px 50%;
 }
-
-
-
-
-
+ul.notifications {
+  list-style: none;
+  padding-left: 0;
+  max-height: 400px;
+  overflow: auto;
+}
+ul.notifications > li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+ul.notifications > li:last-child {
+  border-bottom: none;
+}
+ul.notifications .highlight {
+  font-weight: bold;
+}

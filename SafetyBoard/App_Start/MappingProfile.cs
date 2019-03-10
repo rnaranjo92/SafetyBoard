@@ -17,6 +17,8 @@ namespace SafetyBoard.App_Start
             Mapper.CreateMap<Organization, OrganizationDto>();
             Mapper.CreateMap<OrganizationDto, Organization>().ForMember(c => c.Id, opt => opt.Ignore());
             Mapper.CreateMap<CommentDto, Comment>().ForMember(c => c.Id, opt => opt.Ignore());
+            Mapper.CreateMap<Inspection, InspectionDto>();
+            Mapper.CreateMap<Notification, NotificationDto>();
 
         }
     }

@@ -75,8 +75,6 @@ namespace SafetyBoard.Controllers
             inspection.DateTime = viewModel.GetDateTime();
             inspection.Description = viewModel.Description;
 
-            _context.SaveChanges();
-
             var notification = Notification.InspectionUpdated(inspection);
 
             var users = _context.Users.Where(u => u.OrganizationId == inspection.OrganizationId).ToList();
@@ -85,6 +83,9 @@ namespace SafetyBoard.Controllers
             {
                 user.Notify(notification);
             }
+
+            _context.SaveChanges();
+
 
             return RedirectToAction("Index", "Home");
         }
@@ -100,7 +101,15 @@ namespace SafetyBoard.Controllers
                 return View("InspectionForm",viewModel);
             }
             var inspection = new Inspection(User.Identity.GetUserId(), viewModel.GetDateTime(), viewModel.InspectionTypeId, viewModel.OrganizationId, viewModel.Description);
-            
+
+            var notification = Notification.InspectionCreated(inspection);
+
+            var users = _context.Users.Where(u => u.OrganizationId == inspection.OrganizationId).ToList();
+
+            foreach (var user in users)
+            {
+                user.Notify(notification);
+            }
 
             _context.Inspections.Add(inspection);
             _context.SaveChanges();
