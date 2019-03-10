@@ -10,7 +10,15 @@
     <div class="inspectionInfo">
         Name : @Model.User.FirstName @Model.User.LastName<br />
         Date and Time Posted: @Model.GetDateTime()<br />
-        Inspection Type: @Model.SafetyCategory
+        Inspection Type: @Model.SafetyCategory<br />
+        @if (Model.IsCanceled == true)
+        {
+            <p>Status: <span class="label label-warning">Canceled</span></p>
+        }
+        else
+        {
+            <p>Status: <span class="label label-success">Active</span></p>
+        }
     </div>
     <hr />
     <div class="inspectionDetails">

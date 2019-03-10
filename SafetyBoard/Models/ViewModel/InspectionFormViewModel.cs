@@ -33,6 +33,8 @@ namespace SafetyBoard.Models.ViewModel
         [Required]
         public string Description { get;   set; }
 
+        public bool IsCanceled { get; set; }
+
         public String Action
         {
 
@@ -61,7 +63,7 @@ namespace SafetyBoard.Models.ViewModel
             PageTitle = pageTitle;
         }
 
-        public InspectionFormViewModel(string date, string time, string description, byte inspectionTypeId, string safetyCategory, ApplicationUser user, int organizationId)
+        public InspectionFormViewModel(string date, string time, string description, byte inspectionTypeId, string safetyCategory, ApplicationUser user, int organizationId,bool isCanceled)
         {
             if (user == null)
                 throw new ArgumentNullException();
@@ -73,6 +75,7 @@ namespace SafetyBoard.Models.ViewModel
             SafetyCategory = safetyCategory;
             User = user;
             OrganizationId = organizationId;
+            IsCanceled = isCanceled;
         }
 
         public InspectionFormViewModel(IEnumerable<PostingType> postingTypes, string safetyCategory, IEnumerable<Organization> organizations, int inspectionId, string time, string date, string description, byte inspectionTypeId, string userId, int organizationId,  string pageTitle)

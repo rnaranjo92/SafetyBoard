@@ -39,10 +39,22 @@ namespace SafetyBoard.Controllers
                 inspections.InspectionTypeId, 
                 inspections.InspectionType.SafetyCategory,
                 inspections.User, 
-                inspections.OrganizationId);
+                inspections.OrganizationId,
+                inspections.IsCanceled);
             
             return View("View",viewModel);
         }
+
+        public ActionResult CanceledInspections(string id)
+        {
+            var currentUser = User.Identity.GetUserId();
+            var user = _context.Users.Single(u => u.Id == id && u.Id == currentUser);
+
+            var inspection = _context.Inspections.Include(i=>i.User).Include(c => c.InspectionType).Where(i=>i.OrganizationId == user.OrganizationId && i.IsCanceled);
+            
+            return View(inspection);
+        }
+
         [Authorize]
         public ActionResult Edit(int id)
         {

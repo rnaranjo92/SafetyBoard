@@ -18,6 +18,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="@Url.Action("MyProfile","User", new { id = User.Identity.GetUserId()})">My Profile</a>
+                <a class="dropdown-item" href="@Url.Action("CanceledInspections","Inspections", new { id = User.Identity.GetUserId()})">View canceled inspections</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
             </div>

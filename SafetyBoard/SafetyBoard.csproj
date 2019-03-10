@@ -235,6 +235,7 @@
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
     <Compile Include="Models\UserNotification.cs" />
+    <Compile Include="Models\ViewModel\CanceledInspectionViewModel.cs" />
     <Compile Include="Models\ViewModel\MyProfileViewModel.cs" />
     <Compile Include="Models\ViewModel\PostingDetailsViewModel.cs" />
     <Compile Include="Dto\CommentDto.cs" />
@@ -718,6 +719,7 @@
     <Content Include="Views\User\MyProfile.cshtml" />
     <Content Include="Views\User\EditProfile.cshtml" />
     <Content Include="Views\Inspections\View.cshtml" />
+    <Content Include="Views\Inspections\CanceledInspections.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
