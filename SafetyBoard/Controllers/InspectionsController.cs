@@ -21,12 +21,8 @@ namespace SafetyBoard.Controllers
             var organizations = _context.Organizations.ToList();
             var postingTypes = _context.PostingTypes.ToList();
 
-            var viewModel = new InspectionFormViewModel
-            {
-                Organization = organizations,
-                InspectionType = postingTypes,
-                PageTitle = "Schedule an Inspection",
-            };
+            var viewModel = new InspectionFormViewModel(organizations, postingTypes, PageTitles.Schedule);
+            
             return View(viewModel);
         }
 
@@ -36,16 +32,15 @@ namespace SafetyBoard.Controllers
             var currentUser = User.Identity.GetUserId();
             var inspections = _context.Inspections.Include(c=>c.User).Include(c => c.InspectionType).Single(i => i.Id == id);
 
-            var viewModel = new InspectionFormViewModel
-            {
-                Date = inspections.DateTime.ToString("d MMM yyyy"),
-                Time = inspections.DateTime.ToString("HH:mm"),
-                Description = inspections.Description,
-                InspectionTypeId = inspections.InspectionTypeId,
-                SafetyCategory = inspections.InspectionType.SafetyCategory,
-                User = inspections.User,
-                OrganizationId = inspections.OrganizationId,
-            };
+            var viewModel = new InspectionFormViewModel(
+                inspections.DateTime.ToString("d MMM yyyy"), 
+                inspections.DateTime.ToString("HH:mm"), 
+                inspections.Description, 
+                inspections.InspectionTypeId, 
+                inspections.InspectionType.SafetyCategory,
+                inspections.User, 
+                inspections.OrganizationId);
+            
             return View("View",viewModel);
         }
         [Authorize]
@@ -57,21 +52,8 @@ namespace SafetyBoard.Controllers
             var inspections = _context.Inspections.Include(i => i.User).Include(i => i.InspectionType).Single(i => i.Id == id && i.UserId == user);
 
 
-            var viewModel = new InspectionFormViewModel
-            {
-                InspectionType = postingTypes,
-                SafetyCategory = inspections.InspectionType.SafetyCategory,
-                Organization = organizations,
-
-                Id = inspections.Id,
-                Date = inspections.DateTime.ToString("d MMM yyyy"),
-                Time = inspections.DateTime.ToString("HH:mm"),
-                Description = inspections.Description,
-                InspectionTypeId = inspections.InspectionTypeId,
-                UserId = inspections.UserId,
-                OrganizationId = inspections.OrganizationId,
-                PageTitle = "Edit"
-            };
+            var viewModel = new InspectionFormViewModel(postingTypes, inspections.InspectionType.SafetyCategory, organizations, inspections.Id, inspections.DateTime.ToString("d MMM yyyy"), inspections.DateTime.ToString("HH:mm"), inspections.Description, inspections.InspectionTypeId, inspections.UserId, inspections.OrganizationId, PageTitles.Edit);
+            
             return View("InspectionForm", viewModel);
         }
 
@@ -117,14 +99,8 @@ namespace SafetyBoard.Controllers
                 viewModel.InspectionType = _context.PostingTypes.ToList();
                 return View("InspectionForm",viewModel);
             }
-            var inspection = new Inspection
-            {
-                UserId = User.Identity.GetUserId(),
-                DateTime = viewModel.GetDateTime(),
-                InspectionTypeId = viewModel.InspectionTypeId,
-                OrganizationId = viewModel.OrganizationId,
-                Description = viewModel.Description,
-            };
+            var inspection = new Inspection(User.Identity.GetUserId(), viewModel.GetDateTime(), viewModel.InspectionTypeId, viewModel.OrganizationId, viewModel.Description);
+            
 
             _context.Inspections.Add(inspection);
             _context.SaveChanges();

@@ -23,12 +23,7 @@ namespace SafetyBoard.Controllers.Api
 
             var currentUser = User.Identity.GetUserId();
 
-            var postComment = new CommentDto
-            {
-                PostingId = postingDto.Id,
-                comment = postingDto.Comment,
-                UserId = currentUser,
-            };
+            var postComment = new CommentDto(postingDto.Id, postingDto.Comment, currentUser);
 
             var mapComment = Mapper.Map<CommentDto, Comment>(postComment);
 
