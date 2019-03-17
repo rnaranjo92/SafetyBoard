@@ -25,12 +25,12 @@
         @RenderBody()
     </div>
     <div class="push"></div>
-    <hr />
-
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Safety Board</p>
-    </footer>
-
+    
+    <div class="footer-universal">
+        <footer>
+            <p class="footerP">&copy; @DateTime.Now.Year - Safety Board</p>
+        </footer>
+    </div>
     @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
     <script type="text/x-template" id="notifications-template">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SafetyBoard.Models.ViewModel
 {
@@ -14,7 +15,12 @@ namespace SafetyBoard.Models.ViewModel
         public string Description { get; set; }
         public string SafetyCategory { get; set; }
         public DateTime? TimePosted { get; set; }
-        public IEnumerable<Comment> Comment { get; set; }
+        public ICollection<Comment> Comment { get; set; }
         public ApplicationUser CurrentUser { get; set; }
+
+        public PostingDetailsViewModel()
+        {
+            Comment = new Collection<Comment>();
+        }
     }
 }

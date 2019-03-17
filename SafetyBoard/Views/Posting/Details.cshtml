@@ -27,8 +27,7 @@
         {
         <div class="eachComment">
             <div class="posterName"><span class="glyphicon glyphicon-user"></span> @comment.User.FirstName @comment.User.LastName<br /> <span class="glyphicon glyphicon-envelope"></span> @comment.User.Email <br /><span class="glyphicon glyphicon-phone-alt"></span>  @comment.User.PhoneNumber</div>
-
-            <div class="posterComment"><strong>Comment:</strong> @comment.comment</div>
+            <div class="posterComment"><strong>Comment:</strong> @comment.postComment</div>
         </div>
         }
         <div class="commentSection">
@@ -52,7 +51,6 @@
                     dataType:"json",
                     type: "post",
                     success: function () {
-                        console.log("success")
                         location.reload();
                     },
                 })

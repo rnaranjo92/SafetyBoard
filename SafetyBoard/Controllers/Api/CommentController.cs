@@ -28,6 +28,7 @@ namespace SafetyBoard.Controllers.Api
             var mapComment = Mapper.Map<CommentDto, Comment>(postComment);
 
             _context.Comments.Add(mapComment);
+
             _context.SaveChanges();
 
             return Created(new Uri(Request.RequestUri,"/" +postComment.Id),postingDto);

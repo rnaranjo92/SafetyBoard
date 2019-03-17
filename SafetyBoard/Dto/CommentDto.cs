@@ -15,7 +15,7 @@ namespace SafetyBoard.Controllers.Api
 
         public int PostingId { get; private set; }
 
-        public string @comment { get; private set; }
+        public string postComment { get; private set; }
 
 
         protected CommentDto()
@@ -29,7 +29,7 @@ namespace SafetyBoard.Controllers.Api
                 throw new ArgumentNullException();
 
             PostingId = postingId;
-            comment = postingComment;
+            postComment = postingComment;
             UserId = userId;
         }
     }

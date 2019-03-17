@@ -8,6 +8,7 @@ namespace SafetyBoard.Models
 
         public ApplicationUser User { get; set; }
 
+
         public string UserId { get; set; }
 
         public Posting Posting { get; set; }
@@ -15,7 +16,7 @@ namespace SafetyBoard.Models
         [Required]
         public int PostingId { get; set; }
 
-        public string @comment { get; set; }
+        public string postComment { get; set; }
 
     }
 }

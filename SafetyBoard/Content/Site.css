@@ -12,6 +12,7 @@ body {
 .body-content {
   padding-left: 15px;
   padding-right: 15px;
+  min-height: 700px;
 }
 .dl-horizontal dt {
   white-space: normal;
@@ -257,10 +258,6 @@ textarea.form-control {
   display: flex;
   flex-direction: column;
 }
-footer {
-  height: 100px;
-  padding-left: 100px;
-}
 .commentSection {
   position: relative;
   height: 130px;
@@ -290,12 +287,31 @@ footer {
   overflow: auto;
   width: 100%;
 }
+.footer-universal {
+    background-color: #9faab4;
+    width: 100%;
+    position: absolute;
+    height: 100px;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-top:30px;
+}
+footerP {
+    color:white;
+}
+.btn {
+  padding: 9px 12px 7px;
+  border-width: 0 1px 4px 1px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 .btnEdit {
   padding-left: 0px;
   word-break: normal;
 }
 .btnSubmit {
-  padding-left: 210px;
+    padding-left: 210px;
 }
 .inspectionView {
   position: relative;
@@ -312,7 +328,7 @@ footer {
 ul.notifications {
   list-style: none;
   padding-left: 0;
-  max-height: 400px;
+  height: 400px;
   overflow: auto;
 }
 ul.notifications > li {

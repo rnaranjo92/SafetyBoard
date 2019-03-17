@@ -35,7 +35,7 @@ namespace SafetyBoard.Controllers
 
             var user = _context.Users.Single(u => u.Id == currentUser);
 
-            var commentor = _context.Comments.Where(c => c.PostingId == posting.Id).ToList();
+            var commentor = _context.Comments.Include(c=>c.User).Where(c => c.PostingId == posting.Id).ToList();
 
             var viewModel = new PostingDetailsViewModel
             {

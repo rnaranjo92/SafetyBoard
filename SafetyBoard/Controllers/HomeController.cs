@@ -20,13 +20,14 @@ namespace SafetyBoard.Controllers
         {
             var currentUser = User.Identity.GetUserId();
             var user = _context.Users.SingleOrDefault(u => u.Id == currentUser);
+
             var upcomingInspections = _context.Inspections
                 .Include(i => i.User)
                 .Include(i=>i.InspectionType)
                 .Include(i=>i.Organization)
                 .Where(i => i.DateTime > DateTime.Now && i.OrganizationId == user.OrganizationId  && i.IsCanceled == false);
 
-            return View(upcomingInspections);
+            return View("Index",upcomingInspections);
         }
 
         public ActionResult About()
