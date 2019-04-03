@@ -7,12 +7,13 @@
 /*Page Specific*/
 body {
   padding-top: 50px;
-  padding-bottom: 20px;
+  padding-bottom: 100px;
 }
 .body-content {
-  padding-left: 15px;
-  padding-right: 15px;
-  min-height: 700px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 50px;
+    min-height: 700px;
 }
 .dl-horizontal dt {
   white-space: normal;
@@ -112,7 +113,7 @@ textarea.form-control {
 }
 .dropdown-item {
   display: block;
-  width: 195px;
+  width: 190px;
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
@@ -287,18 +288,7 @@ textarea.form-control {
   overflow: auto;
   width: 100%;
 }
-.footer-universal {
-    background-color: #9faab4;
-    width: 100%;
-    position: absolute;
-    height: 100px;
-    padding-top: 20px;
-    padding-left: 20px;
-    margin-top:30px;
-}
-footerP {
-    color:white;
-}
+
 .btn {
   padding: 9px 12px 7px;
   border-width: 0 1px 4px 1px;
@@ -340,4 +330,10 @@ ul.notifications > li:last-child {
 }
 ul.notifications .highlight {
   font-weight: bold;
+}
+
+.footer-universal {
+    background-color: #9faab4;
+    width: 100%;
+    bottom: 0;
 }
