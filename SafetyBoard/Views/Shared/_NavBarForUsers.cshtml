@@ -11,7 +11,10 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Safety Forum", "Index", "Posting")</li>
-                <li>@Html.ActionLink("Schedule an Inspection", "InspectionForm", "Inspections")</li>
+                @if (User.Identity.Name.Contains("qa"))
+                {
+                    <li>@Html.ActionLink("Schedule an Inspection", "InspectionForm", "Inspections")</li>
+                }
             </ul>
             @Html.Partial("_LoginPartial")
         </div>

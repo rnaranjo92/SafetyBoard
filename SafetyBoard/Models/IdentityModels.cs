@@ -33,6 +33,8 @@ namespace SafetyBoard.Models
         [StringLength(15)]
         public string LastName { get; set; }
 
+        public bool IsQA { get; set; }
+
         public ICollection<UserNotification> UserNotification { get; private set; }
         public ICollection<Inspection> Inspection { get; private set; }
 

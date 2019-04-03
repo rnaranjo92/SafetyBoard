@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using SafetyBoard.Models;
 using SafetyBoard.Models.ViewModel;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -18,6 +19,14 @@ namespace SafetyBoard.Controllers
         [Authorize]
         public ActionResult InspectionForm()
         {
+            var currentUser = User.Identity.GetUserId();
+            var user = _context.Users.SingleOrDefault(u=>u.Id == currentUser);
+
+            if (!user.IsQA)
+            {
+                throw new InvalidOperationException("User is not QA");
+            }
+
             var organizations = _context.Organizations.ToList();
             var postingTypes = _context.PostingTypes.ToList();
 

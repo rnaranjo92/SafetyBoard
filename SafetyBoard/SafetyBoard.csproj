@@ -236,6 +236,10 @@
     <Compile Include="Migrations\201903162357245_ChangeCommentToPostComment.Designer.cs">
       <DependentUpon>201903162357245_ChangeCommentToPostComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904030519344_AddIsQAToIdentityModel.cs" />
+    <Compile Include="Migrations\201904030519344_AddIsQAToIdentityModel.Designer.cs">
+      <DependentUpon>201904030519344_AddIsQAToIdentityModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
     <Compile Include="Models\UserNotification.cs" />
@@ -879,6 +883,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903162357245_ChangeCommentToPostComment.resx">
       <DependentUpon>201903162357245_ChangeCommentToPostComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904030519344_AddIsQAToIdentityModel.resx">
+      <DependentUpon>201904030519344_AddIsQAToIdentityModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
