@@ -59,6 +59,7 @@ namespace SafetyBoard.Controllers
                 Email = user.Email,
                 Organization = _context.Organizations.ToList(),
                 OrganizationId = user.OrganizationId,
+                OrganizationName = user.Organization.Name,
                 PhoneNumber = user.PhoneNumber,
                 DriversLicense = user.DriversLicense
             };

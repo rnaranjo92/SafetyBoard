@@ -2,48 +2,51 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<h2>Upcoming Inspections</h2>
-<ul class="inspections">
-    @foreach (var inspection in Model)
-    {
-    <li>
-        <div class="date">
-            <div class="month">
-                @inspection.DateTime.ToString("MMM")
-            </div>
-            <div class="day">
-                @inspection.DateTime.ToString("d ")
-            </div>
-        </div>
-        <div class="details">
-            <span class="inspector">
-                <strong> @inspection.User.FirstName @inspection.User.LastName</strong>
-            </span>
-            <span class="inspectionType">
-                @inspection.InspectionType.SafetyCategory Inspection
-            </span>
-            <br />
-            
-            @if (inspection.User.Email == User.Identity.Name || User.Identity.Name.Contains("qa"))
-            {
-                <span class="view">
-                    <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a> |
-                </span>
-                <span class="delete">
-                    <a href="#" class="js-cancel-inspection" data-inspection-id="@inspection.Id">Cancel</a> |
-                </span>
-            }
+<div class="container-newsfeed">
+    <h2 class="inspection-newsfeed">Inspections Newsfeed</h2>
+    <ul class="inspections">
+        @foreach (var inspection in Model)
+        {
+            <li>
+                <div class="date">
+                    <div class="month">
+                        @inspection.DateTime.ToString("MMM")
+                    </div>
+                    <div class="day">
+                        @inspection.DateTime.ToString("d ")
+                    </div>
+                </div>
+                <div class="details">
+                    <span class="inspector">
+                        <strong> @inspection.User.FirstName @inspection.User.LastName</strong>
+                    </span>
+                    <span class="inspectionType">
+                        @inspection.InspectionType.SafetyCategory Inspection
+                    </span>
+                    <br />
 
-            <span class="edit">
-                <a href="@Url.Action("View","Inspections", new { id = inspection.Id})">View</a>
-            </span>
+                    @if (inspection.User.Email == User.Identity.Name || User.Identity.Name.Contains("qa"))
+                    {
+                        <span class="view">
+                            <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a> |
+                        </span>
+                        <span class="delete">
+                            <a href="#" class="js-cancel-inspection" data-inspection-id="@inspection.Id">Cancel</a> |
+                        </span>
+                    }
 
-        </div>
-    </li>
-        
-    }
+                    <span class="edit">
+                        <a href="@Url.Action("View","Inspections", new { id = inspection.Id})">View</a>
+                    </span>
 
-</ul>
+                </div>
+            </li>
+
+        }
+
+    </ul>
+</div>
+
 @section scripts
     {
         <script>

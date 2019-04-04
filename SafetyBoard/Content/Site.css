@@ -144,16 +144,19 @@ textarea.form-control {
   background-color: #27aee2;
   border-color: #40b5e3;
 }
+.inspections{
+    padding-left:0;
+}
 .inspections > li {
   position: relative;
-  margin-bottom: 30px;
-  margin-top: 30px;
   list-style-type: none;
   padding-right: 20px;
   padding: 10px 0px 70px 30px;
   box-shadow: 1px 2px 5px grey;
   width: 290px;
   height: 40px;
+  margin-top:20px;
+  margin-bottom:20px;
 }
 .inspections > li .details {
   position: absolute;
@@ -336,4 +339,14 @@ ul.notifications .highlight {
     background-color: #9faab4;
     width: 100%;
     bottom: 0;
+}
+.container-newsfeed {
+    position: relative;
+    width: 330px;
+    margin-top:30px;
+    padding: 20px;
+    overflow:auto;
+    min-height: 500px;
+    max-height: 800px;
+    box-shadow: 1px 2px 5px grey;
 }

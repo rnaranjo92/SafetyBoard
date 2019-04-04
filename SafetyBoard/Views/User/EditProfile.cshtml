@@ -22,9 +22,18 @@
         @Html.ValidationMessageFor(m => m.LastName)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.OrganizationId)
-        @Html.DropDownListFor(m => m.OrganizationId, new SelectList(Model.Organization, "Id", "Name"), "", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.OrganizationId)
+        @Html.LabelFor(m => m.Organization)
+        @if (User.IsInRole("CanManagePosts") || User.Identity.Name.Contains("qa"))
+        {
+            @Html.DropDownListFor(m => m.OrganizationId, new SelectList(Model.Organization, "Id", "Name"), "", new { @class = "form-control" })
+
+        }
+        else
+        {
+            @Html.TextBoxFor(m => m.OrganizationName, new { @class = "form-control", @readonly = "readonly" });
+            @Html.HiddenFor(m => m.OrganizationId)
+        }
+
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Email)
