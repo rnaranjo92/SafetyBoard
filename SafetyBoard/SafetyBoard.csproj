@@ -240,6 +240,11 @@
     <Compile Include="Migrations\201904030519344_AddIsQAToIdentityModel.Designer.cs">
       <DependentUpon>201904030519344_AddIsQAToIdentityModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904050541465_AddSafetyNews.cs" />
+    <Compile Include="Migrations\201904050541465_AddSafetyNews.Designer.cs">
+      <DependentUpon>201904050541465_AddSafetyNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SafetyNews.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
     <Compile Include="Models\UserNotification.cs" />
@@ -887,6 +892,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904030519344_AddIsQAToIdentityModel.resx">
       <DependentUpon>201904030519344_AddIsQAToIdentityModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904050541465_AddSafetyNews.resx">
+      <DependentUpon>201904050541465_AddSafetyNews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -68,6 +68,7 @@ namespace SafetyBoard.Models
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<UserNotification> UserNotifications { get; set; }
+        public DbSet<SafetyNews> SafetyNews { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -102,6 +103,10 @@ namespace SafetyBoard.Models
                 .WithMany(u=>u.UserNotification)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<SafetyNews>()
+                .HasRequired(sn => sn.User)
+                .WithMany()
+                .WillCascadeOnDelete(false);
             
         }
     }
