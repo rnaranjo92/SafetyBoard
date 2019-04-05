@@ -1,95 +1,157 @@
-﻿@model IEnumerable<SafetyBoard.Models.Inspection>
+﻿@model SafetyBoard.Models.ViewModel.HomeViewModel
+
 @{
     ViewBag.Title = "Home Page";
 }
-<div class="container-newsfeed">
-    <h2 class="inspection-newsfeed">Inspections Newsfeed</h2>
-    <ul class="inspections">
-        @foreach (var inspection in Model)
-        {
-            <li>
-                <div class="date">
-                    <div class="month">
-                        @inspection.DateTime.ToString("MMM")
+<div class="container2">
+    <div class="container-newsfeed">
+        <h2 class="inspection-newsfeed">Inspections Newsfeed</h2>
+        <ul class="inspections">
+
+            @foreach (var inspection in Model.Inspection)
+            {
+                <li>
+                    <div class="date">
+                        <div class="month">
+                            @inspection.DateTime.ToString("MMM")
+                        </div>
+                        <div class="day">
+                            @inspection.DateTime.ToString("d ")
+                        </div>
                     </div>
-                    <div class="day">
-                        @inspection.DateTime.ToString("d ")
+                    <div class="details">
+                        <span class="inspector">
+                            <strong> @inspection.User.FirstName @inspection.User.LastName</strong>
+                        </span>
+                        <span class="inspectionType">
+                            @inspection.InspectionType.SafetyCategory Inspection
+                        </span>
+                        <br />
+
+                        @if (inspection.User.Email == User.Identity.Name || User.Identity.Name.Contains("qa"))
+                        {
+                            <span class="view">
+                                <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a> |
+                            </span>
+                            <span class="delete">
+                                <a href="#" class="js-cancel-inspection" data-inspection-id="@inspection.Id">Cancel</a> |
+                            </span>
+                        }
+
+                        <span class="edit">
+                            <a href="@Url.Action("View","Inspections", new { id = inspection.Id})">View</a>
+                        </span>
+
                     </div>
-                </div>
-                <div class="details">
-                    <span class="inspector">
-                        <strong> @inspection.User.FirstName @inspection.User.LastName</strong>
-                    </span>
-                    <span class="inspectionType">
-                        @inspection.InspectionType.SafetyCategory Inspection
-                    </span>
-                    <br />
+                </li>
 
-                    @if (inspection.User.Email == User.Identity.Name || User.Identity.Name.Contains("qa"))
-                    {
-                        <span class="view">
-                            <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a> |
+            }
+
+        </ul>
+    </div>
+    <div class="container-newsfeed2">
+        <h2 class="inspection-newsfeed">Safety News</h2>
+        <ul class="inspections">
+            @foreach (var inspection in Model.Inspection)
+            {
+                <li>
+                    <div class="date">
+                        <div class="month">
+                            @inspection.DateTime.ToString("MMM")
+                        </div>
+                        <div class="day">
+                            @inspection.DateTime.ToString("d ")
+                        </div>
+                    </div>
+                    <div class="details">
+                        <span class="inspector">
+                            <strong> @inspection.User.FirstName @inspection.User.LastName</strong>
                         </span>
-                        <span class="delete">
-                            <a href="#" class="js-cancel-inspection" data-inspection-id="@inspection.Id">Cancel</a> |
+                        <span class="inspectionType">
+                            @inspection.InspectionType.SafetyCategory Inspection
                         </span>
-                    }
+                        <br />
 
-                    <span class="edit">
-                        <a href="@Url.Action("View","Inspections", new { id = inspection.Id})">View</a>
-                    </span>
+                        @if (inspection.User.Email == User.Identity.Name || User.Identity.Name.Contains("qa"))
+                        {
+                            <span class="view">
+                                <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a> |
+                            </span>
+                            <span class="delete">
+                                <a href="#" class="js-cancel-inspection" data-inspection-id="@inspection.Id">Cancel</a> |
+                            </span>
+                        }
 
-                </div>
-            </li>
+                        <span class="edit">
+                            <a href="@Url.Action("View","Inspections", new { id = inspection.Id})">View</a>
+                        </span>
 
-        }
+                    </div>
+                </li>
 
-    </ul>
+            }
+
+        </ul>
+    </div>
+    <div class="container-newsfeed3">
+        <img class="profImage" src="/Image/Avatar.jpg">
+        <ul class="userInfo">
+            @if (Model.User.IsQA)
+            {
+                <li class="label label-success">Inspector</li>
+            }
+            <li class="userInfo-list"><strong>Name:</strong> @Model.User.FirstName @Model.User.LastName</li>
+            <li class="userInfo-list"><strong>Org:</strong> @Model.User.Organization.Name</li>
+            <li class="userInfo-list"><strong>Email:</strong>@Model.User.Email</li>
+            <li class="userInfo-list"><strong>Phone Number: </strong>@Model.User.PhoneNumber</li>
+        </ul>
+    </div>
 </div>
+
 
 @section scripts
     {
-        <script>
-            $(document).ready(function () {
-                $(".js-cancel-inspection").click(function (e) {
-                    var cancelLink = $(e.target);
+    <script>
+        $(document).ready(function () {
+            $(".js-cancel-inspection").click(function (e) {
+                var cancelLink = $(e.target);
 
-                    bootbox.dialog({
-                        title: 'Confirm',
-                        message: "Are you sure you want to cancel this inspection?",
-                        buttons: {
-                            no: {
-                                label: "No",
-                                className: 'btn-default',
-                                callback: function () {
-                                    bootbox.hideAll();
-                                }
-                            },
-                            yes: {
-                                label: "Yes",
-                                className: 'btn-danger',
-                                callback: function () {
-                                    $.ajax({
-                                        url: "/api/inspections/" + cancelLink.attr("data-inspection-id"),
-                                        method: "DELETE"
-                                    })
-                                        .done(function () {
-                                            cancelLink.parents("li").fadeOut(function () {
-                                                $(this).remove();
-                                            });
-                                            toastr.success("Inspection has been successfully cancelled")
-                                        })
-                                        .fail(function () {
-                                            toastr.fail("An error has occured.");
+                bootbox.dialog({
+                    title: 'Confirm',
+                    message: "Are you sure you want to cancel this inspection?",
+                    buttons: {
+                        no: {
+                            label: "No",
+                            className: 'btn-default',
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        yes: {
+                            label: "Yes",
+                            className: 'btn-danger',
+                            callback: function () {
+                                $.ajax({
+                                    url: "/api/inspections/" + cancelLink.attr("data-inspection-id"),
+                                    method: "DELETE"
+                                })
+                                    .done(function () {
+                                        cancelLink.parents("li").fadeOut(function () {
+                                            $(this).remove();
                                         });
-                                }
+                                        toastr.success("Inspection has been successfully cancelled")
+                                    })
+                                    .fail(function () {
+                                        toastr.fail("An error has occured.");
+                                    });
                             }
                         }
-                    });
+                    }
                 });
             });
-        </script>
-    }
+        });
+    </script>
+}
 
 
 

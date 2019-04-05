@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using SafetyBoard.Models;
+using SafetyBoard.Models.ViewModel;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -25,9 +26,11 @@ namespace SafetyBoard.Controllers
                 .Include(i => i.User)
                 .Include(i=>i.InspectionType)
                 .Include(i=>i.Organization)
-                .Where(i => i.DateTime > DateTime.Now && i.OrganizationId == user.OrganizationId  && i.IsCanceled == false);
+                .Where(i => i.DateTime > DateTime.Now && i.OrganizationId == user.OrganizationId  && i.IsCanceled == false).ToList();
 
-            return View("Index",upcomingInspections);
+            var viewModel = new HomeViewModel(upcomingInspections, user);
+
+            return View("Index",viewModel);
         }
 
         public ActionResult About()
