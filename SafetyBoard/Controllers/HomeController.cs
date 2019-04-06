@@ -28,9 +28,25 @@ namespace SafetyBoard.Controllers
                 .Include(i=>i.Organization)
                 .Where(i => i.DateTime > DateTime.Now && i.OrganizationId == user.OrganizationId  && i.IsCanceled == false).ToList();
 
-            var viewModel = new HomeViewModel(upcomingInspections, user);
+            var articles = _context.SafetyNews.Include(sn=>sn.User).Where(sn => sn.IsRemoved == false);
+
+            var viewModel = new HomeViewModel(upcomingInspections, user,articles);
 
             return View("Index",viewModel);
+        }
+
+        public ActionResult PostArticle(HomeViewModel viewModel) 
+        {
+            var article = new SafetyNews()
+            {
+                UserId = User.Identity.GetUserId(),
+                Title = viewModel.PostArticle.Title,
+                Article = viewModel.PostArticle.Article,
+                DatePosted = DateTime.Now,
+            };
+            _context.SafetyNews.Add(article);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult About()

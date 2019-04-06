@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201904050541465_AddSafetyNews.Designer.cs">
       <DependentUpon>201904050541465_AddSafetyNews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904060424539_ModifySafetyNews.cs" />
+    <Compile Include="Migrations\201904060424539_ModifySafetyNews.Designer.cs">
+      <DependentUpon>201904060424539_ModifySafetyNews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\SafetyNews.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
@@ -895,6 +899,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904050541465_AddSafetyNews.resx">
       <DependentUpon>201904050541465_AddSafetyNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904060424539_ModifySafetyNews.resx">
+      <DependentUpon>201904060424539_ModifySafetyNews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

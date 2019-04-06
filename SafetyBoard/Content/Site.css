@@ -87,7 +87,10 @@ label {
   font-size: 17px;
 }
 .form-control {
-  font-size: 17px;
+    
+}
+.form-textarea {
+    min-width: 100%;
 }
 .textarea {
   min-height: 200px;
@@ -108,8 +111,7 @@ label {
 textarea.form-control {
   position: relative;
   height: 300px;
-  background-color: rgba(255, 179, 0, 0.21);
-  font-size: 12px;
+  font-size: 20px;
 }
 .dropdown-item {
   display: block;
@@ -351,7 +353,7 @@ ul.notifications .highlight {
     padding: 20px;
     overflow: auto;
     min-height: 500px;
-    max-height: 800px;
+    max-height: 500px;
     box-shadow: 1px 2px 5px grey;
 }
 
@@ -372,6 +374,7 @@ ul.notifications .highlight {
     position: relative;
     width: 330px;
     margin-top: 30px;
+    max-height: 400px;
     padding: 20px;
     overflow: auto;
     box-shadow: 1px 2px 5px grey;
@@ -386,4 +389,55 @@ ul.notifications .highlight {
 }
 .userInfo-list{
     margin-top:5px;
+}
+.modal-title{
+    font-size:20px;
+    margin-top:10px;
+    text-align:center;
+}
+.modal-close {
+    position:absolute;
+    right:4%;
+    top:3%;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: 0 1px 0 #ffffff;
+    filter: alpha(opacity=20);
+    opacity: 0.2
+}
+.modal-close:hover, .modal-close:focus
+{
+    color: #16181b;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: 0.5
+}
+button.modal-close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    appearance: none
+}
+.btn-modal{
+    margin-left:70%;
+}
+.post-heading{
+    font-style:italic;
+    margin-left:30px;
+}
+.inspection-newsfeed{
+    margin-top:2px;
+}
+.safety-news {
+    list-style: none;
+    padding-left:0;
+}
+.safety-news>li{
+    box-shadow: 1px 2px 5px grey;
+    padding:10px 15px 15px 15px;
+    margin-bottom:20px;
 }

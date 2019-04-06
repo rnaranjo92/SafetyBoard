@@ -50,46 +50,62 @@
         </ul>
     </div>
     <div class="container-newsfeed2">
+        <div class="postArticle">
+          
+            <h2 class="post-heading">"Safety is as simple as ABC - <br />Always Be Careful." </h2> <button type="button" class="btn btn-primary btn-modal" data-toggle="modal" data-target="#exampleModal">Post an Article</button>
+            <hr />
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Post An Article</h5>
+                            <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @using (Html.BeginForm("PostArticle", "Home"))
+                            {
+                                @Html.AntiForgeryToken()
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.PostArticle.Title,new { @class ="col-form-label"} ):
+                                @Html.TextBoxFor(m => m.PostArticle.Title, new { @class="form-control"})
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.PostArticle.Article, new { @class = "col-form-label" }):
+                                @Html.TextAreaFor(m=>m.PostArticle.Article,new { @class = "form-control form-textarea" })
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" value="Save" class="btn btn-primary">Post</button>
+                        </div>
+                            }
+
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
         <h2 class="inspection-newsfeed">Safety News</h2>
-        <ul class="inspections">
-            @foreach (var inspection in Model.Inspection)
-            {
-                <li>
-                    <div class="date">
-                        <div class="month">
-                            @inspection.DateTime.ToString("MMM")
-                        </div>
-                        <div class="day">
-                            @inspection.DateTime.ToString("d ")
-                        </div>
-                    </div>
-                    <div class="details">
-                        <span class="inspector">
-                            <strong> @inspection.User.FirstName @inspection.User.LastName</strong>
-                        </span>
-                        <span class="inspectionType">
-                            @inspection.InspectionType.SafetyCategory Inspection
-                        </span>
-                        <br />
-
-                        @if (inspection.User.Email == User.Identity.Name || User.Identity.Name.Contains("qa"))
-                        {
-                            <span class="view">
-                                <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a> |
-                            </span>
-                            <span class="delete">
-                                <a href="#" class="js-cancel-inspection" data-inspection-id="@inspection.Id">Cancel</a> |
-                            </span>
-                        }
-
-                        <span class="edit">
-                            <a href="@Url.Action("View","Inspections", new { id = inspection.Id})">View</a>
-                        </span>
-
-                    </div>
-                </li>
-
-            }
+        <ul class="safety-news">
+           @foreach(var article in Model.SafetyNews)
+           {
+            <li>
+                <div class="article-poster">
+                    <strong><p>@article.User.FirstName @article.User.LastName</p></strong>
+                </div>
+                <div class="article-date">
+                    <p>@article.DatePosted.ToString("MMM dd yyyy hh:mm tt")</p>
+                </div>
+                <div class="article-Title">
+                    <p>Title: @article.Title</p>
+                </div>
+                <div class="article-Title">
+                    <p>Content: @article.Article</p>
+                </div>
+            </li>
+           }
 
         </ul>
     </div>
@@ -99,7 +115,7 @@
             @if (Model.User.IsQA)
             {
                 <li class="label label-success">Inspector</li>
-            }
+                }
             <li class="userInfo-list"><strong>Name:</strong> @Model.User.FirstName @Model.User.LastName</li>
             <li class="userInfo-list"><strong>Org:</strong> @Model.User.Organization.Name</li>
             <li class="userInfo-list"><strong>Email:</strong>@Model.User.Email</li>
