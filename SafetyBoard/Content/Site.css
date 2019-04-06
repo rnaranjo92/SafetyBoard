@@ -441,3 +441,7 @@ button.modal-close {
     padding:10px 15px 15px 15px;
     margin-bottom:20px;
 }
+.see-more{
+    border-radius:20px 20px 20px 20px;
+    margin-left:40%;
+}

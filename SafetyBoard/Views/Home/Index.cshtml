@@ -51,7 +51,7 @@
     </div>
     <div class="container-newsfeed2">
         <div class="postArticle">
-          
+
             <h2 class="post-heading">"Safety is as simple as ABC - <br />Always Be Careful." </h2> <button type="button" class="btn btn-primary btn-modal" data-toggle="modal" data-target="#exampleModal">Post an Article</button>
             <hr />
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,47 +67,47 @@
                             @using (Html.BeginForm("PostArticle", "Home"))
                             {
                                 @Html.AntiForgeryToken()
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.PostArticle.Title,new { @class ="col-form-label"} ):
-                                @Html.TextBoxFor(m => m.PostArticle.Title, new { @class="form-control"})
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.PostArticle.Article, new { @class = "col-form-label" }):
-                                @Html.TextAreaFor(m=>m.PostArticle.Article,new { @class = "form-control form-textarea" })
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" value="Save" class="btn btn-primary">Post</button>
-                        </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.PostArticle.Title, new { @class = "col-form-label" }):
+                                    @Html.TextBoxFor(m => m.PostArticle.Title, new { @class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.PostArticle.Article, new { @class = "col-form-label" }):
+                                    @Html.TextAreaFor(m => m.PostArticle.Article, new { @class = "form-control form-textarea" })
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" value="Save" class="btn btn-primary">Post</button>
+                                </div>
                             }
 
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-        <h2 class="inspection-newsfeed">Safety News</h2>
-        <ul class="safety-news">
-           @foreach(var article in Model.SafetyNews)
-           {
-            <li>
-                <div class="article-poster">
-                    <strong><p>@article.User.FirstName @article.User.LastName</p></strong>
-                </div>
-                <div class="article-date">
-                    <p>@article.DatePosted.ToString("MMM dd yyyy hh:mm tt")</p>
-                </div>
-                <div class="article-Title">
-                    <p>Title: @article.Title</p>
-                </div>
-                <div class="article-Title">
-                    <p>Content: @article.Article</p>
-                </div>
-            </li>
-           }
-
-        </ul>
+        <h3 class="inspection-newsfeed">Safety News For the Month of @DateTime.Now.ToString("MMMM")</h3>
+        @foreach (var article in Model.SafetyNews)
+        {
+            <ul class="safety-news">
+                <li>
+                    <div class="article-poster">
+                        <strong><p>@article.User.FirstName @article.User.LastName</p></strong>
+                    </div>
+                    <div class="article-date">
+                        <p>@article.DatePosted.ToString("MMM dd yyyy hh:mm tt")</p>
+                    </div>
+                    <div class="article-Title">
+                        <p>Title: @article.Title</p>
+                    </div>
+                    <div class="article-Title">
+                        <p>Content: @article.Article</p>
+                    </div>
+                </li>
+            </ul>
+        }
+         
     </div>
     <div class="container-newsfeed3">
         <img class="profImage" src="/Image/Avatar.jpg">
@@ -129,6 +129,7 @@
     {
     <script>
         $(document).ready(function () {
+
             $(".js-cancel-inspection").click(function (e) {
                 var cancelLink = $(e.target);
 

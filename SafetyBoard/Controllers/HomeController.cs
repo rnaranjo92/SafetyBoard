@@ -12,7 +12,6 @@ namespace SafetyBoard.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext _context;
-
         public HomeController()
         {
             _context = new ApplicationDbContext();
@@ -28,7 +27,7 @@ namespace SafetyBoard.Controllers
                 .Include(i=>i.Organization)
                 .Where(i => i.DateTime > DateTime.Now && i.OrganizationId == user.OrganizationId  && i.IsCanceled == false).ToList();
 
-            var articles = _context.SafetyNews.Include(sn=>sn.User).Where(sn => sn.IsRemoved == false);
+            var articles = _context.SafetyNews.Include(sn=>sn.User).Where(sn => sn.IsRemoved == false && sn.DatePosted.Month == DateTime.Now.Month && sn.DatePosted.Year == DateTime.Now.Year);
 
             var viewModel = new HomeViewModel(upcomingInspections, user,articles);
 
