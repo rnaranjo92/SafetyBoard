@@ -1,0 +1,94 @@
+﻿@model SafetyBoard.Models.ViewModel.ArticleViewModel
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "ViewArticle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="article-container">
+    <div class="poster-information">
+        <h3>Poster Information</h3>
+        @if (Model.User.IsQA)
+        {
+            <label class="label label-success">Inspector</label>
+        }
+        else
+        {
+            <label class="label label-primary">Normal User</label>
+        }
+        <p class="poster-info">Name : @Model.User.FirstName @Model.User.LastName</p>
+        <p class="poster-info">Organization : @Model.User.Organization.Name</p>
+        <p class="poster-info">Email : @Model.User.Email</p>
+        <p class="poster-info">Contact No. : @Model.User.PhoneNumber</p>
+    </div>
+    <div class="article">
+        @if (User.Identity.GetUserId() == Model.User.Id)
+        {
+            if (User.Identity.GetUserId() != Model.Article.UserId)
+            {
+                throw new InvalidOperationException();
+            }
+            <button class="btn btn-danger btn-delete" data-toggle="modal" data-target="#exampleModal">Delete</button>
+            <button class="btn btn-success btn-edit" data-toggle="modal" data-target="#editModal">Edit</button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h3>Are you sure you want to delete this post?</h3>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteArticle", "Home", new { id = Model.Article.Id})'">Delete Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Edit</h5>
+                            <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @using (Html.BeginForm("UpdateArticle","Home"))
+                            {
+                                @Html.HiddenFor(m=>Model.Article.Id)
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    @Html.LabelFor(m => Model.Article.Title, new { @class = "col-form-label" }):
+                                    @Html.TextBoxFor(m => Model.Article.Title, new { @class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => Model.Article.Article, new { @class = "col-form-label" }):
+                                    @Html.TextAreaFor(m => Model.Article.Article ,new { @class = "form-control form-textarea" })
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" value="Save" class="btn btn-primary">Post</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        <h2 class="poster-info">Article Title : @Model.Article.Title</h2>
+        <h4 class="poster-info">Date and Time Posted : @Model.Article.DatePosted</h4>
+        <p class="poster-info">@Model.Article.Article</p>
+
+    </div>
+</div>
+
+

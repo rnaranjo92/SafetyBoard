@@ -80,9 +80,7 @@
                                     <button type="submit" value="Save" class="btn btn-primary">Post</button>
                                 </div>
                             }
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -92,9 +90,13 @@
         {
             <ul class="safety-news">
                 <li>
+                    <div class="view-article">
+                        <a href="@Url.Action("ViewArticle","Home", new { id = article.Id})">View Article</a>
+                    </div>
                     <div class="article-poster">
                         <strong><p>@article.User.FirstName @article.User.LastName</p></strong>
                     </div>
+
                     <div class="article-date">
                         <p>@article.DatePosted.ToString("MMM dd yyyy hh:mm tt")</p>
                     </div>
@@ -104,6 +106,9 @@
                     <div class="article-Title">
                         <p>Content: @article.Article</p>
                     </div>
+                    <div class="article-buttons">
+                    </div>
+
                 </li>
             </ul>
         }

@@ -445,3 +445,41 @@ button.modal-close {
     border-radius:20px 20px 20px 20px;
     margin-left:40%;
 }
+.edit-article {
+    position:absolute;
+    left:75%;
+}
+.view-article {
+    position: absolute;
+    left:78%;
+}
+.article-container{
+    display:flex;
+    flex-direction:row;
+}
+.poster-information {
+    box-shadow: 1px 2px 5px grey;
+    margin-top:30px;
+    padding: 5px 15px 15px 15px;
+    position:relative;
+    display:inline-block;
+    margin-bottom: 20px;
+}
+.article {
+    position: relative;
+    width:60%;
+    margin-top: 30px;
+    margin-left: 20px;
+    box-shadow: 1px 2px 5px grey;
+    padding: 5px 15px 15px 15px;
+}
+.btn-delete{
+    position:absolute;
+    left:93%;
+    padding: 1px 1px 1px 1px;
+}
+.btn-edit {
+    position: absolute;
+    left: 88%;
+    padding: 1px 1px 1px 1px;
+}

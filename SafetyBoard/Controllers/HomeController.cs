@@ -33,7 +33,7 @@ namespace SafetyBoard.Controllers
 
             return View("Index",viewModel);
         }
-
+        [HttpPost]
         public ActionResult PostArticle(HomeViewModel viewModel) 
         {
             var article = new SafetyNews()
@@ -44,6 +44,49 @@ namespace SafetyBoard.Controllers
                 DatePosted = DateTime.Now,
             };
             _context.SafetyNews.Add(article);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult UpdateArticle(ArticleViewModel viewModel)
+        {
+            var articleInDb = _context.SafetyNews.SingleOrDefault(s => s.Id == viewModel.Article.Id);
+
+            articleInDb.Title = viewModel.Article.Title;
+            articleInDb.Article = viewModel.Article.Article;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("ViewArticle", "Home", new { id = viewModel.Article.Id });
+        }
+
+        public ActionResult ViewArticle(int id)
+        {
+            var article = _context.SafetyNews.Include(sn=>sn.User).Include(sn=>sn.User.Organization).SingleOrDefault(sn => sn.Id == id);
+
+            if(article == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            var viewModel = new ArticleViewModel
+            {
+                Article = article,
+                User = article.User,
+            };
+
+            return View(viewModel);
+        }
+
+        public ActionResult DeleteArticle(int id)
+        {
+            var article = _context.SafetyNews.SingleOrDefault(sn => sn.Id == id);
+
+            if (article == null)
+            {
+                throw new ArgumentNullException();
+            }
+            _context.SafetyNews.Remove(article);
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
