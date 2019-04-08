@@ -38,7 +38,6 @@ namespace SafetyBoard.Models
         public ICollection<UserNotification> UserNotification { get; private set; }
         public ICollection<Inspection> Inspection { get; private set; }
 
-
         public ApplicationUser()
         {
             UserNotification = new Collection<UserNotification>();
@@ -102,6 +101,7 @@ namespace SafetyBoard.Models
                 .HasRequired(n => n.User)
                 .WithMany(u=>u.UserNotification)
                 .WillCascadeOnDelete(false);
+
 
             modelBuilder.Entity<SafetyNews>()
                 .HasRequired(sn => sn.User)

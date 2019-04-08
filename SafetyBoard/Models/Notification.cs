@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace SafetyBoard.Models
 {
@@ -11,8 +10,9 @@ namespace SafetyBoard.Models
 
         public NotificationType Type { get; private set; }
 
-        [Required]
         public Inspection Inspection { get; private set; }
+
+        public SafetyNews SafetyNews { get; private set; }
 
         protected Notification()
         {
@@ -28,6 +28,15 @@ namespace SafetyBoard.Models
             Inspection = inspection;
             Type = notificationType;
         }
+        private Notification(SafetyNews safetyNews, NotificationType notificationType)
+        {
+            if(safetyNews == null)
+                throw new ArgumentNullException();
+
+            DateTime = DateTime.Now;
+            SafetyNews = safetyNews;
+            Type = notificationType;
+        }
         public static Notification InspectionCreated(Inspection inspection)
         {
             return new Notification(inspection,NotificationType.InspectionCreated);
@@ -40,5 +49,10 @@ namespace SafetyBoard.Models
         {
             return new Notification(inspection, NotificationType.InspectionCanceled);
         }
+        public static Notification NewSafetyNews(SafetyNews safetyNews)
+        {
+            return new Notification(safetyNews, NotificationType.SafetyNewsPosted);
+        }
+        
     }
 }

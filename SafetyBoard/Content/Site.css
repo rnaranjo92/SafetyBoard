@@ -323,7 +323,6 @@ textarea.form-control {
 ul.notifications {
   list-style: none;
   padding-left: 0;
-  height: 400px;
   overflow: auto;
 }
 ul.notifications > li {

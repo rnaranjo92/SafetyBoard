@@ -40,6 +40,9 @@
                     if(notification.type == 3){%>
                         <li><span class="highlight"> <%= notification.inspection.user.firstName%> <%=notification.inspection.user.lastName %> </span> has updated the <%= notification.inspection.inspectionType.safetyCategory %> inspections scheduled on <%= moment(notification.inspection.dateTime).format("MMM D") %>.</li>  
                     <%}
+                    if(notification.type == 4){%>
+                        <li><span class="highlight"> <%= notification.safetyNews.user.firstName%> <%=notification.safetyNews.user.lastName %> </span> from your organization posted an article called the "<%= notification.safetyNews.title %>" on <%= moment(notification.safetyNews.datePosted).format("MMM D") %>.</li>  
+                    <%}
                 })
             %>
         </ul>

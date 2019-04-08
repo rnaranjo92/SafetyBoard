@@ -13,5 +13,7 @@ namespace SafetyBoard.Dto
         [Required]
         public InspectionDto Inspection { get; private set; }
 
+        public SafetyNewsDto SafetyNews { get; private set; }
+
     }
 }

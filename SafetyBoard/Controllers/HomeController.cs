@@ -19,7 +19,7 @@ namespace SafetyBoard.Controllers
         public ActionResult Index()
         {
             var currentUser = User.Identity.GetUserId();
-            var user = _context.Users.SingleOrDefault(u => u.Id == currentUser);
+            var user = _context.Users.Include(u=>u.Organization).SingleOrDefault(u => u.Id == currentUser);
 
             var upcomingInspections = _context.Inspections
                 .Include(i => i.User)
@@ -36,15 +36,29 @@ namespace SafetyBoard.Controllers
         [HttpPost]
         public ActionResult PostArticle(HomeViewModel viewModel) 
         {
+            var currentUser = User.Identity.GetUserId();
+
             var article = new SafetyNews()
             {
-                UserId = User.Identity.GetUserId(),
+                UserId = currentUser,
                 Title = viewModel.PostArticle.Title,
                 Article = viewModel.PostArticle.Article,
                 DatePosted = DateTime.Now,
             };
+
+            var poster = _context.Users.SingleOrDefault(u => u.Id == currentUser);
+            var notification = Notification.NewSafetyNews(article);
+
+            var users = _context.Users.Where(u => u.OrganizationId == poster.OrganizationId).ToList();
+
+            foreach (var user in users)
+            {
+                user.Notify(notification);
+            }
+
             _context.SafetyNews.Add(article);
             _context.SaveChanges();
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -54,6 +68,7 @@ namespace SafetyBoard.Controllers
 
             articleInDb.Title = viewModel.Article.Title;
             articleInDb.Article = viewModel.Article.Article;
+
 
             _context.SaveChanges();
 
@@ -74,7 +89,6 @@ namespace SafetyBoard.Controllers
                 Article = article,
                 User = article.User,
             };
-
             return View(viewModel);
         }
 
@@ -86,7 +100,9 @@ namespace SafetyBoard.Controllers
             {
                 throw new ArgumentNullException();
             }
-            _context.SafetyNews.Remove(article);
+
+            article.IsRemoved = true;
+
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }

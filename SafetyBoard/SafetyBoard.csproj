@@ -208,6 +208,7 @@
     <Compile Include="Controllers\Api\NotificationsController.cs" />
     <Compile Include="Dto\InspectionDto.cs" />
     <Compile Include="Dto\NotificationDto.cs" />
+    <Compile Include="Dto\SafetyNewsDto.cs" />
     <Compile Include="Migrations\201903020645282_AddCommentToPosting.cs" />
     <Compile Include="Migrations\201903020645282_AddCommentToPosting.Designer.cs">
       <DependentUpon>201903020645282_AddCommentToPosting.cs</DependentUpon>
@@ -247,6 +248,10 @@
     <Compile Include="Migrations\201904060424539_ModifySafetyNews.cs" />
     <Compile Include="Migrations\201904060424539_ModifySafetyNews.Designer.cs">
       <DependentUpon>201904060424539_ModifySafetyNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904080221126_UpdateNotificationsModel.cs" />
+    <Compile Include="Migrations\201904080221126_UpdateNotificationsModel.Designer.cs">
+      <DependentUpon>201904080221126_UpdateNotificationsModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\SafetyNews.cs" />
     <Compile Include="Models\Notification.cs" />
@@ -904,6 +909,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904060424539_ModifySafetyNews.resx">
       <DependentUpon>201904060424539_ModifySafetyNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904080221126_UpdateNotificationsModel.resx">
+      <DependentUpon>201904080221126_UpdateNotificationsModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -26,6 +26,8 @@ namespace SafetyBoard.Controllers.Api
                 .Where(un => un.UserId == userId && !un.IsRead)
                 .Select(un => un.Notification)
                 .Include(n => n.Inspection.InspectionType)
+                .Include(n=>n.SafetyNews.User)
+                .Include(n => n.SafetyNews.User.Organization)
                 .Include(n => n.Inspection)
                 .Include(i => i.Inspection.User)
                 .ToList();
