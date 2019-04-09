@@ -253,6 +253,10 @@
     <Compile Include="Migrations\201904080221126_UpdateNotificationsModel.Designer.cs">
       <DependentUpon>201904080221126_UpdateNotificationsModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904090422015_Check1.cs" />
+    <Compile Include="Migrations\201904090422015_Check1.Designer.cs">
+      <DependentUpon>201904090422015_Check1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\SafetyNews.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
@@ -912,6 +916,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904080221126_UpdateNotificationsModel.resx">
       <DependentUpon>201904080221126_UpdateNotificationsModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904090422015_Check1.resx">
+      <DependentUpon>201904090422015_Check1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,4 @@
-﻿/* Set padding to keep content from hitting the edges */
+﻿d/* Set padding to keep content from hitting the edges */
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -75,12 +75,7 @@ textarea {
 h2 {
   font-size: 30px;
   font-weight: 500;
-  margin-top: 30px;
-}
-.h2 {
-  font-size: 30px;
-  font-weight: 500;
-  margin-top: 30px;
+  margin-top: 60px;
 }
 label {
   font-weight: normal;
@@ -203,6 +198,7 @@ textarea.form-control {
   position: absolute;
   top: 10px;
   left: 10px;
+  margin-top: 30px;
   padding-left: 30px;
   padding-top: 25px;
   padding-bottom: 40px;
@@ -219,19 +215,23 @@ textarea.form-control {
   padding-left: 0px;
 }
 .postInformation {
-  position: relative;
-  margin-left: 300px;
-  padding-bottom: 400px;
-  box-shadow: 1px 2px 5px grey;
-  overflow: hidden;
-  margin-top: -10px;
+    position: relative;
+    margin-left: 300px;
+    margin-top: 70px;
+    padding-bottom: 400px;
+    box-shadow: 1px 2px 5px grey;
+    overflow: hidden;
+    margin-top: -10px;
 }
 .postInformation .postDetails {
   padding: 20px 0px 0px 10px;
 }
+.postDetails {
+    margin-top: 70px;
+}
 .separator {
-  margin-right: 10px;
-  border: 1px solid;
+    margin-right: 10px;
+    border: 1px solid;
 }
 .description {
   word-wrap: break-word;
@@ -323,11 +323,14 @@ textarea.form-control {
 ul.notifications {
   list-style: none;
   padding-left: 0;
-  overflow: auto;
+  overflow-y: scroll;
+  max-height:400px;
+
 }
 ul.notifications > li {
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
+
 }
 ul.notifications > li:last-child {
   border-bottom: none;
@@ -344,6 +347,7 @@ ul.notifications .highlight {
 .container2 {
     display: flex;
     flex-direction: row;
+    margin-top:50px;
 }
 .container-newsfeed {
     position: relative;
@@ -452,9 +456,10 @@ button.modal-close {
     position: absolute;
     left:78%;
 }
-.article-container{
-    display:flex;
-    flex-direction:row;
+.article-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
 }
 .poster-information {
     box-shadow: 1px 2px 5px grey;
@@ -481,4 +486,24 @@ button.modal-close {
     position: absolute;
     left: 88%;
     padding: 1px 1px 1px 1px;
+}
+.article-buttons{
+    position:relative;
+}
+.like-button{
+    margin-left:85%;
+    position:absolute;
+}
+.comment-button {
+    margin-left: 58%;
+}
+.btn-comment:hover{
+    background-color:#40b5e3;
+    color:aliceblue;
+    outline:none;
+}
+.btn-like:hover {
+    background-color: #40b5e3;
+    color: aliceblue;
+    outline: none;
 }
