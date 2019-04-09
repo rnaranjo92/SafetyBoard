@@ -108,7 +108,7 @@
                     </div>
                     <div class="article-buttons">
                         <div class="like-button">
-                            <button type="button" class="btn btn-default btn-lg btn-like">
+                            <button type="button" data-news-id="@article.Id" class="btn btn-default btn-lg btn-like js-toggle-like" value="Like">
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Like
                             </button>
                         </div>
@@ -144,6 +144,19 @@
     {
     <script>
         $(document).ready(function () {
+            $(".js-toggle-like").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/like", { safetyNewsId : button.attr("data-news-id") })
+                    .done(function () {
+                        button
+                            .removeClass("btn-default")
+                            .addClass("btn-primary");
+                    })
+                    .fail(function () {
+                        toastr.error("Something Failed")
+                    })
+            });
+
 
             $(".js-cancel-inspection").click(function (e) {
                 var cancelLink = $(e.target);

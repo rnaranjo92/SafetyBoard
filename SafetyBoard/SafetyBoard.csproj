@@ -205,8 +205,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CommentController.cs" />
     <Compile Include="Controllers\Api\InspectionsController.cs" />
+    <Compile Include="Controllers\Api\LikeController.cs" />
     <Compile Include="Controllers\Api\NotificationsController.cs" />
     <Compile Include="Dto\InspectionDto.cs" />
+    <Compile Include="Dto\LikeDto.cs" />
     <Compile Include="Dto\NotificationDto.cs" />
     <Compile Include="Dto\SafetyNewsDto.cs" />
     <Compile Include="Migrations\201903020645282_AddCommentToPosting.cs" />
@@ -257,6 +259,11 @@
     <Compile Include="Migrations\201904090422015_Check1.Designer.cs">
       <DependentUpon>201904090422015_Check1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904090533500_AddLikeToggle.cs" />
+    <Compile Include="Migrations\201904090533500_AddLikeToggle.Designer.cs">
+      <DependentUpon>201904090533500_AddLikeToggle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Like.cs" />
     <Compile Include="Models\SafetyNews.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
@@ -919,6 +926,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904090422015_Check1.resx">
       <DependentUpon>201904090422015_Check1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904090533500_AddLikeToggle.resx">
+      <DependentUpon>201904090533500_AddLikeToggle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
