@@ -31,7 +31,7 @@
                         @if (inspection.User.Email == User.Identity.Name || User.Identity.Name.Contains("qa"))
                         {
                             <span class="view">
-                                <a href="@Url.Action("Edit","Inspections", new { id = inspection.Id})">Edit</a> |
+                                <a href="@Url.Action("Edit", "Inspections", new { id = inspection.Id })">Edit</a> |
                             </span>
                             <span class="delete">
                                 <a href="#" class="js-cancel-inspection" data-inspection-id="@inspection.Id">Cancel</a> |
@@ -39,7 +39,7 @@
                         }
 
                         <span class="edit">
-                            <a href="@Url.Action("View","Inspections", new { id = inspection.Id})">View</a>
+                            <a href="@Url.Action("View", "Inspections", new { id = inspection.Id })">View</a>
                         </span>
 
                     </div>
@@ -51,6 +51,21 @@
     </div>
     <div class="container-newsfeed2">
         <div class="postArticle">
+
+            @{
+                String[] gifPath = {
+                    "/Image/safetygif1.gif",
+                    "/Image/safetygif2.gif",
+                    "/Image/safetygif3.gif"
+                };
+                Random r = new Random();
+                int gifSelect = r.Next(0, 3);
+                <img src=@(gifPath[gifSelect]) alt="This is my animated image" height="340" width="400" class="front-page-gif">
+
+            }
+
+
+
 
             <h2 class="post-heading">"Safety is as simple as ABC - <br />Always Be Careful." </h2> <button type="button" class="btn btn-primary btn-modal" data-toggle="modal" data-target="#exampleModal">Post an Article</button>
             <hr />

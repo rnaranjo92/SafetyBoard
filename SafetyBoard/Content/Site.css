@@ -431,6 +431,7 @@ button.modal-close {
 .post-heading{
     font-style:italic;
     margin-left:30px;
+    margin-top:10px;
 }
 .inspection-newsfeed{
     margin-top:2px;
@@ -520,4 +521,7 @@ button.modal-close {
     display:none;
     margin-bottom: 50px;
 }
-
+.front-page-gif {
+    height:340px; 
+    width:400px;
+}
