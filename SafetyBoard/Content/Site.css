@@ -442,7 +442,6 @@ button.modal-close {
 .safety-news>li{
     box-shadow: 1px 2px 5px grey;
     padding:10px 15px 15px 15px;
-    margin-bottom:20px;
 }
 .see-more{
     border-radius:20px 20px 20px 20px;
@@ -507,3 +506,18 @@ button.modal-close {
     color: aliceblue;
     outline: none;
 }
+.like-count {
+    margin-top:10px;
+    position: absolute;
+    color:#ffb300;
+}
+.comment-section {
+    box-shadow: 1px 2px 5px grey;
+    padding: 5px 15px 15px 15px;
+    min-height: 80px;
+    max-height: 200px;
+    overflow-y:auto;
+    display:none;
+    margin-bottom: 50px;
+}
+

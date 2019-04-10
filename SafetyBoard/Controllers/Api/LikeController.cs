@@ -33,5 +33,17 @@ namespace SafetyBoard.Controllers.Api
 
             return Ok();
         }
+        [HttpDelete]
+        public IHttpActionResult Unlike(int id)
+        {
+            var currentUser = User.Identity.GetUserId();
+
+            var like = _context.Like.SingleOrDefault(l => l.LikerId == currentUser && l.SafetyNewsId == id);
+
+            _context.Like.Remove(like);
+            _context.SaveChanges();
+
+            return Ok(id);
+        }
     }
 }

@@ -108,18 +108,21 @@
                     </div>
                     <div class="article-buttons">
                         <div class="like-button">
-                            <button type="button" data-news-id="@article.Id" class="btn btn-default btn-lg btn-like js-toggle-like" value="Like">
+                            <button type="button"
+                                    data-news-id="@article.Id"
+                                    class="btn @(Model.Like.Contains(article.Id)?"btn-primary":"btn-default") btn-lg btn-like js-toggle-like">
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Like
                             </button>
                         </div>
+
                         <div class="comment-button">
-                            <button type="button" class="btn btn-default btn-lg btn-comment">
+                            <button type="button" class="btn btn-default btn-lg btn-comment" onclick=toggleComment()>
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Comment
                             </button>
                         </div>
                     </div>
-
                 </li>
+                
             </ul>
         }
          
@@ -143,18 +146,35 @@
 @section scripts
     {
     <script>
+
         $(document).ready(function () {
             $(".js-toggle-like").click(function (e) {
                 var button = $(e.target);
-                $.post("/api/like", { safetyNewsId : button.attr("data-news-id") })
-                    .done(function () {
-                        button
-                            .removeClass("btn-default")
-                            .addClass("btn-primary");
+                if (button.hasClass("btn-default")) {
+                    $.post("/api/like", { safetyNewsId: button.attr("data-news-id") })
+                        .done(function () {
+                            button
+                                .removeClass("btn-default")
+                                .addClass("btn-primary");
+                        })
+                        .fail(function () {
+                            toastr.error("Something Failed");
+                        });
+                } else {
+                    $.ajax({
+                        url: "/api/like/" + button.attr("data-news-id"),
+                        method: "DELETE"
                     })
-                    .fail(function () {
-                        toastr.error("Something Failed")
-                    })
+                        .done(function () {
+                            button
+                                .removeClass("btn-primary")
+                                .addClass("btn-default");
+                        })
+                        .fail(function () {
+                            toastr.error("Something Failed")
+                        });
+                }
+               
             });
 
 

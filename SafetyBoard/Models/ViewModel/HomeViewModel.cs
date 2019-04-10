@@ -1,26 +1,30 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SafetyBoard.Models.ViewModel
 {
     public class HomeViewModel
     {
-        public IEnumerable<Inspection> Inspection { get; set; }
+        public IEnumerable<Inspection> Inspection { get; private set; }
 
-        public ApplicationUser User { get; set; }
+        public ApplicationUser User { get; private set; }
 
-        public SafetyNews PostArticle { get; set; }
+        public SafetyNews PostArticle { get; private set; }
 
-        public IEnumerable<SafetyNews> SafetyNews { get; set; }
+        public IEnumerable<SafetyNews> SafetyNews { get; private set; }
 
-        public HomeViewModel()
+        public ILookup<int,Like> Like { get; set; }
+
+        protected HomeViewModel()
         {
 
         }
-        public HomeViewModel(IEnumerable<Inspection> inspection, ApplicationUser user, IEnumerable<SafetyNews> safetyNews)  
+        public HomeViewModel(IEnumerable<Inspection> inspection, ApplicationUser user, IEnumerable<SafetyNews> safetyNews, ILookup<int,Like> like)  
         {
             Inspection = inspection;
             User = user;
             SafetyNews = safetyNews;
+            Like = like;
         }
         
     }

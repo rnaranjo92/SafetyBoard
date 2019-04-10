@@ -29,7 +29,9 @@ namespace SafetyBoard.Controllers
 
             var articles = _context.SafetyNews.Include(sn=>sn.User).Where(sn => sn.IsRemoved == false && sn.DatePosted.Month == DateTime.Now.Month && sn.DatePosted.Year == DateTime.Now.Year);
 
-            var viewModel = new HomeViewModel(upcomingInspections, user,articles);
+            var likes = _context.Like.Where(l => l.LikerId == currentUser).ToList().ToLookup(l => l.SafetyNewsId);
+
+            var viewModel = new HomeViewModel(upcomingInspections, user,articles,likes);
 
             return View("Index",viewModel);
         }
