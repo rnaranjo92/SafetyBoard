@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace SafetyBoard.Models
+﻿namespace SafetyBoard.Models
 {
     public class Comment
     {
@@ -8,15 +6,17 @@ namespace SafetyBoard.Models
 
         public ApplicationUser User { get; set; }
 
-
         public string UserId { get; set; }
 
-        public Posting Posting { get; set; }
+        public SafetyNews SafetyNews { get; set; }
 
-        [Required]
-        public int PostingId { get; set; }
+        public int SafetyNewsId { get; set; }
 
         public string postComment { get; set; }
 
+        public Comment()
+        {
+
+        }
     }
 }

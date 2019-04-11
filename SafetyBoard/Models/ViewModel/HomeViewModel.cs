@@ -15,7 +15,9 @@ namespace SafetyBoard.Models.ViewModel
 
         public ILookup<int,Like> Like { get; set; }
 
-        protected HomeViewModel()
+        public Comment Comment { get; set; }
+
+        public HomeViewModel()
         {
 
         }

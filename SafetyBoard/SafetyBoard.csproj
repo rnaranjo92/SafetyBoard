@@ -263,6 +263,18 @@
     <Compile Include="Migrations\201904090533500_AddLikeToggle.Designer.cs">
       <DependentUpon>201904090533500_AddLikeToggle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904110052521_AddSafetyNewsInComment.cs" />
+    <Compile Include="Migrations\201904110052521_AddSafetyNewsInComment.Designer.cs">
+      <DependentUpon>201904110052521_AddSafetyNewsInComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904110124576_ChangeCommentModel.cs" />
+    <Compile Include="Migrations\201904110124576_ChangeCommentModel.Designer.cs">
+      <DependentUpon>201904110124576_ChangeCommentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904110144372_RemovePostingInComments.cs" />
+    <Compile Include="Migrations\201904110144372_RemovePostingInComments.Designer.cs">
+      <DependentUpon>201904110144372_RemovePostingInComments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\SafetyNews.cs" />
     <Compile Include="Models\Notification.cs" />
@@ -932,6 +944,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904090533500_AddLikeToggle.resx">
       <DependentUpon>201904090533500_AddLikeToggle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904110052521_AddSafetyNewsInComment.resx">
+      <DependentUpon>201904110052521_AddSafetyNewsInComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904110124576_ChangeCommentModel.resx">
+      <DependentUpon>201904110124576_ChangeCommentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904110144372_RemovePostingInComments.resx">
+      <DependentUpon>201904110144372_RemovePostingInComments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

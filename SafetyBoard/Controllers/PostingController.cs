@@ -27,37 +27,37 @@ namespace SafetyBoard.Controllers
                 return View("Index");
             return View("ReadOnlyIndex");
         }
-        public ActionResult Details(int id)
-        {
-            var posting = _context.Postings.Include(p => p.PostingType).Include(p=>p.User).Include(p=>p.User.Organization).SingleOrDefault(p => p.Id == id);
+        //public ActionResult Details(int id)
+        //{
+        //    var posting = _context.Postings.Include(p => p.PostingType).Include(p=>p.User).Include(p=>p.User.Organization).SingleOrDefault(p => p.Id == id);
 
-            var currentUser = User.Identity.GetUserId();
+        //    var currentUser = User.Identity.GetUserId();
 
-            var user = _context.Users.Single(u => u.Id == currentUser);
+        //    var user = _context.Users.Single(u => u.Id == currentUser);
 
-            var commentor = _context.Comments.Include(c=>c.User).Where(c => c.PostingId == posting.Id).ToList();
+        //    var commentor = _context.Comments.Include(c=>c.User).Where(c => c.PostingId == posting.Id).ToList();
 
-            var viewModel = new PostingDetailsViewModel
-            {
-                FirstName = posting.User.FirstName,
-                LastName = posting.User.LastName,
-                Email = posting.User.Email,
-                PhoneNumber = posting.User.PhoneNumber,
-                Description = posting.Description,
-                Organization = posting.User.Organization.Name,
-                SafetyCategory = posting.PostingType.SafetyCategory,
-                TimePosted = posting.TimePosted,
-                Comment = commentor,
-                PostId = posting.Id,
-                CurrentUser = user
-            };
+        //    var viewModel = new PostingDetailsViewModel
+        //    {
+        //        FirstName = posting.User.FirstName,
+        //        LastName = posting.User.LastName,
+        //        Email = posting.User.Email,
+        //        PhoneNumber = posting.User.PhoneNumber,
+        //        Description = posting.Description,
+        //        Organization = posting.User.Organization.Name,
+        //        SafetyCategory = posting.PostingType.SafetyCategory,
+        //        TimePosted = posting.TimePosted,
+        //        Comment = commentor,
+        //        PostId = posting.Id,
+        //        CurrentUser = user
+        //    };
 
-            if (posting == null)
-                return HttpNotFound();
+        //    if (posting == null)
+        //        return HttpNotFound();
 
-            return View(viewModel);
+        //    return View(viewModel);
 
-        }
+        //}
         public ActionResult PostingForm()
         {
             var postingTypes = _context.PostingTypes.ToList();

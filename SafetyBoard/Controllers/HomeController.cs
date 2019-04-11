@@ -12,6 +12,7 @@ namespace SafetyBoard.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext _context;
+
         public HomeController()
         {
             _context = new ApplicationDbContext();
@@ -108,6 +109,8 @@ namespace SafetyBoard.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
+
+        
 
         public ActionResult About()
         {

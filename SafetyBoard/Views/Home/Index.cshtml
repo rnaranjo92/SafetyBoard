@@ -1,5 +1,5 @@
 ﻿@model SafetyBoard.Models.ViewModel.HomeViewModel
-
+@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "Home Page";
 }
@@ -106,7 +106,7 @@
             <ul class="safety-news">
                 <li>
                     <div class="view-article">
-                        <a href="@Url.Action("ViewArticle","Home", new { id = article.Id})">View Article</a>
+                        <a href="@Url.Action("ViewArticle", "Home", new { id = article.Id })">View Article</a>
                     </div>
                     <div class="article-poster">
                         <strong><p>@article.User.FirstName @article.User.LastName</p></strong>
@@ -125,22 +125,28 @@
                         <div class="like-button">
                             <button type="button"
                                     data-news-id="@article.Id"
-                                    class="btn @(Model.Like.Contains(article.Id)?"btn-primary":"btn-default") btn-lg btn-like js-toggle-like">
+                                    class="btn @(Model.Like.Contains(article.Id) ? "btn-primary" : "btn-default") btn-lg btn-like js-toggle-like">
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Like
                             </button>
                         </div>
-
-                        <div class="comment-button">
-                            <button type="button" class="btn btn-default btn-lg btn-comment" onclick=toggleComment()>
+                        
+                        <div class="comment-button" id="comment-button">
+                            <button type="button" class="btn btn-default btn-lg btn-comment">
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Comment
                             </button>
                         </div>
+                        <div class="comment-section" id="commentSection">
+                                <p class="comment-header">Comment:</p>
+                                <textarea class="comment-area"></textarea>
+                                <button type="submit" value="Save" class="btn btn-primary btn-post-comment">Post</button>
+                        </div>
                     </div>
+                    
                 </li>
                 
             </ul>
         }
-         
+
     </div>
     <div class="container-newsfeed3">
         <img class="profImage" src="/Image/Avatar.jpg">
@@ -162,7 +168,18 @@
     {
     <script>
 
+        
+
         $(document).ready(function () {
+
+            $("[id=comment-button]").click(function () {
+                $(this).next("#commentSection").slideToggle("fast");
+                return false;
+            });
+
+
+
+
             $(".js-toggle-like").click(function (e) {
                 var button = $(e.target);
                 if (button.hasClass("btn-default")) {
@@ -191,6 +208,7 @@
                 }
                
             });
+
 
 
             $(".js-cancel-inspection").click(function (e) {
