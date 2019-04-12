@@ -10,6 +10,7 @@ namespace SafetyBoard.Dto
         public string UserId { get; set; }
         public string Title { get; set; }
         public string Article { get; set; }
+        public string Comment { get; set; }
         public bool IsRemoved { get; set; }
     }
 }

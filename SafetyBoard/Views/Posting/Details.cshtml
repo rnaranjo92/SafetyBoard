@@ -43,13 +43,14 @@
 </div>
 @section scripts{
     <script>
+
         $(document).ready(function () {
             $(".commentBox").on("click",".postComment",function () {
                 $.ajax({
                     data: { id: @Model.PostId, comment: $("#textArea").val(), user:"GetInfo('@Model.CurrentUser')"},
                     url: "/api/comment/",
                     dataType:"json",
-                    type: "post",
+                    type: "POST",
                     success: function () {
                         location.reload();
                     },

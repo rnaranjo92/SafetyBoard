@@ -16,22 +16,21 @@ namespace SafetyBoard.Controllers.Api
         {
             _context = new ApplicationDbContext();
         }
+
         [HttpPost]
-        public IHttpActionResult Comment(PostingDto postingDto)
+        public IHttpActionResult Comment(SafetyNewsDto safetyNewsDto)
         {
-            var posting = _context.Postings.Single(p => p.Id == postingDto.Id);
-
             var currentUser = User.Identity.GetUserId();
-
-            var postComment = new CommentDto(postingDto.Id, postingDto.Comment, currentUser);
-
-            var mapComment = Mapper.Map<CommentDto, Comment>(postComment);
-
+            var article = _context.SafetyNews.Single(sn => sn.Id == safetyNewsDto.Id);
+            if(article == null)
+            {
+                return NotFound();
+            }
+            var comment = new CommentDto(article.Id, safetyNewsDto.Comment, currentUser);
+            var mapComment = Mapper.Map<CommentDto, Comment>(comment);
             _context.Comments.Add(mapComment);
-
             _context.SaveChanges();
-
-            return Created(new Uri(Request.RequestUri,"/" +postComment.Id),postingDto);
+            return Created(new Uri(Request.RequestUri, "/" + comment.Id), safetyNewsDto);
         }
     }
 }

@@ -11,9 +11,9 @@ namespace SafetyBoard.Controllers.Api
 
         public string UserId { get; private set; }
 
-        public PostingDto Posting { get; set; }
+        public SafetyNewsDto SafetyNewsDto { get; set; }
 
-        public int PostingId { get; private set; }
+        public int SafetyNewsId { get; set; }
 
         public string postComment { get; private set; }
 
@@ -23,12 +23,12 @@ namespace SafetyBoard.Controllers.Api
 
         }
 
-        public CommentDto(int postingId, string postingComment, string userId)
+        public CommentDto(int safetyNewsId, string postingComment, string userId)
         {
-            if (postingId == null)
+            if (safetyNewsId == null)
                 throw new ArgumentNullException();
 
-            PostingId = postingId;
+            SafetyNewsId = safetyNewsId;
             postComment = postingComment;
             UserId = userId;
         }

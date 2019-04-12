@@ -64,9 +64,6 @@
 
             }
 
-
-
-
             <h2 class="post-heading">"Safety is as simple as ABC - <br />Always Be Careful." </h2> <button type="button" class="btn btn-primary btn-modal" data-toggle="modal" data-target="#exampleModal">Post an Article</button>
             <hr />
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -109,7 +106,7 @@
                         <a href="@Url.Action("ViewArticle", "Home", new { id = article.Id })">View Article</a>
                     </div>
                     <div class="article-poster">
-                        <strong><p>@article.User.FirstName @article.User.LastName</p></strong>
+                        <p><strong> @article.User.FirstName @article.User.LastName</strong></p>
                     </div>
 
                     <div class="article-date">
@@ -129,23 +126,20 @@
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Like
                             </button>
                         </div>
-                        
-                        <div class="comment-button" id="comment-button">
-                            <button type="button" class="btn btn-default btn-lg btn-comment">
-                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Comment
-                            </button>
-                        </div>
-                        <div class="comment-section" id="commentSection">
-                                <p class="comment-header">Comment:</p>
-                                <textarea class="comment-area"></textarea>
-                                <button type="submit" value="Save" class="btn btn-primary btn-post-comment">Post</button>
-                        </div>
                     </div>
-                    
+                    <div class="comment-button" id="comment-button">
+                        <button type="button" class="btn btn-default btn-lg btn-comment">
+                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Comment
+                        </button>
+                    </div>
+                    <div class="comment-section" id="commentSection">
+                        <p class="comment-header">Comment:</p>
+                        <textarea class="comment-area" id="comment-area" value=""></textarea>
+                        <button type="submit" data-news-id="@article.Id" value="Save" class="btn btn-primary btn-post-comment">Post</button>
+                    </div>
                 </li>
-                
             </ul>
-        }
+         }
 
     </div>
     <div class="container-newsfeed3">
@@ -167,17 +161,31 @@
 @section scripts
     {
     <script>
-
-        
-
         $(document).ready(function () {
-
+            
             $("[id=comment-button]").click(function () {
                 $(this).next("#commentSection").slideToggle("fast");
                 return false;
             });
 
+            $(".comment-section").on("click", ".btn-post-comment", function () {
+                var id = $(this).attr("data-news-id");
 
+                $.ajax({
+                    data: { id: id, comment: $(".comment-area").val(), user: "GetInfo('@User.Identity.GetUserId()')" },
+                    url: "/api/comment/",
+                    dataType: "json",
+                    type: "post",
+                    success: function () {
+                        toastr.success("Success")
+                        $(".comment-area").val('')
+                        $(".comment-section").hide();
+                    },
+                    fail: function () {
+                        toastr.fail("Failed");
+                    }
+                });
+            });
 
 
             $(".js-toggle-like").click(function (e) {

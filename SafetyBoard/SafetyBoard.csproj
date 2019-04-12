@@ -625,6 +625,7 @@
     </None>
     <None Include="Content\Site.less" />
     <Content Include="Image\Avatar.jpg" />
+    <Content Include="Image\icon2.png" />
     <Content Include="Image\safetygif1.gif" />
     <Content Include="Image\safetygif2.gif" />
     <Content Include="Image\safetygif3.gif" />
