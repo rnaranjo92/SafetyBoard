@@ -82,6 +82,11 @@ namespace SafetyBoard.Controllers
         {
             var article = _context.SafetyNews.Include(sn=>sn.User).Include(sn=>sn.User.Organization).SingleOrDefault(sn => sn.Id == id);
 
+            var comments = _context.Comments
+                .Include(c => c.User)
+                .Include(c => c.User.Organization)
+                .Where(c => c.SafetyNewsId == id).ToList();
+
             if(article == null)
             {
                 throw new ArgumentNullException();
@@ -91,6 +96,7 @@ namespace SafetyBoard.Controllers
             {
                 Article = article,
                 User = article.User,
+                Comments = comments
             };
             return View(viewModel);
         }
@@ -109,8 +115,19 @@ namespace SafetyBoard.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-
-        
+        public ActionResult AddComment(Comment comment)
+        {
+            var newComment = new Comment
+            {
+                postComment = comment.postComment,
+                SafetyNewsId = comment.SafetyNewsId,
+                UserId = comment.UserId,
+                DatePosted = DateTime.Now
+            };
+            _context.Comments.Add(newComment);
+            _context.SaveChanges();
+            return RedirectToAction("ViewArticle","Home",new { id = comment.SafetyNewsId});
+        }
 
         public ActionResult About()
         {

@@ -567,3 +567,21 @@ button.modal-close {
     position:relative;
     left:83%;
 }
+.comment-box {
+    margin-left: 28%;
+    margin-top: 10px;
+    width: 57.5%;
+    position:relative;
+    box-shadow: 1px 2px 5px grey;
+    padding: 10px 10px 15px 15px;
+}
+.btn-delete-comment {
+    margin-left: 89.6%;
+    position: absolute;
+    padding: 1px 1px 1px 1px;
+}
+.btn-edit-comment {
+    margin-left: 84.5%;
+    position:absolute;
+    padding: 1px 1px 1px 1px;
+}

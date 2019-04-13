@@ -133,9 +133,13 @@
                         </button>
                     </div>
                     <div class="comment-section" id="commentSection">
-                        <p class="comment-header">Comment:</p>
-                        <textarea class="comment-area" id="comment-area" value=""></textarea>
-                        <button type="submit" data-news-id="@article.Id" value="Save" class="btn btn-primary btn-post-comment">Post</button>
+                        @using (Html.BeginForm("AddComment", "Home"))
+                         {
+                            @Html.HiddenFor(m => m.Comment.UserId, new { @Value=User.Identity.GetUserId()})
+                            @Html.HiddenFor(m => m.Comment.SafetyNewsId, new { @Value=article.Id})
+                            @Html.TextAreaFor(m => m.Comment.postComment, new { @class = "comment-area" })
+                            <button type="submit" value="Save" class="btn btn-primary btn-post-comment">Post</button>
+                         }
                     </div>
                 </li>
             </ul>
@@ -164,11 +168,11 @@
         $(document).ready(function () {
             
             $("[id=comment-button]").click(function () {
-                $(this).next("#commentSection").slideToggle("fast");
+                $(this).next(".comment-section").slideToggle("fast");
                 return false;
             });
 
-            $(".comment-section").on("click", ".btn-post-comment", function () {
+            @*$(".comment-section").on("click", ".btn-post-comment", function () {
                 var id = $(this).attr("data-news-id");
 
                 $.ajax({
@@ -178,14 +182,12 @@
                     type: "post",
                     success: function () {
                         toastr.success("Success")
-                        $(".comment-area").val('')
-                        $(".comment-section").hide();
                     },
                     fail: function () {
                         toastr.fail("Failed");
                     }
                 });
-            });
+            });*@
 
 
             $(".js-toggle-like").click(function (e) {

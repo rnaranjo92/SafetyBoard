@@ -1,4 +1,6 @@
-﻿namespace SafetyBoard.Models
+﻿using System;
+
+namespace SafetyBoard.Models
 {
     public class Comment
     {
@@ -13,6 +15,8 @@
         public int SafetyNewsId { get; set; }
 
         public string postComment { get; set; }
+
+        public DateTime DatePosted { get; set; }
 
         public Comment()
         {
