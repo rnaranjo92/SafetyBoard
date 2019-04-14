@@ -585,3 +585,25 @@ button.modal-close {
     position:absolute;
     padding: 1px 1px 1px 1px;
 }
+.edit-button{
+    color:white;
+    text-decoration:none;
+}
+.edit-button:hover{
+    text-decoration:none;
+    color:white;
+}
+.form-edit-comment {
+    min-width: 50%;
+    margin-bottom:10px;
+}
+.btn-save-comment{
+    margin-left:40%;
+}
+.edit-comment-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}

@@ -128,6 +128,20 @@ namespace SafetyBoard.Controllers
             _context.SaveChanges();
             return RedirectToAction("ViewArticle","Home",new { id = comment.SafetyNewsId});
         }
+        public ActionResult EditComment(int id)
+        {
+            var currentUser = User.Identity.GetUserId();
+            var comment = _context.Comments.Single(c => c.Id == id && c.UserId == currentUser);
+            return View("EditComment",comment);
+        }
+
+        public ActionResult SaveComment(Comment newComment)
+        {
+            var oldComment = _context.Comments.Single(c => c.Id == newComment.Id);
+            oldComment.postComment = newComment.postComment;
+            _context.SaveChanges();
+            return RedirectToAction("ViewArticle","Home", new { id = newComment.SafetyNewsId});
+        }
 
         public ActionResult About()
         {

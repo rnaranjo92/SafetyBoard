@@ -1,0 +1,19 @@
+﻿@model SafetyBoard.Models.Comment
+@{
+    ViewBag.Title = "EditComment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("SaveComment", "Home"))
+{
+<div class="edit-comment-container">
+    <h2>Edit Comment</h2>
+    @Html.HiddenFor(m => m.UserId)
+    @Html.HiddenFor(m => m.SafetyNewsId)
+    @Html.HiddenFor(m => m.Id)
+    @Html.TextAreaFor(m => m.postComment, new { @class = "form-control form-edit-comment" })
+
+    <button type="submit" class="btn btn-primary btn-save-comment">Save Comment</button>
+</div>
+   
+}
+

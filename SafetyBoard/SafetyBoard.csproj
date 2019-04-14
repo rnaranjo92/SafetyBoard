@@ -776,6 +776,7 @@
     <Content Include="Views\Inspections\View.cshtml" />
     <Content Include="Views\Inspections\CanceledInspections.cshtml" />
     <Content Include="Views\Home\ViewArticle.cshtml" />
+    <Content Include="Views\Home\EditComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

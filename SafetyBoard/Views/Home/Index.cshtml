@@ -1,4 +1,4 @@
-﻿@model SafetyBoard.Models.ViewModel.HomeViewModel
+﻿``@model SafetyBoard.Models.ViewModel.HomeViewModel
 @using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "Home Page";
@@ -137,7 +137,7 @@
                          {
                             @Html.HiddenFor(m => m.Comment.UserId, new { @Value=User.Identity.GetUserId()})
                             @Html.HiddenFor(m => m.Comment.SafetyNewsId, new { @Value=article.Id})
-                            @Html.TextAreaFor(m => m.Comment.postComment, new { @class = "comment-area" })
+                            @Html.TextAreaFor(m => m.Comment.postComment, new { @class = "comment-area"})
                             <button type="submit" value="Save" class="btn btn-primary btn-post-comment">Post</button>
                          }
                     </div>

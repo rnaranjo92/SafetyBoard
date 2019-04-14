@@ -89,77 +89,73 @@
 </div>
 @foreach (var comment in Model.Comments)
 {
-    
+
 <div class="comment-box">
     @if (comment.UserId == User.Identity.GetUserId())
     {
-        <button class="btn btn-success btn-edit-comment" data-toggle="modal" data-target="#editCommentModal">Edit</button>
-        <button class="btn btn-danger btn-delete-comment" data-toggle="modal" data-target="#deleteCommentModal">Delete</button>
-
-        <div class="modal fade" id="editCommentModal" tabindex="-1" role="dialog" aria-labelledby="editCommentModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editModalLabel">Edit</h5>
-                        <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        @using (Html.BeginForm("UpdateArticle", "Home"))
-                        {
-                            <div class="form-group">
-                                <h2>Edit Comment</h2>
-                                @Html.TextAreaFor(m => m.Comment.postComment, new { @class = "form-control form-textarea", @Value = @comment.postComment })
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" value="Save" class="btn btn-primary">Post</button>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="deleteCommentModal" tabindex="-1" role="dialog" aria-labelledby="deleteCommentModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h3>Are you sure you want to delete this post?</h3>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteArticle", "Home", new { id = Model.Article.Id})'">Delete Post</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <a href="@Url.Action("EditComment","Home",new { id = comment.Id})" class="btn btn-success btn-edit-comment js-edit">Edit</a>
+        <a href="#" class="btn btn-danger btn-delete-comment js-delete" data-comment-id="@comment.Id">Delete</a>
     }
-    
-        <div class="commentor-information">
-            <div class="commentor-name">
-                <p>@comment.User.FirstName @comment.User.LastName</p>
-            </div>
-            <div class="commentor-Org">
-                <p>@comment.User.Organization.Name</p>
-            </div>
-            <div class="commentor-date-posted">
-                <p>Posted On: @comment.DatePosted</p>
-            </div>
-            <hr />
-            <div class="commentor-Org">
-                <p>Comment: @comment.postComment</p>
-            </div>
-        </div>
-    
 
+    <div class="commentor-information">
+        <div class="commentor-name">
+            <p>@comment.User.FirstName @comment.User.LastName</p>
+        </div>
+        <div class="commentor-Org">
+            <p>@comment.User.Organization.Name</p>
+        </div>
+        <div class="commentor-date-posted">
+            <p>Posted On: @comment.DatePosted</p>
+        </div>
+        <hr />
+        <div class="commentor-Org">
+            <p>Comment: @comment.postComment</p>
+        </div>
+    </div>
 </div>
 
 }
+@section scripts
+    {
+    <script>
+        $(document).ready(function () {
+
+            $(".js-delete").click(function (e) {
+                var link = $(e.target);
+                bootbox.dialog({
+                    message: "Are you sure you want to delete this comment?",
+                    title: "Confirm",
+                    buttons: {
+                        no: {
+                            label: "No",
+                            className: "btn-default",
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        yes: {
+                            label: "Yes",
+                            className: "btn-danger",
+                            callback: function () {
+                                $.ajax({
+                                    url: "/api/comment/" + link.attr("data-comment-id"),
+                                    method: "DELETE"
+                                })
+                                    .done(function () {
+                                        link.parent("div").fadeOut(function () {
+                                            $(this).remove();
+                                        });
+                                    })
+                                    .fail(function () {
+                                        toastr.fail("Delete Failed!")
+                                    });
+                            }
+                        }
+                    }
+                });
+               
+            });
+        });
+    </script>
+    }
 
