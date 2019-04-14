@@ -36,20 +36,19 @@ namespace SafetyBoard.Controllers
 
             return View("Index",viewModel);
         }
-        [HttpPost]
-        public ActionResult PostArticle(HomeViewModel viewModel) 
+        public ActionResult PostArticle(SafetyNews safetyNews) 
         {
             var currentUser = User.Identity.GetUserId();
-
-            var article = new SafetyNews()
+            var article = new SafetyNews
             {
                 UserId = currentUser,
-                Title = viewModel.PostArticle.Title,
-                Article = viewModel.PostArticle.Article,
+                Title = safetyNews.Title,
+                Article = safetyNews.Title,
+                IsRemoved = false,
                 DatePosted = DateTime.Now,
             };
 
-            var poster = _context.Users.SingleOrDefault(u => u.Id == currentUser);
+            var poster = _context.Users.Single(u => u.Id == currentUser);
             var notification = Notification.NewSafetyNews(article);
 
             var users = _context.Users.Where(u => u.OrganizationId == poster.OrganizationId).ToList();
@@ -142,7 +141,7 @@ namespace SafetyBoard.Controllers
             _context.SaveChanges();
             return RedirectToAction("ViewArticle","Home", new { id = newComment.SafetyNewsId});
         }
-
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

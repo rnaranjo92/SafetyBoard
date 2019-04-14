@@ -80,12 +80,12 @@
                             {
                                 @Html.AntiForgeryToken()
                                 <div class="form-group">
-                                    @Html.LabelFor(m => m.PostArticle.Title, new { @class = "col-form-label" }):
-                                    @Html.TextBoxFor(m => m.PostArticle.Title, new { @class = "form-control" })
+                                    @Html.LabelFor(m => m.SafetyNews.Title, new { @class = "col-form-label" }):
+                                    @Html.TextBoxFor(m => m.SafetyNews.Title, new { @class = "form-control" })
                                 </div>
                                 <div class="form-group">
-                                    @Html.LabelFor(m => m.PostArticle.Article, new { @class = "col-form-label" }):
-                                    @Html.TextAreaFor(m => m.PostArticle.Article, new { @class = "form-control form-textarea" })
+                                    @Html.LabelFor(m => m.SafetyNews.Article, new { @class = "col-form-label" }):
+                                    @Html.TextAreaFor(m => m.SafetyNews.Article, new { @class = "form-control form-textarea" })
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -98,7 +98,7 @@
             </div>
         </div>
         <h3 class="inspection-newsfeed">Safety News For the Month of @DateTime.Now.ToString("MMMM")</h3>
-        @foreach (var article in Model.SafetyNews)
+        @foreach (var article in Model.ListOfSafetyNews)
         {
             <ul class="safety-news">
                 <li>

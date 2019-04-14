@@ -460,6 +460,7 @@ button.modal-close {
     display: flex;
     flex-direction: row;
     margin-top: 50px;
+    margin-bottom:15px;
 }
 .poster-information {
     box-shadow: 1px 2px 5px grey;
@@ -570,6 +571,7 @@ button.modal-close {
 .comment-box {
     margin-left: 28%;
     margin-top: 10px;
+    margin-bottom:20px;
     width: 57.5%;
     position:relative;
     box-shadow: 1px 2px 5px grey;
@@ -606,4 +608,11 @@ button.modal-close {
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
+}
+.btn-post-xl-comment{
+    padding:10px 255px;
+    margin-left:320px;
+    position:absolute;
+    font-size:20px;
+    margin-bottom:50px;
 }

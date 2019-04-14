@@ -9,9 +9,9 @@ namespace SafetyBoard.Models.ViewModel
 
         public ApplicationUser User { get; private set; }
 
-        public SafetyNews PostArticle { get; private set; }
+        public SafetyNews SafetyNews { get; private set; }
 
-        public IEnumerable<SafetyNews> SafetyNews { get; private set; }
+        public IEnumerable<SafetyNews> ListOfSafetyNews { get; private set; }
 
         public ILookup<int,Like> Like { get; set; }
 
@@ -25,7 +25,7 @@ namespace SafetyBoard.Models.ViewModel
         {
             Inspection = inspection;
             User = user;
-            SafetyNews = safetyNews;
+            ListOfSafetyNews = safetyNews;
             Like = like;
         }
         

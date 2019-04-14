@@ -90,31 +90,59 @@
 @foreach (var comment in Model.Comments)
 {
 
-<div class="comment-box">
-    @if (comment.UserId == User.Identity.GetUserId())
-    {
-        <a href="@Url.Action("EditComment","Home",new { id = comment.Id})" class="btn btn-success btn-edit-comment js-edit">Edit</a>
-        <a href="#" class="btn btn-danger btn-delete-comment js-delete" data-comment-id="@comment.Id">Delete</a>
-    }
+    <div class="comment-box">
+        @if (comment.UserId == User.Identity.GetUserId())
+        {
+            <a href="@Url.Action("EditComment","Home",new { id = comment.Id})" class="btn btn-success btn-edit-comment js-edit">Edit</a>
+            <a href="#" class="btn btn-danger btn-delete-comment js-delete" data-comment-id="@comment.Id">Delete</a>
+        }
 
-    <div class="commentor-information">
-        <div class="commentor-name">
-            <p>@comment.User.FirstName @comment.User.LastName</p>
+        <div class="commentor-information">
+            <div class="commentor-name">
+                <p>@comment.User.FirstName @comment.User.LastName</p>
+            </div>
+            <div class="commentor-Org">
+                <p>@comment.User.Organization.Name</p>
+            </div>
+            <div class="commentor-date-posted">
+                <p>Posted On: @comment.DatePosted</p>
+            </div>
+            <hr />
+            <div class="commentor-Org">
+                <p>Comment: @comment.postComment</p>
+            </div>
         </div>
-        <div class="commentor-Org">
-            <p>@comment.User.Organization.Name</p>
-        </div>
-        <div class="commentor-date-posted">
-            <p>Posted On: @comment.DatePosted</p>
-        </div>
-        <hr />
-        <div class="commentor-Org">
-            <p>Comment: @comment.postComment</p>
+    </div>
+
+}
+<button class="btn btn-primary btn-post-xl-comment" data-toggle="modal" data-target="#addCommentModal">Post Comment</button>
+
+<div class="modal fade" id="addCommentModal" tabindex="-1" role="dialog" aria-labelledby="addCommentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addCommentModalLabel">Post a Comment</h5>
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("AddComment", "Home"))
+                {
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.Comment.UserId, new { @Value = User.Identity.GetUserId() })
+                    @Html.HiddenFor(m => m.Comment.SafetyNewsId, new { @Value = Model.Article.Id })
+                    @Html.TextAreaFor(m => m.Comment.postComment, new { @class = "form-control form-textarea" })
+                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" value="Save" class="btn btn-primary">Post Comment</button>
+                    </div>
+                }
+            </div>
         </div>
     </div>
 </div>
-
-}
 @section scripts
     {
     <script>
@@ -153,9 +181,9 @@
                         }
                     }
                 });
-               
+
             });
         });
     </script>
-    }
+}
 
