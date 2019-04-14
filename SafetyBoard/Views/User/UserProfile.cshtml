@@ -1,0 +1,34 @@
+﻿@model SafetyBoard.Models.ViewModel.UserProfileViewModel
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="user-profile-container">
+    <div class="user-information">
+        <div class="user-identification">
+            <p class="user-info">Name : <strong>@Model.User.FirstName @Model.User.LastName</strong></p>
+            <p class="user-info">Email : <strong>@Model.User.Email</strong></p>
+            <p class="user-info">Organization : <strong>@Model.User.Organization.Name</strong></p>
+            <p class="user-info">Contact # :<strong> @Model.User.PhoneNumber</strong></p>
+        </div>
+    </div>
+    <div class="user-newsfeed">
+        <h1 class="newsfeed-banner">@Model.User.FirstName's Newsfeed</h1>
+        @foreach(var safetynews in Model.SafetyNews)
+         {
+         
+         <div class="news-title">
+             <div class="article-link">
+                <a href="@Url.Action("ViewArticle", "Home", new { id = safetynews.Id })" >View Article</a>
+             </div>
+             <div class="date-posted">Date Posted: @safetynews.DatePosted</div><br />
+             <div class="user-article">
+                 <p>Article: @safetynews.Article</p>
+             </div>
+         </div>
+            
+         }
+    </div>
+</div>
+

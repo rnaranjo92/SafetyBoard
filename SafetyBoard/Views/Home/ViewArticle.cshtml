@@ -16,7 +16,7 @@
         {
             <label class="label label-primary">Normal User</label>
         }
-        <p class="poster-info">Name : @Model.User.FirstName @Model.User.LastName</p>
+        <p class="poster-info">Name : <a href=@Url.Action("ViewUserProfile","User",new { id=Model.Article.UserId})>@Model.Article.User.FirstName @Model.Article.User.LastName</a></p>
         <p class="poster-info">Organization : @Model.User.Organization.Name</p>
         <p class="poster-info">Email : @Model.User.Email</p>
         <p class="poster-info">Contact No. : @Model.User.PhoneNumber</p>
@@ -99,7 +99,7 @@
 
         <div class="commentor-information">
             <div class="commentor-name">
-                <p>@comment.User.FirstName @comment.User.LastName</p>
+                <p><strong><a href=@Url.Action("ViewUserProfile","User",new { id=comment.UserId})>@comment.User.FirstName @comment.User.LastName</a></strong></p>
             </div>
             <div class="commentor-Org">
                 <p>@comment.User.Organization.Name</p>

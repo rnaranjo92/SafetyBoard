@@ -616,3 +616,44 @@ button.modal-close {
     font-size:20px;
     margin-bottom:50px;
 }
+.user-profile-container {
+    position: relative;
+    display: flex;
+    margin-top: 50px;
+}
+.user-information {
+    height: 600px;
+    box-shadow: 1px 2px 5px grey;
+    width: 300px;
+    margin-top: 5%;
+}
+.user-info{
+    margin-top:50px;
+    font-size:15px;
+    padding-left:25px;
+}
+.user-identification{
+    margin-top:90%;
+}
+.user-newsfeed {
+    margin-left: 30px;
+    margin-top: 50px;
+}
+.news-title {
+    box-shadow: 1px 2px 5px grey;
+    padding:30px;
+    width:500px;
+    margin-left:15px;
+    margin-bottom:15px;
+}
+.date-posted{
+    margin-bottom:1px;
+}
+.article-link{
+    position:absolute;
+    margin-left:34%;
+}
+.newsfeed-banner {
+    display:inline-block;
+    margin-left: 100px;
+}

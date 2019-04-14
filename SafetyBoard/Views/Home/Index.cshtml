@@ -21,7 +21,7 @@
                     </div>
                     <div class="details">
                         <span class="inspector">
-                            <strong> @inspection.User.FirstName @inspection.User.LastName</strong>
+                            <strong><a href=@Url.Action("ViewUserProfile","User",new { id=inspection.UserId})>@inspection.User.FirstName @inspection.User.LastName</a>  </strong>
                         </span>
                         <span class="inspectionType">
                             @inspection.InspectionType.SafetyCategory Inspection
@@ -106,7 +106,7 @@
                         <a href="@Url.Action("ViewArticle", "Home", new { id = article.Id })">View Article</a>
                     </div>
                     <div class="article-poster">
-                        <p><strong> @article.User.FirstName @article.User.LastName</strong></p>
+                        <p><strong> <a href=@Url.Action("ViewUserProfile","User",new { id=article.UserId})>@article.User.FirstName @article.User.LastName</a></strong></p>
                     </div>
 
                     <div class="article-date">

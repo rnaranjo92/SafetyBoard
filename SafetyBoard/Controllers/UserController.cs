@@ -42,6 +42,20 @@ namespace SafetyBoard.Controllers
             return View(viewModel);
         }
 
+        public ActionResult ViewUserProfile(string id)
+        {
+            var user = _context.Users.Include(u=>u.Organization).Single(u => u.Id == id);
+            var safetyNews = _context.SafetyNews.Where(sn => sn.UserId == id).ToList();
+
+            var viewModel = new UserProfileViewModel
+            {
+                User = user,
+                SafetyNews = safetyNews
+            };
+
+            return View("UserProfile", viewModel);
+        }
+
         public ActionResult EditProfile()
         {
             var currentUser = User.Identity.GetUserId();

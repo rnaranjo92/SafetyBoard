@@ -491,6 +491,7 @@
     <Compile Include="Models\ViewModel\SendCodeViewModel.cs" />
     <Compile Include="Models\ViewModel\SetPasswordViewModel.cs" />
     <Compile Include="Models\ViewModel\UserDetailsViewModel.cs" />
+    <Compile Include="Models\ViewModel\UserProfileViewModel.cs" />
     <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Models\ViewModel\VerifyCodeViewModel.cs" />
     <Compile Include="Models\ViewModel\VerifyPhoneNumberViewModel.cs" />
@@ -777,6 +778,7 @@
     <Content Include="Views\Inspections\CanceledInspections.cshtml" />
     <Content Include="Views\Home\ViewArticle.cshtml" />
     <Content Include="Views\Home\EditComment.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
