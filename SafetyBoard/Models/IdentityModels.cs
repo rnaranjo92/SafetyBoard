@@ -69,6 +69,7 @@ namespace SafetyBoard.Models
         public DbSet<UserNotification> UserNotifications { get; set; }
         public DbSet<SafetyNews> SafetyNews { get; set; }
         public DbSet<Like> Like { get; set; }
+        public DbSet<ProfileImage> ProfileImages { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

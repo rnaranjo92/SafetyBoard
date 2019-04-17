@@ -9,5 +9,6 @@ namespace SafetyBoard.Models.ViewModel
     {
         public ApplicationUser User { get; set; }
         public IEnumerable<SafetyNews> SafetyNews { get; set; }
+        public ProfileImage ProfileImage { get; set; }
     }
 }

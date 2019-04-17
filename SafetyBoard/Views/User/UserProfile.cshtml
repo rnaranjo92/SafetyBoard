@@ -7,6 +7,7 @@
 <div class="user-profile-container">
     <div class="user-information">
         <div class="user-identification">
+            <img class="user-prof-image" src="@Url.Content(Model.ProfileImage.Path)">
             <p class="user-info">Name : <strong>@Model.User.FirstName @Model.User.LastName</strong></p>
             <p class="user-info">Email : <strong>@Model.User.Email</strong></p>
             <p class="user-info">Organization : <strong>@Model.User.Organization.Name</strong></p>

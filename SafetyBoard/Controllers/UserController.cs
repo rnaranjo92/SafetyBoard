@@ -3,6 +3,7 @@ using SafetyBoard.Models;
 using SafetyBoard.Models.ViewModel;
 using System;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -27,6 +28,7 @@ namespace SafetyBoard.Controllers
         public ActionResult MyProfile(string id)
         {
             var user = _context.Users.Include(u=>u.Organization).SingleOrDefault(u => u.Id == id);
+            var userProfilePic = _context.ProfileImages.OrderByDescending(pi => pi.Id).FirstOrDefault(pi => pi.UserId == user.Id);
 
             var viewModel = new MyProfileViewModel
             {
@@ -36,7 +38,8 @@ namespace SafetyBoard.Controllers
                 Organization = _context.Organizations.ToList(),
                 OrganizationName = user.Organization.Name,
                 PhoneNumber = user.PhoneNumber,
-                DriversLicense = user.DriversLicense
+                DriversLicense = user.DriversLicense,
+                Image = userProfilePic
             };
 
             return View(viewModel);
@@ -46,11 +49,14 @@ namespace SafetyBoard.Controllers
         {
             var user = _context.Users.Include(u=>u.Organization).Single(u => u.Id == id);
             var safetyNews = _context.SafetyNews.Where(sn => sn.UserId == id).ToList();
+            var userProfilePic = _context.ProfileImages.OrderByDescending(pi => pi.Id).FirstOrDefault(pi => pi.UserId == user.Id);
+
 
             var viewModel = new UserProfileViewModel
             {
                 User = user,
-                SafetyNews = safetyNews
+                SafetyNews = safetyNews,
+                ProfileImage = userProfilePic
             };
 
             return View("UserProfile", viewModel);
@@ -60,8 +66,9 @@ namespace SafetyBoard.Controllers
         {
             var currentUser = User.Identity.GetUserId();
             var user = _context.Users.Include(u => u.Organization).SingleOrDefault(u => u.Id == currentUser);
+            var userProfilePic = _context.ProfileImages.OrderByDescending(pi=>pi.Id).FirstOrDefault(pi => pi.UserId == user.Id);
 
-            if(user == null)
+            if (user == null)
             {
                 throw new ArgumentNullException();
             }
@@ -75,7 +82,9 @@ namespace SafetyBoard.Controllers
                 OrganizationId = user.OrganizationId,
                 OrganizationName = user.Organization.Name,
                 PhoneNumber = user.PhoneNumber,
-                DriversLicense = user.DriversLicense
+                DriversLicense = user.DriversLicense,
+                ImagePath = _context.ProfileImages.OrderByDescending(pi => pi.Id).FirstOrDefault(pi => pi.UserId == user.Id).Path,
+                Image = userProfilePic
             };
             return View(viewModel);
         }
@@ -83,12 +92,33 @@ namespace SafetyBoard.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PostProfile(MyProfileViewModel viewModel)
          {
-
             if (!ModelState.IsValid)
             {
                 viewModel.Organization = _context.Organizations.ToList();
                 return View("EditProfile",viewModel);
             }
+
+            if (!String.IsNullOrEmpty(viewModel.ImageFile.FileName))
+            {
+                string fileName = Path.GetFileNameWithoutExtension(viewModel.ImageFile.FileName);
+                string extension = Path.GetExtension(viewModel.ImageFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+
+                var newImage = new ProfileImage
+                {
+                    Path = "~/Image/" + fileName,
+                    UserId = User.Identity.GetUserId()
+                };
+
+                fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
+
+                viewModel.ImageFile.SaveAs(fileName);
+
+                _context.ProfileImages.Add(newImage);
+                _context.SaveChanges();
+            }
+            //How I saved file to image folder
+
 
             var currentUser = User.Identity.GetUserId();
             var userInDb = _context.Users.SingleOrDefault(u => u.Id == currentUser);

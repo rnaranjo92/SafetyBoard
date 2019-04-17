@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace SafetyBoard.Models.ViewModel
 {
@@ -32,5 +33,12 @@ namespace SafetyBoard.Models.ViewModel
         public string DriversLicense { get; set; }
 
         public string OrganizationName { get; set; }
+
+        public ProfileImage Image { get; set; }
+
+        public string ImagePath { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
+
     }
 }

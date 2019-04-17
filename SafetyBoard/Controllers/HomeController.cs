@@ -21,6 +21,7 @@ namespace SafetyBoard.Controllers
         {
             var currentUser = User.Identity.GetUserId();
             var user = _context.Users.Include(u=>u.Organization).SingleOrDefault(u => u.Id == currentUser);
+            var userProfilePic = _context.ProfileImages.OrderByDescending(pi => pi.Id).FirstOrDefault(pi => pi.UserId == user.Id);
 
             var upcomingInspections = _context.Inspections
                 .Include(i => i.User)
@@ -32,7 +33,7 @@ namespace SafetyBoard.Controllers
 
             var likes = _context.Like.Where(l => l.LikerId == currentUser).ToList().ToLookup(l => l.SafetyNewsId);
 
-            var viewModel = new HomeViewModel(upcomingInspections, user,articles,likes);
+            var viewModel = new HomeViewModel(upcomingInspections, user,articles,likes,userProfilePic);
 
             return View("Index",viewModel);
         }

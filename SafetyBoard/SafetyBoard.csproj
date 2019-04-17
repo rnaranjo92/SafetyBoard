@@ -279,6 +279,11 @@
     <Compile Include="Migrations\201904130502185_AddDatePostedToComment.Designer.cs">
       <DependentUpon>201904130502185_AddDatePostedToComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904141752059_AddProfileImageToModel.cs" />
+    <Compile Include="Migrations\201904141752059_AddProfileImageToModel.Designer.cs">
+      <DependentUpon>201904141752059_AddProfileImageToModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProfileImage.cs" />
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\SafetyNews.cs" />
     <Compile Include="Models\Notification.cs" />
@@ -964,6 +969,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904130502185_AddDatePostedToComment.resx">
       <DependentUpon>201904130502185_AddDatePostedToComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904141752059_AddProfileImageToModel.resx">
+      <DependentUpon>201904141752059_AddProfileImageToModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

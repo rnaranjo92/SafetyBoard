@@ -633,11 +633,11 @@ button.modal-close {
     padding-left:25px;
 }
 .user-identification{
-    margin-top:90%;
+    margin-top:10%;
 }
 .user-newsfeed {
     margin-left: 30px;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 .news-title {
     box-shadow: 1px 2px 5px grey;
@@ -656,4 +656,11 @@ button.modal-close {
 .newsfeed-banner {
     display:inline-block;
     margin-left: 100px;
+    margin-top: 0;
+}
+.user-prof-image{
+    margin-top: 0px;
+    width:250px;
+    height:250px;
+    margin-left:25px;
 }

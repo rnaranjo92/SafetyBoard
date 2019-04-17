@@ -17,16 +17,19 @@ namespace SafetyBoard.Models.ViewModel
 
         public Comment Comment { get; set; }
 
+        public ProfileImage ProfileImage { get; set; }
+
         public HomeViewModel()
         {
 
         }
-        public HomeViewModel(IEnumerable<Inspection> inspection, ApplicationUser user, IEnumerable<SafetyNews> safetyNews, ILookup<int,Like> like)  
+        public HomeViewModel(IEnumerable<Inspection> inspection, ApplicationUser user, IEnumerable<SafetyNews> safetyNews, ILookup<int,Like> like,ProfileImage profileImage)  
         {
             Inspection = inspection;
             User = user;
             ListOfSafetyNews = safetyNews;
             Like = like;
+            ProfileImage = profileImage;
         }
         
     }

@@ -6,14 +6,24 @@
 
 <h2>Edit Profile</h2>
 
-@using (Html.BeginForm("PostProfile", "User"))
+@using (Html.BeginForm("PostProfile", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary();
     @Html.AntiForgeryToken();
+
+    <div class="form-group">
+        <label>Profile Image</label><br />
+        <img src="@Url.Content(Model.Image.Path)" width="250" height="250">
+    </div>
+
+    <div class="form-group">
+        <label>Upload Profile Image</label>
+        @Html.TextBoxFor(m => m.ImageFile, new { type = "file" })
+    </div>
     <div class="form-group">
         @Html.LabelFor(m => m.FirstName)
         @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m=>m.FirstName)
+        @Html.ValidationMessageFor(m => m.FirstName)
     </div>
 
     <div class="form-group">
@@ -48,7 +58,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.DriversLicense)
         @Html.TextBoxFor(m => m.DriversLicense, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m=>m.DriversLicense)
+        @Html.ValidationMessageFor(m => m.DriversLicense)
     </div>
     <div class="btnSubmit">
         <button class="btn btn-primary">Submit</button>
