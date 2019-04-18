@@ -20,5 +20,7 @@ namespace SafetyBoard.Models.ViewModel
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        public ProfileImage ProfileImage { get; set; }
     }
 }

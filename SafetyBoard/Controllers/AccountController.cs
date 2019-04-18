@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -75,6 +76,19 @@ namespace SafetyBoard.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
+            }
+
+            var userProfImage = _context.ProfileImages.SingleOrDefault(pi => pi.User.Email == model.Email);
+
+            if(userProfImage == null)
+            {
+                var profileImage = new ProfileImage
+                {
+                    UserId = _context.Users.Single(u=>u.Email == model.Email).Id,
+                    Path = "~/Image/Avatar.jpg",
+                };
+                _context.ProfileImages.Add(profileImage);
+                _context.SaveChanges();
             }
 
             // This doesn't count login failures towards account lockout
@@ -169,8 +183,16 @@ namespace SafetyBoard.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     OrganizationId = model.OrganizationId
-            };
+                };
+
+                var userProfImage = _context.ProfileImages.SingleOrDefault(pi => pi.User.Email == model.Email);
+
+                
+
                 var result = await UserManager.CreateAsync(user, model.Password);
+
+                
+
                 if (result.Succeeded)
                 {
                     //To set everyone as Normal Users
@@ -181,12 +203,23 @@ namespace SafetyBoard.Controllers
 
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    if (userProfImage == null)
+                    {
+                        var profileImage = new ProfileImage
+                        {
+                            UserId = _context.Users.Single(u => u.Email == model.Email).Id,
+                            Path = "~/Image/Avatar.jpg",
+                        };
+                        _context.ProfileImages.Add(profileImage);
+                        _context.SaveChanges();
+                    }
 
                     return RedirectToAction("Index", "Home");
                 }
