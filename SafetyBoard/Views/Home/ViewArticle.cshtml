@@ -6,21 +6,38 @@
 }
 
 <div class="article-container">
-    <div class="poster-information">
-        <h3>Poster Information</h3>
-        <img src="@Url.Content(Model.ProfileImage.Path)" class="profImage" />
-        @if (Model.User.IsQA)
-        {
-            <label class="label label-success">Inspector</label>
-        }
-        else
-        {
-            <label class="label label-primary">Normal User</label>
-        }
-        <p class="poster-info">Name : <a href=@Url.Action("ViewUserProfile","User",new { id=Model.Article.UserId})>@Model.Article.User.FirstName @Model.Article.User.LastName</a></p>
-        <p class="poster-info">Organization : @Model.User.Organization.Name</p>
-        <p class="poster-info">Email : @Model.User.Email</p>
-        <p class="poster-info">Contact No. : @Model.User.PhoneNumber</p>
+    <div class="poster-info-container">
+        <div class="poster-information">
+            <h3>Poster Information</h3>
+            <img src="@Url.Content(Model.ProfileImage.Path)" class="profImage" />
+            @if (Model.User.IsQA)
+            {
+                <label class="label label-success">Inspector</label>
+            }
+            else
+            {
+                <label class="label label-primary">Normal User</label>
+            }
+            <p class="poster-info">Name : <a href=@Url.Action("ViewUserProfile","User",new { id=Model.Article.UserId})>@Model.Article.User.FirstName @Model.Article.User.LastName</a></p>
+            <p class="poster-info">Organization : @Model.User.Organization.Name</p>
+            <p class="poster-info">Email : @Model.User.Email</p>
+            <p class="poster-info">Contact No. : @Model.User.PhoneNumber</p>
+        </div>
+        <div class="post-likers">
+            <h3 >Users who likes this post</h3>
+            @if(Model.IsLikeEmpty)
+            {
+               <h4 class="post-likers-header">There are no Likes at this time</h4>
+            }
+            @foreach (var user in Model.Likers)
+            {
+               <div class="user-view-article-box">
+                   <p><strong>Name :<a href=@Url.Action("ViewUserProfile","User",new { id=user.Id})> @user.FirstName @user.LastName</a></strong></p>
+                   <p><strong>Org : @user.Organization.Name</strong></p>
+               </div>
+            }
+
+        </div>
     </div>
     <div class="article">
         @if (User.Identity.GetUserId() == Model.User.Id)
@@ -86,6 +103,7 @@
         <h2 class="poster-info">Article Title : @Model.Article.Title</h2>
         <h4 class="poster-info">Date and Time Posted : @Model.Article.DatePosted</h4>
         <p class="poster-info">@Model.Article.Article</p>
+        <button class="btn btn-primary btn-post-xl-comment" data-toggle="modal" data-target="#addCommentModal">Post a Comment</button>
     </div>
 </div>
 @foreach (var comment in Model.Comments)
@@ -116,7 +134,6 @@
     </div>
 
 }
-<button class="btn btn-primary btn-post-xl-comment" data-toggle="modal" data-target="#addCommentModal">Post Comment</button>
 
 <div class="modal fade" id="addCommentModal" tabindex="-1" role="dialog" aria-labelledby="addCommentModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

@@ -97,8 +97,13 @@ namespace SafetyBoard.Controllers
                 Article = article,
                 User = article.User,
                 Comments = comments,
-                ProfileImage = _context.ProfileImages.OrderByDescending(pi => pi.Id).FirstOrDefault(pi => pi.UserId == article.UserId)
-        };
+                ProfileImage = _context.ProfileImages.OrderByDescending(pi => pi.Id).FirstOrDefault(pi => pi.UserId == article.UserId),
+                Likers = _context.Like.Where(l => l.SafetyNewsId == article.Id && l.LikerId != article.UserId).Select(l => l.Liker).ToList(),
+            };
+            if (viewModel.Likers.Count()==0)
+            {
+                viewModel.IsLikeEmpty = true;
+            }
             return View(viewModel);
         }
 
