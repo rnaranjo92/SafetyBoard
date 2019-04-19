@@ -8,5 +8,6 @@ namespace SafetyBoard.Models.ViewModel
         public SafetyNews Article { get; set; }
         public Comment Comment { get; set; }
         public IEnumerable<Comment> Comments { get; set; }
+        public ProfileImage ProfileImage { get; set; }
     }
 }

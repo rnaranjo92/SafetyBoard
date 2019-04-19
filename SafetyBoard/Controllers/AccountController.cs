@@ -78,18 +78,6 @@ namespace SafetyBoard.Controllers
                 return View(model);
             }
 
-            var userProfImage = _context.ProfileImages.SingleOrDefault(pi => pi.User.Email == model.Email);
-
-            if(userProfImage == null)
-            {
-                var profileImage = new ProfileImage
-                {
-                    UserId = _context.Users.Single(u=>u.Email == model.Email).Id,
-                    Path = "~/Image/Avatar.jpg",
-                };
-                _context.ProfileImages.Add(profileImage);
-                _context.SaveChanges();
-            }
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true

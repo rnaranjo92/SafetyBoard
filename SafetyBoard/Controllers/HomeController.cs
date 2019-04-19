@@ -96,8 +96,9 @@ namespace SafetyBoard.Controllers
             {
                 Article = article,
                 User = article.User,
-                Comments = comments
-            };
+                Comments = comments,
+                ProfileImage = _context.ProfileImages.OrderByDescending(pi => pi.Id).FirstOrDefault(pi => pi.UserId == article.UserId)
+        };
             return View(viewModel);
         }
 

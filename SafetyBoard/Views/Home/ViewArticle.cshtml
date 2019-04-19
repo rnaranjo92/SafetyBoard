@@ -8,6 +8,7 @@
 <div class="article-container">
     <div class="poster-information">
         <h3>Poster Information</h3>
+        <img src="@Url.Content(Model.ProfileImage.Path)" class="profImage" />
         @if (Model.User.IsQA)
         {
             <label class="label label-success">Inspector</label>
