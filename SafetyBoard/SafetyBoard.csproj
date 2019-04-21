@@ -283,11 +283,16 @@
     <Compile Include="Migrations\201904141752059_AddProfileImageToModel.Designer.cs">
       <DependentUpon>201904141752059_AddProfileImageToModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904202218302_AddSafetyNewsImages.cs" />
+    <Compile Include="Migrations\201904202218302_AddSafetyNewsImages.Designer.cs">
+      <DependentUpon>201904202218302_AddSafetyNewsImages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ProfileImage.cs" />
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\SafetyNews.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
+    <Compile Include="Models\SafetyNewsImages.cs" />
     <Compile Include="Models\UserNotification.cs" />
     <Compile Include="Models\ViewModel\ArticleViewModel.cs" />
     <Compile Include="Models\ViewModel\CanceledInspectionViewModel.cs" />
@@ -972,6 +977,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904141752059_AddProfileImageToModel.resx">
       <DependentUpon>201904141752059_AddProfileImageToModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904202218302_AddSafetyNewsImages.resx">
+      <DependentUpon>201904202218302_AddSafetyNewsImages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

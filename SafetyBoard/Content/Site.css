@@ -261,6 +261,7 @@ textarea.form-control {
 }
 .container body-content {
   height: 100%;
+  position:relative;
   display: flex;
   flex-direction: column;
 }
@@ -460,7 +461,7 @@ button.modal-close {
 }
 .article-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 50px;
     margin-bottom:15px;
 }
@@ -469,17 +470,20 @@ button.modal-close {
     margin-top:30px;
     padding: 5px 15px 15px 15px;
     position:relative;
+    width:285px;
     display:inline-block;
     margin-bottom: 20px;
 }
 .article {
     position: relative;
-    width:60%;
-    height:50%;
-    margin-top: 30px;
-    margin-left: 20px;
+    width:100%;
+    min-height:30%;
+    max-height:100%;
+    margin-top: 0px;
+    margin-bottom:20px;
+    margin-left: 2%;
     box-shadow: 1px 2px 5px grey;
-    padding: 5px 15px 15px 15px;
+    padding: 15px 15px 15px 15px;
 }
 .btn-delete{
     position:absolute;
@@ -572,14 +576,15 @@ button.modal-close {
     left:83%;
 }
 .comment-box {
-    margin-left: 28%;
-    margin-top: 10px;
-    margin-bottom:20px;
-    width: 57.5%;
-    bottom:450px;
-    position:relative;
+    margin-left: 2%;
+    margin-bottom: 20px;
+    width: 600px;
+    position: relative;
     box-shadow: 1px 2px 5px grey;
     padding: 10px 10px 15px 15px;
+}
+.comment-box *{
+
 }
 .btn-delete-comment {
     margin-left: 89.6%;
@@ -614,10 +619,11 @@ button.modal-close {
     margin-top: 30px;
 }
 .btn-post-xl-comment {
-    position: sticky;
-    font-size: 20px;
-    margin-bottom: 10px;
-    margin-left:450px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    padding:5px;
+    margin-left:550px;
+    width:120px;
 }
 .user-profile-container {
     position: relative;
@@ -681,6 +687,22 @@ button.modal-close {
     margin-top:120px;
 }
 .user-view-article-box {
-    width: 250px;
+    padding: 5px 5px 5px 5px;
+    width: 230px;
     box-shadow: 1px 2px 5px grey;
+}
+.article-image{
+    width:100px;
+    height:100px;
+    border:2px solid;
+}
+.hr-image-bottom{
+    margin-bottom:10px;
+}
+.container-view-article{
+    display:flex;
+    margin-top:45px;
+}
+.image-modal{
+    align-content:center;
 }

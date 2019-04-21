@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 
 namespace SafetyBoard.Models.ViewModel
 {
@@ -18,6 +19,13 @@ namespace SafetyBoard.Models.ViewModel
         public Comment Comment { get; set; }
 
         public ProfileImage ProfileImage { get; set; }
+
+        public SafetyNewsImages SafetyNewsImages { get; set; }
+
+        public IEnumerable<SafetyNewsImages> ListOfSafetyNewsImages { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
+
 
         public HomeViewModel()
         {

@@ -10,6 +10,7 @@ namespace SafetyBoard.Models.ViewModel
         public IEnumerable<Comment> Comments { get; set; }
         public ProfileImage ProfileImage { get; set; }
         public IEnumerable<ApplicationUser> Likers { get; set; }
+        public IEnumerable<SafetyNewsImages> safetyNewsImages { get; set; }
         public bool IsLikeEmpty { get; set; }
     }
 }

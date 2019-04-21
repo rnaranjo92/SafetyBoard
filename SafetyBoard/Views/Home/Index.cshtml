@@ -76,12 +76,16 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            @using (Html.BeginForm("PostArticle", "Home"))
+                            @using (Html.BeginForm("PostArticle", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
                                 @Html.AntiForgeryToken()
                                 <div class="form-group">
                                     @Html.LabelFor(m => m.SafetyNews.Title, new { @class = "col-form-label" }):
                                     @Html.TextBoxFor(m => m.SafetyNews.Title, new { @class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Image</label>
+                                    @Html.TextBoxFor(m => m.ImageFile, new { type = "file" })
                                 </div>
                                 <div class="form-group">
                                     @Html.LabelFor(m => m.SafetyNews.Article, new { @class = "col-form-label" }):
@@ -98,7 +102,7 @@
             </div>
         </div>
         <h3 class="inspection-newsfeed">Safety News For the Month of @DateTime.Now.ToString("MMMM")</h3>
-        @foreach (var article in Model.ListOfSafetyNews)
+        @foreach (var article in Model.ListOfSafetyNews.OrderByDescending(m=>m.DatePosted))
         {
             <ul class="safety-news">
                 <li>

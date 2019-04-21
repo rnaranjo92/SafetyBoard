@@ -3,7 +3,9 @@ using SafetyBoard.Models;
 using SafetyBoard.Models.ViewModel;
 using System;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace SafetyBoard.Controllers
@@ -37,14 +39,14 @@ namespace SafetyBoard.Controllers
 
             return View("Index",viewModel);
         }
-        public ActionResult PostArticle(SafetyNews safetyNews) 
+        public ActionResult PostArticle(SafetyNews safetyNews,HttpPostedFileBase imageFile) 
         {
             var currentUser = User.Identity.GetUserId();
             var article = new SafetyNews
             {
                 UserId = currentUser,
                 Title = safetyNews.Title,
-                Article = safetyNews.Title,
+                Article = safetyNews.Article,
                 IsRemoved = false,
                 DatePosted = DateTime.Now,
             };
@@ -60,6 +62,23 @@ namespace SafetyBoard.Controllers
             }
 
             _context.SafetyNews.Add(article);
+            _context.SaveChanges();
+
+            string fileName = Path.GetFileNameWithoutExtension(imageFile.FileName);
+            string extension = Path.GetExtension(imageFile.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+
+            var newImage = new SafetyNewsImages
+            {
+                ImagePath = "~/Image/" + fileName,
+                SafetyNewsId = article.Id
+            };
+
+            fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
+
+            imageFile.SaveAs(fileName);
+
+            _context.SafetyNewsImages.Add(newImage);
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Home");
@@ -99,6 +118,7 @@ namespace SafetyBoard.Controllers
                 Comments = comments,
                 ProfileImage = _context.ProfileImages.OrderByDescending(pi => pi.Id).FirstOrDefault(pi => pi.UserId == article.UserId),
                 Likers = _context.Like.Where(l => l.SafetyNewsId == article.Id && l.LikerId != article.UserId).Select(l => l.Liker).ToList(),
+                safetyNewsImages = _context.SafetyNewsImages.Where(sni => sni.SafetyNewsId == id).ToList()
             };
             if (viewModel.Likers.Count()==0)
             {
